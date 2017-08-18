@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: c42f52f645d16fc4785eafeee51e2670
+timeCreated: 1501250782
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: RipeApricots
+  fontNames:
+  - RipeApricots
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
