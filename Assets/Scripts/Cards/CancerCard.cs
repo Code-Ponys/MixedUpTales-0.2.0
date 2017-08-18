@@ -67,7 +67,7 @@ namespace Cards {
             }
             F.GetComponent<GameManager>().lastSetCard = CardID.Cancercard;
             F.GetComponent<GameManager>().animationDone = true;
-            DestroyImmediate(GameObject.Find(Slave.GetCardName(CardID.Cancercard, x, y)));
+            F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Cancercard, x, y)));
         }
 
         // Update is called once per frame

@@ -95,7 +95,7 @@ namespace Cards {
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().currentChoosedCard = CardID.Shufflecard;
                         F.GetComponent<GameManager>().animationDone = true;
-                        DestroyImmediate(GameObject.Find(Slave.GetCardName(CardID.Shufflecard, x, y)));
+                        F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Shufflecard, x, y)));
                     }
                 }
             }

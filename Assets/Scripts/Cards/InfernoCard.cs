@@ -98,79 +98,46 @@ namespace Cards {
                     if (CardIndicator.name == CardIndicatorLeft1.name
                         || CardIndicator.name == CardIndicatorLeft2.name
                         || CardIndicator.name == CardIndicatorLeft3.name) {
-                        RemoveCard(CardLeft1);
-                        RemoveCard(CardLeft2);
-                        RemoveCard(CardLeft3);
+                        F.GetComponent<GameManager>().RemoveCard(CardLeft1);
+                        F.GetComponent<GameManager>().RemoveCard(CardLeft2);
+                        F.GetComponent<GameManager>().RemoveCard(CardLeft3);
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().animationDone = true;
-                        DestroyImmediate(GameObject.Find(Slave.GetCardName(CardID.Infernocard, x, y)));
                         HideCardIndicator();
+                        F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Infernocard, x, y)));
                     } else if (CardIndicator.name == CardIndicatorRight1.name
                           || CardIndicator.name == CardIndicatorRight2.name
                           || CardIndicator.name == CardIndicatorRight3.name) {
-                        RemoveCard(CardRight1);
-                        RemoveCard(CardRight2);
-                        RemoveCard(CardRight2);
+                        F.GetComponent<GameManager>().RemoveCard(CardRight1);
+                        F.GetComponent<GameManager>().RemoveCard(CardRight2);
+                        F.GetComponent<GameManager>().RemoveCard(CardRight2);
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().animationDone = true;
-                        DestroyImmediate(GameObject.Find(Slave.GetCardName(CardID.Infernocard, x, y)));
                         HideCardIndicator();
+                        F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Infernocard, x, y)));
                     } else if (CardIndicator.name == CardIndicatorUp1.name
                           || CardIndicator.name == CardIndicatorUp2.name
                           || CardIndicator.name == CardIndicatorUp3.name) {
-                        RemoveCard(CardUp1);
-                        RemoveCard(CardUp2);
-                        RemoveCard(CardUp3);
+                        F.GetComponent<GameManager>().RemoveCard(CardUp1);
+                        F.GetComponent<GameManager>().RemoveCard(CardUp2);
+                        F.GetComponent<GameManager>().RemoveCard(CardUp3);
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().animationDone = true;
-                        DestroyImmediate(GameObject.Find(Slave.GetCardName(CardID.Infernocard, x, y)));
                         HideCardIndicator();
+                        F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Infernocard, x, y)));
                     } else if (CardIndicator.name == CardIndicatorDown1.name
                           || CardIndicator.name == CardIndicatorDown2.name
                           || CardIndicator.name == CardIndicatorDown3.name) {
-                        RemoveCard(CardDown1);
-                        RemoveCard(CardDown2);
-                        RemoveCard(CardDown3);
+                        F.GetComponent<GameManager>().RemoveCard(CardDown1);
+                        F.GetComponent<GameManager>().RemoveCard(CardDown2);
+                        F.GetComponent<GameManager>().RemoveCard(CardDown3);
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().animationDone = true;
-                        DestroyImmediate(GameObject.Find(Slave.GetCardName(CardID.Infernocard, x, y)));
                         HideCardIndicator();
+                        F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Infernocard, x, y)));
                     }
                 }
             }
-        }
-
-        private void RemoveCard(GameObject DeletedCard) {
-            if (DeletedCard == null || DeletedCard.GetComponent<Card>().cardid == CardID.Startpoint) return;
-            for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
-                if (F.GetComponent<Field>().cardsOnField[i].GetComponent<Card>().x == DeletedCard.GetComponent<Card>().x
-                    && F.GetComponent<Field>().cardsOnField[i].GetComponent<Card>().y == DeletedCard.GetComponent<Card>().y) {
-                    F.GetComponent<Field>().cardsOnField.RemoveAt(i);
-                    break;
-                }
-            }
-            if (DeletedCard.GetComponent<Card>().cardid == CardID.Blockcard) {
-                Block blockdirection = GameObject.Find(Slave.GetCardName(CardID.Card, DeletedCard.GetComponent<Card>().x, DeletedCard.GetComponent<Card>().y)).GetComponent<BlockCard>().blockDirection;
-                switch (blockdirection) {
-                    case Block.right:
-                        GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, DeletedCard.GetComponent<Card>().x + 1, DeletedCard.GetComponent<Card>().y)).GetComponent<Indicator>().indicatorState = IndicatorState.unreachable;
-                        GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, DeletedCard.GetComponent<Card>().x + 1, DeletedCard.GetComponent<Card>().y)).GetComponent<Indicator>().team = Team.system;
-                        break;
-                    case Block.left:
-                        GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, DeletedCard.GetComponent<Card>().x - 1, DeletedCard.GetComponent<Card>().y)).GetComponent<Indicator>().indicatorState = IndicatorState.unreachable;
-                        GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, DeletedCard.GetComponent<Card>().x - 1, DeletedCard.GetComponent<Card>().y)).GetComponent<Indicator>().team = Team.system;
-                        break;
-                    case Block.up:
-                        GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, DeletedCard.GetComponent<Card>().x, DeletedCard.GetComponent<Card>().y + 1)).GetComponent<Indicator>().indicatorState = IndicatorState.unreachable;
-                        GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, DeletedCard.GetComponent<Card>().x, DeletedCard.GetComponent<Card>().y + 1)).GetComponent<Indicator>().team = Team.system;
-                        break;
-                    case Block.down:
-                        GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, DeletedCard.GetComponent<Card>().x, DeletedCard.GetComponent<Card>().y - 1)).GetComponent<Indicator>().indicatorState = IndicatorState.unreachable;
-                        GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, DeletedCard.GetComponent<Card>().x, DeletedCard.GetComponent<Card>().y - 1)).GetComponent<Indicator>().team = Team.system;
-                        break;
-                }
-            }
-            Destroy(DeletedCard);
         }
 
         void HideCardIndicator() {

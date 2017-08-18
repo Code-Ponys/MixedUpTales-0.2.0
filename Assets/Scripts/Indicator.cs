@@ -59,7 +59,6 @@ namespace Cards {
         private void CardStateUpdate() {
             if (currentcolor != indicatorColor) {
                 SpriteRenderer.sprite = Resources.Load<Sprite>(Slave.GetImagePath(indicatorColor));
-                print("Changed currentcolor " + currentcolor + " of Card " + Card.name + " to " + indicatorColor);
                 currentcolor = indicatorColor;
             }
         }

@@ -157,11 +157,11 @@ static public class Slave {
             case CardID.Cancercard:
                 return "Cancercard";
             case CardID.HotPotatoe:
-                return "HotPotatoe";
+                return "Discardcard";
             case CardID.Nukecard:
-                return "Nukecard";
+                return "Restartcard";
             case CardID.Vortexcard:
-                return "Vortexcard";
+                return "Exchangecard";
             case CardID.Anchorcard:
                 return "Anchorcard";
             case CardID.Shufflecard:
@@ -186,9 +186,9 @@ static public class Slave {
             case CardID.Burncard:
                 return "Destroys one adjacent card and itself.";
             case CardID.Infernocard:
-                return "Deletes 3 cards in any straight direction, starting from its position.";
+                return "Clears 3 fields in any straight direction, starting from its position.";
             case CardID.Changecard:
-                return "Turns any pointcard into a blankcard.";
+                return "Turns an opponents pointcard into a blankcard.";
             case CardID.Cancercard:
                 return "Turns all cards in its line and column into blank cards.";
             case CardID.HotPotatoe:

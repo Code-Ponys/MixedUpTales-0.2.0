@@ -41,7 +41,7 @@ namespace Cards {
             SpriteRenderer.sprite = Resources.Load<Sprite>(Slave.GetImagePath(CardID.Blankcard, cardteam));
             F.GetComponent<GameManager>().animationDone = true;
 
-            DestroyImmediate(Card);
+            F.GetComponent<GameManager>().RemoveCard(Card);
         }
 
         // Update is called once per frame

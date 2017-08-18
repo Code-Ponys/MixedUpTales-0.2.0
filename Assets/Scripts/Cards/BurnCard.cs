@@ -39,32 +39,21 @@ namespace Cards {
 
             int cardcounter = 0;
             if (CardLeft == null) {
-                print("CardLeft not found!");
                 cardcounter++;
             }
             if (CardRight == null) {
-                print("CardRight not found!");
                 cardcounter++;
             }
             if (CardDown == null) {
-                print("CardDown not found!");
                 cardcounter++;
             }
             if (CardUp == null) {
-                print("CardUp not found!");
                 cardcounter++;
             }
-            print("Cardcounter: " + cardcounter);
             if (cardcounter == 3) {
                 if (CardLeft != null) {
-                    for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
-                        if (F.GetComponent<Field>().cardsOnField[i].GetComponent<Card>().x == CardLeft.GetComponent<Card>().x
-                            && F.GetComponent<Field>().cardsOnField[i].GetComponent<Card>().y == CardLeft.GetComponent<Card>().y) {
-                            F.GetComponent<Field>().cardsOnField.RemoveAt(i);
-                            break;
-                        }
-                    }
-                    DestroyImmediate(CardLeft);
+
+                    F.GetComponent<GameManager>().RemoveCard(CardLeft);
                 }
                 if (CardRight != null) {
                     for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
@@ -74,7 +63,7 @@ namespace Cards {
                             break;
                         }
                     }
-                    DestroyImmediate(CardRight);
+                    F.GetComponent<GameManager>().RemoveCard(CardRight);
                 }
                 if (CardDown != null) {
                     for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
@@ -84,7 +73,7 @@ namespace Cards {
                             break;
                         }
                     }
-                    DestroyImmediate(CardDown);
+                    F.GetComponent<GameManager>().RemoveCard(CardDown);
                 }
                 if (CardUp != null) {
                     for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
@@ -94,9 +83,9 @@ namespace Cards {
                             break;
                         }
                     }
-                    DestroyImmediate(CardUp);
+                    F.GetComponent<GameManager>().RemoveCard(CardUp);
                 }
-                DestroyImmediate(GameObject.Find(Slave.GetCardName(CardID.Burncard, x, y)));
+                F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Burncard, x, y)));
 
                 F.GetComponent<GameManager>().animationDone = true;
                 return;
@@ -140,36 +129,8 @@ namespace Cards {
                         CardIndicatorUp.GetComponent<Indicator>().setColor(IndicatorColor.transparent);
                         CardIndicatorDown.GetComponent<Indicator>().setColor(IndicatorColor.transparent);
 
-                        for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
-                            if (F.GetComponent<Field>().cardsOnField[i].GetComponent<Card>().x == indexX
-                                && F.GetComponent<Field>().cardsOnField[i].GetComponent<Card>().y == indexY) {
-                                F.GetComponent<Field>().cardsOnField.RemoveAt(i);
-                                break;
-                            }
-                        }
-                        if (Card.GetComponent<Card>().cardid == CardID.Blockcard) {
-                            Block blockdirection = GameObject.Find(Slave.GetCardName(CardID.Card, x, y)).GetComponent<BlockCard>().blockDirection;
-                            switch (blockdirection) {
-                                case Block.right:
-                                    GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x + 1, y)).GetComponent<Indicator>().indicatorState = IndicatorState.unreachable;
-                                    GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x + 1, y)).GetComponent<Indicator>().team = Team.system;
-                                    break;
-                                case Block.left:
-                                    GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x - 1, y)).GetComponent<Indicator>().indicatorState = IndicatorState.unreachable;
-                                    GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x - 1, y)).GetComponent<Indicator>().team = Team.system;
-                                    break;
-                                case Block.up:
-                                    GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y + 1)).GetComponent<Indicator>().indicatorState = IndicatorState.unreachable;
-                                    GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y + 1)).GetComponent<Indicator>().team = Team.system;
-                                    break;
-                                case Block.down:
-                                    GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y - 1)).GetComponent<Indicator>().indicatorState = IndicatorState.unreachable;
-                                    GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y - 1)).GetComponent<Indicator>().team = Team.system;
-                                    break;
-                            }
-                        }
-                        DestroyImmediate(Card);
-                        DestroyImmediate(GameObject.Find(Slave.GetCardName(CardID.Burncard, x, y)));
+                        F.GetComponent<GameManager>().RemoveCard(Card);
+                        F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Burncard, x, y)));
                     }
                 }
             }
