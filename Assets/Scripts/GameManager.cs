@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
     public Player PlayerBlue { get { return players[0]; } }
     public Player PlayerRed { get { return players[1]; } }
     public int[,] distance;
+    public GameObject PlayerName;
 
     public GameObject currentChoosedCardGO;
     public Image SideBarBlue;
@@ -48,8 +49,8 @@ public class GameManager : MonoBehaviour {
         players[1].Init(Team.red);
         currentPlayer = Team.blue;
 
-        GameObject PlayerName = GameObject.Find("TextSpieler");
-        PlayerName.GetComponent<Text>().text = "Spieler 1";
+        PlayerName = GameObject.Find("TextSpieler");
+        PlayerName.GetComponent<Text>().text = "Player 1";
         PlayerBlue.RefillHand();
 
         //Image SideBarBlue = GameObject.Find("SideMenu Blue").GetComponent<Image>();
@@ -521,15 +522,12 @@ public class GameManager : MonoBehaviour {
             SideBarBlue.enabled = true;
             SideBarRed.enabled = false;
             players[0].RefillHand();
-            GameObject PlayerName = GameObject.Find("TextSpieler");
-            PlayerName.GetComponent<Text>().text = "Spieler 1";
+            PlayerName.GetComponent<Text>().text = "Player 1";
         } else {
             SideBarBlue.enabled = false;
             SideBarRed.enabled = true;
             players[1].RefillHand();
-
-            GameObject PlayerName = GameObject.Find("TextSpieler");
-            PlayerName.GetComponent<Text>().text = "Spieler 2";
+            PlayerName.GetComponent<Text>().text = "Player 2";
         }
 
         triggerDelayedNewRound = 1;
