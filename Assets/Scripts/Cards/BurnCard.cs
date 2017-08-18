@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Cards {
     public class BurnCard : Card {
 
+        GameObject OwnGO;
         GameObject F;
         GameObject CardIndicatorLeft;
         GameObject CardIndicatorRight;
@@ -22,6 +23,7 @@ namespace Cards {
 
         // Use this for initialization
         void Start() {
+            OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
             F.GetComponent<GameManager>().cardlocked = true;
             CardIndicatorLeft = GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x - 1, y));
@@ -130,7 +132,7 @@ namespace Cards {
                         CardIndicatorDown.GetComponent<Indicator>().setColor(IndicatorColor.transparent);
 
                         F.GetComponent<GameManager>().RemoveCard(Card);
-                        F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Burncard, x, y)));
+                        F.GetComponent<GameManager>().RemoveCard(OwnGO);
                     }
                 }
             }

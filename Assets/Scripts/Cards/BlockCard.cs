@@ -7,6 +7,7 @@ namespace Cards {
 
     public class BlockCard : Card {
 
+        GameObject OwnGO;
         GameObject F;
         GameObject CardIndicatorLeft;
         GameObject CardIndicatorRight;
@@ -26,6 +27,7 @@ namespace Cards {
         private bool cardprocessdone;
 
         private void Start() {
+            OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
             F.GetComponent<GameManager>().cardlocked = true;
             CardIndicatorLeft = GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x - 1, y));

@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Cards {
     public class InfernoCard : Card {
 
+        GameObject OwnGO;
         GameObject F;
         GameObject CardLeft1;
         GameObject CardLeft2;
@@ -34,6 +35,7 @@ namespace Cards {
 
         // Use this for initialization
         void Start() {
+            OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
             F.GetComponent<GameManager>().cardlocked = true;
             CardLeft1 = GameObject.Find(Slave.GetCardName(CardID.Card, x - 1, y));
@@ -104,7 +106,7 @@ namespace Cards {
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().animationDone = true;
                         HideCardIndicator();
-                        F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Infernocard, x, y)));
+                        F.GetComponent<GameManager>().RemoveCard(OwnGO);
                     } else if (CardIndicator.name == CardIndicatorRight1.name
                           || CardIndicator.name == CardIndicatorRight2.name
                           || CardIndicator.name == CardIndicatorRight3.name) {
@@ -114,7 +116,7 @@ namespace Cards {
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().animationDone = true;
                         HideCardIndicator();
-                        F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Infernocard, x, y)));
+                        F.GetComponent<GameManager>().RemoveCard(OwnGO);
                     } else if (CardIndicator.name == CardIndicatorUp1.name
                           || CardIndicator.name == CardIndicatorUp2.name
                           || CardIndicator.name == CardIndicatorUp3.name) {
@@ -124,7 +126,7 @@ namespace Cards {
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().animationDone = true;
                         HideCardIndicator();
-                        F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Infernocard, x, y)));
+                        F.GetComponent<GameManager>().RemoveCard(OwnGO);
                     } else if (CardIndicator.name == CardIndicatorDown1.name
                           || CardIndicator.name == CardIndicatorDown2.name
                           || CardIndicator.name == CardIndicatorDown3.name) {
@@ -134,7 +136,7 @@ namespace Cards {
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().animationDone = true;
                         HideCardIndicator();
-                        F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Infernocard, x, y)));
+                        F.GetComponent<GameManager>().RemoveCard(OwnGO);
                     }
                 }
             }

@@ -4,10 +4,12 @@ using UnityEngine;
 
 namespace Cards {
     public class DoubleCard : Card {
+        GameObject OwnGO;
         private bool cardprocessdone;
         GameObject F;
         // Use this for initialization
         void Start() {
+            OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
             F.GetComponent<GameManager>().cardlocked = true;
             F.GetComponent<GameManager>().GenerateFieldCard(CardID.Blankcard, x, y);
@@ -33,7 +35,7 @@ namespace Cards {
                         F.GetComponent<GameManager>().GetPointCardNumber(team);
                         F.GetComponent<GameManager>().GenerateFieldCard(CardID.Pointcard, indexX, indexY);
                         cardprocessdone = true;
-                        F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Doublecard, x, y)));
+                        F.GetComponent<GameManager>().RemoveCard(OwnGO);
                     }
                 }
             }

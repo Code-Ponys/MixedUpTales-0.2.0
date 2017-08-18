@@ -7,10 +7,12 @@ using UnityEngine.UI;
 namespace Cards {
 
     public class PointCard : Card {
+        GameObject OwnGO;
         GameObject Card;
         SpriteRenderer SpriteRenderer;
 
         private void Start() {
+            OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             GameObject F = GameObject.Find("Field");
             Card = GameObject.Find(Slave.GetCardName(CardID.Card, x, y));
             SpriteRenderer = Card.GetComponent<SpriteRenderer>();

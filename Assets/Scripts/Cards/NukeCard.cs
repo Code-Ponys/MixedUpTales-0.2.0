@@ -6,8 +6,11 @@ using UnityEngine;
 namespace Cards {
     public class NukeCard : Card {
 
+        GameObject OwnGO;
+
         // Use this for initialization
         void Start() {
+            OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             GameObject F = GameObject.Find("Field");
             while (F.GetComponent<Field>().cardsOnField.Count != 0) {
                 GameObject RemoveCard = F.GetComponent<Field>().cardsOnField[0];
@@ -15,7 +18,7 @@ namespace Cards {
             }
             F.GetComponent<GameManager>().GenerateFieldCard(CardID.Startpoint, 0, 0);
             F.GetComponent<GameManager>().animationDone = true;
-            F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Nukecard, x, y)));
+            F.GetComponent<GameManager>().RemoveCard(OwnGO);
         }
 
         // Update is called once per frame

@@ -5,9 +5,10 @@ using UnityEngine;
 
 namespace Cards {
     public class Startpoint : Card {
+        GameObject OwnGO;
 
         public void Start() {
-            //GenerateCard();
+            OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
         }
     }
 }

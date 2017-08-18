@@ -6,13 +6,17 @@ using UnityEngine.UI;
 namespace Cards {
     public class VortexCard : Card {
 
+        GameObject OwnGO;
+        GameObject F;
         List<CardID> newDeckPlayer1 = new List<CardID>();
         List<CardID> newDeckPlayer2 = new List<CardID>();
 
         // Use this for initialization
         void Start() {
 
-            GameObject.Find("Field").GetComponent<GameManager>().currentChoosedCardGO.GetComponent<Handcards>().cardid = CardID.none;
+            OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
+            F = GameObject.Find("Field");
+            F.GetComponent<GameManager>().currentChoosedCardGO.GetComponent<Handcards>().cardid = CardID.none;
 
             GameObject Player1 = GameObject.Find("PlayerBlue");
             GameObject Player2 = GameObject.Find("PlayerRed");
@@ -77,7 +81,7 @@ namespace Cards {
 
             GameObject.Find("Field").GetComponent<GameManager>().animationDone = true;
 
-            Destroy(GameObject.Find(Slave.GetCardName(CardID.Vortexcard, x, y)));
+            F.GetComponent<GameManager>().RemoveCard(OwnGO);
         }
 
 

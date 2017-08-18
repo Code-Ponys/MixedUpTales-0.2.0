@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Cards {
     public class ShuffleCard : Card {
+        GameObject OwnGO;
         private bool cardprocessdone;
         GameObject F;
         GameObject CardLeft;
@@ -17,6 +18,7 @@ namespace Cards {
 
         // Use this for initialization
         void Start() {
+            OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
             F.GetComponent<GameManager>().cardlocked = true;
             F.GetComponent<GameManager>().currentChoosedCard = CardID.none;
@@ -95,7 +97,7 @@ namespace Cards {
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().currentChoosedCard = CardID.Shufflecard;
                         F.GetComponent<GameManager>().animationDone = true;
-                        F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Shufflecard, x, y)));
+                        F.GetComponent<GameManager>().RemoveCard(OwnGO);
                     }
                 }
             }

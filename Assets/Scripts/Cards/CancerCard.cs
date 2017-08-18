@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Cards {
     public class CancerCard : Card {
 
+        GameObject OwnGO;
         GameObject F;
         GameObject Card;
         GameObject Cardchange;
@@ -13,6 +14,7 @@ namespace Cards {
 
         // Use this for initialization
         void Start() {
+            OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
             Card = GameObject.Find(Slave.GetCardName(CardID.Changecard, x, y));
 
@@ -67,7 +69,7 @@ namespace Cards {
             }
             F.GetComponent<GameManager>().lastSetCard = CardID.Cancercard;
             F.GetComponent<GameManager>().animationDone = true;
-            F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Cancercard, x, y)));
+            F.GetComponent<GameManager>().RemoveCard(OwnGO);
         }
 
         // Update is called once per frame
