@@ -14,7 +14,7 @@ namespace Cards {
             GameObject Card = GameObject.Find(Slave.GetCardName(CardID.Card, x, y));
             F.GetComponent<GameManager>().CollectRemoveCard(Card);
             F.GetComponent<GameManager>().animationDone = true;
-            F.GetComponent<GameManager>().CollectRemoveCard(OwnGO);
+            DestroyImmediate(OwnGO);
         }
 
 

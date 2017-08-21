@@ -132,7 +132,7 @@ namespace Cards {
                         CardIndicatorDown.GetComponent<Indicator>().setColor(IndicatorColor.transparent);
 
                         F.GetComponent<GameManager>().CollectRemoveCard(Card);
-                        F.GetComponent<GameManager>().CollectRemoveCard(OwnGO);
+                        DestroyImmediate(OwnGO);
                     }
                 }
             }

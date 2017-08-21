@@ -69,7 +69,7 @@ namespace Cards {
             }
             F.GetComponent<GameManager>().lastSetCard = CardID.Cancercard;
             F.GetComponent<GameManager>().animationDone = true;
-            F.GetComponent<GameManager>().CollectRemoveCard(OwnGO);
+            DestroyImmediate(OwnGO);
         }
 
         // Update is called once per frame
