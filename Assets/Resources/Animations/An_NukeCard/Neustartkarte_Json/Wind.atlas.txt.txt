@@ -1,0 +1,13 @@
+
+Wind.png
+size: 990,990
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 2
+  rotate: false
+  xy: 2, 314
+  size: 986, 674
+  orig: 986, 674
+  offset: 0, 0
+  index: -1
