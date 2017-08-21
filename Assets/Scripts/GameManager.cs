@@ -69,10 +69,24 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         ToggleDeleteCardFieldVisibility();
+        if(players[0].Deck.Count == 0
+            && GameObject.Find("HandCard1blue").GetComponent<Handcards>().cardid == CardID.none
+            && GameObject.Find("HandCard2blue").GetComponent<Handcards>().cardid == CardID.none
+            && GameObject.Find("HandCard3blue").GetComponent<Handcards>().cardid == CardID.none) {
+
+        }
         if (animationDone == true) {
             RemovePlacedCardFromHand();
             animationDone = false;
             cardlocked = false;
+            if (lastSetCard == CardID.Deletecard
+            || lastSetCard == CardID.Burncard
+            || lastSetCard == CardID.Cancercard
+            || lastSetCard == CardID.Infernocard
+            || lastSetCard == CardID.Nukecard) {
+                RemoveUnconnectedCards();
+            }
+            RemoveCards();
             TogglePlayerScreen();
         }
     }
@@ -508,6 +522,19 @@ public class GameManager : MonoBehaviour {
 
         //TODO Change Handcards
         //TODO Fade in Black Scene
+        if (players[0].Deck.Count == 0
+            && GameObject.Find("HandCard1blue").GetComponent<Handcards>().cardid == CardID.none
+            && GameObject.Find("HandCard2blue").GetComponent<Handcards>().cardid == CardID.none
+            && GameObject.Find("HandCard3blue").GetComponent<Handcards>().cardid == CardID.none) {
+            DrawScreen.enabled = true;
+            print("DRAW!");
+        }else if (players[1].Deck.Count == 0
+            && GameObject.Find("HandCard1red").GetComponent<Handcards>().cardid == CardID.none
+            && GameObject.Find("HandCard2red").GetComponent<Handcards>().cardid == CardID.none
+            && GameObject.Find("HandCard3red").GetComponent<Handcards>().cardid == CardID.none) {
+            DrawScreen.enabled = true;
+            print("DRAW!");
+        }
         if (currentPlayer == Team.blue) {
             SideBarBlue.enabled = true;
             SideBarRed.enabled = false;
@@ -635,6 +662,9 @@ public class GameManager : MonoBehaviour {
                 }
             }
         }
+        GameObject Startindicator = GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, 0, 0));
+        Startindicator.GetComponent<Indicator>().indicatorState = IndicatorState.unreachable;
+
     }
 
     void ToggleDeleteCardFieldVisibility() {
@@ -741,7 +771,7 @@ public class GameManager : MonoBehaviour {
                 GameObject Card = GameObject.Find(Slave.GetCardName(CardID.Card, x, y));
                 if (Card != null
                     && Card.GetComponent<Card>().visited == false) {
-                    RemoveCard(Card);
+                    CollectRemoveCard(Card);
                     DestroyImmediate(Card);
                 } else if (Card != null
                      && Card.GetComponent<Card>().visited == true) {
@@ -820,7 +850,7 @@ public class GameManager : MonoBehaviour {
             return PointCardCounterBlue % 15;
         }
     }
-    public void RemoveCard(GameObject DeletedCard) {
+    public void CollectRemoveCard(GameObject DeletedCard) {
         if (DeletedCard == null || DeletedCard.GetComponent<Card>().cardid == CardID.Startpoint) return;
         for (int i = 0; i < Field.GetComponent<Field>().cardsOnField.Count; i++) {
             if (Field.GetComponent<Field>().cardsOnField[i].GetComponent<Card>().cardid == DeletedCard.GetComponent<Card>().cardid
@@ -861,6 +891,15 @@ public class GameManager : MonoBehaviour {
         MyCard.y = DeletedCard.GetComponent<Card>().y;
         MyCard.lastevent = LastEvent.destroyed;
         CardsAffectedLastRound.Add(MyCard);
-        DestroyImmediate(DeletedCard);
+
+        CardsToDelete.Add(DeletedCard);
+    }
+
+    void RemoveCards() {
+        for(int i = 0; CardsToDelete.Count <i; i++) {
+            GameObject Card = CardsToDelete[0];
+            CardsToDelete.RemoveAt(0);
+            DestroyImmediate(Card);
+        }
     }
 }
