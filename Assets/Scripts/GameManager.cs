@@ -457,7 +457,7 @@ public class GameManager : MonoBehaviour {
                 break;
         }
 
-        if (cardid == CardID.Startpoint || cardid == CardID.Anchorcard
+        if (cardid == CardID.Anchorcard
             || cardid == CardID.Pointcard || cardid == CardID.Blockcard
             || cardid == CardID.Blankcard) {
             GameObject.Find("Field").GetComponent<Field>().cardsOnField.Add(Card);
