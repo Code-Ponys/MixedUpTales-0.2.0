@@ -464,12 +464,12 @@ public class GameManager : MonoBehaviour {
             return true;
         }
         if (currentChoosedCard == CardID.Changecard
-            & GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y)).GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
+            && GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y)).GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
             return true;
         }
         if (GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y)).GetComponent<Indicator>().indicatorColor == IndicatorColor.yellowcovered
             && currentChoosedCard == CardID.Changecard || currentChoosedCard == CardID.Deletecard
-            || currentChoosedCard == CardID.Changecard || currentChoosedCard == CardID.Shufflecard) {
+            || currentChoosedCard == CardID.Shufflecard) {
             return false;
         }
         if (GameObject.Find(Slave.GetCardName(CardID.Card, x, y)) != null) {
@@ -490,7 +490,10 @@ public class GameManager : MonoBehaviour {
             && GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y)).GetComponent<Indicator>().currentcolor == IndicatorColor.red) {
             return true;
         }
-        return false;
+        if (currentChoosedCard == CardID.Deletecard && GameObject.Find(Slave.GetCardName(CardID.CardIndicator,x, y)).GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
+            return true;
+        }
+            return false;
     }
 
     public void NewRound() {
@@ -517,11 +520,20 @@ public class GameManager : MonoBehaviour {
             PlayerName.GetComponent<Text>().text = "Player 2";
         }
         currentChoosedCardGO = null;
+
+        if (lastSetCard == CardID.Deletecard
+            || lastSetCard == CardID.Burncard
+            || lastSetCard == CardID.Cancercard
+            || lastSetCard == CardID.Infernocard
+            || lastSetCard == CardID.Nukecard) {
+            RemoveUnconnectedCards();
+
+        }
+
         CardPreview.GetComponent<CardPreview>().cardid = CardID.none;
 
+        TogglePlayerScreen();
         triggerDelayedNewRound = 1;
-
-
 
     }
 
@@ -562,6 +574,14 @@ public class GameManager : MonoBehaviour {
             for (int y = Camera.main.GetComponent<CameraManager>().min_y; y <= Camera.main.GetComponent<CameraManager>().max_y; y++) {
                 if (GameObject.Find(Slave.GetCardName(CardID.Card, x, y)) != null) {
                     SetFieldIndicator(x, y);
+                }
+            }
+        }
+        for (int x = Camera.main.GetComponent<CameraManager>().min_x - 3; x <= Camera.main.GetComponent<CameraManager>().max_x + 3; x++) {
+            for (int y = Camera.main.GetComponent<CameraManager>().min_y - 3; y <= Camera.main.GetComponent<CameraManager>().max_y + 3; y++) {
+                if (GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y)) != null) {
+                    GameObject Indicator = GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y));
+                    Indicator.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
                 }
             }
         }
@@ -708,7 +728,10 @@ public class GameManager : MonoBehaviour {
         MarkUnconnectedCards();
         DeleteUnconnectedCards();
         RenewIndicators();
+        Camera.main.GetComponent<CameraManager>().RenewCameraPosition();
     }
+
+
 
     void DeleteUnconnectedCards() {
         GameObject F = GameObject.Find("Field");
@@ -731,8 +754,8 @@ public class GameManager : MonoBehaviour {
     void MarkUnconnectedCards() {
         List<GameObject> anchor = new List<GameObject>();
         for (int i = 0; i < Field.cardsOnField.Count; i++) {
-            if (Field.cardsOnField[i].GetComponent<Card>().cardid == CardID.Anchorcard
-                || Field.cardsOnField[i].GetComponent<Card>().cardid == CardID.Startpoint) {
+            anchor.Add(GameObject.Find(Slave.GetCardName(CardID.Startpoint, 0, 0)));
+            if (Field.cardsOnField[i].GetComponent<Card>().cardid == CardID.Anchorcard) {
                 anchor.Add(Field.cardsOnField[i]);
             }
         }
