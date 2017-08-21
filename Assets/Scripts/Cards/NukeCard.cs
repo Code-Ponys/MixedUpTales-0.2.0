@@ -57,7 +57,7 @@ namespace Cards {
                 print("animation end");
                 MR.enabled = false;
                 F.GetComponent<GameManager>().animationDone = true;
-                DestroyImmediate(An_Nuke);
+                Destroy(An_Nuke);
                 F.GetComponent<GameManager>().RemoveCard(OwnGO);
             };
         }
