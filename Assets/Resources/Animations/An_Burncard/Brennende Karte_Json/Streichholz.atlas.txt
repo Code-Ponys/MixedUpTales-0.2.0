@@ -1,0 +1,195 @@
+
+Streichholz.png
+size: 822,822
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 10 copy
+  rotate: true
+  xy: 362, 4
+  size: 243, 76
+  orig: 247, 78
+  offset: 1, 1
+  index: -1
+Layer 11
+  rotate: false
+  xy: 505, 6
+  size: 85, 175
+  orig: 85, 175
+  offset: 0, 0
+  index: -1
+Layer 12
+  rotate: false
+  xy: 154, 7
+  size: 76, 146
+  orig: 76, 146
+  offset: 0, 0
+  index: -1
+Layer 15 copy
+  rotate: true
+  xy: 70, 6
+  size: 147, 82
+  orig: 149, 85
+  offset: 1, 0
+  index: -1
+Layer 16
+  rotate: false
+  xy: 504, 712
+  size: 316, 108
+  orig: 317, 109
+  offset: 1, 1
+  index: -1
+Layer 20
+  rotate: true
+  xy: 440, 20
+  size: 227, 63
+  orig: 227, 63
+  offset: 0, 0
+  index: -1
+Layer 21
+  rotate: true
+  xy: 362, 249
+  size: 78, 133
+  orig: 79, 133
+  offset: 0, 0
+  index: -1
+Layer 22
+  rotate: true
+  xy: 240, 33
+  size: 298, 120
+  orig: 298, 120
+  offset: 0, 0
+  index: -1
+Layer 22 copy 3
+  rotate: false
+  xy: 505, 183
+  size: 293, 100
+  orig: 293, 100
+  offset: 0, 0
+  index: -1
+Layer 23
+  rotate: false
+  xy: 2, 288
+  size: 236, 69
+  orig: 237, 70
+  offset: 0, 1
+  index: -1
+Layer 9
+  rotate: false
+  xy: 2, 359
+  size: 329, 114
+  orig: 332, 116
+  offset: 2, 1
+  index: -1
+ST
+  rotate: false
+  xy: 2, 784
+  size: 490, 23
+  orig: 490, 23
+  offset: 0, 0
+  index: -1
+ST Kop
+  rotate: false
+  xy: 692, 129
+  size: 108, 52
+  orig: 110, 53
+  offset: 1, 0
+  index: -1
+ST Kop2
+  rotate: true
+  xy: 692, 19
+  size: 108, 52
+  orig: 110, 53
+  offset: 1, 0
+  index: -1
+ST2
+  rotate: false
+  xy: 2, 809
+  size: 500, 11
+  orig: 500, 11
+  offset: 0, 0
+  index: -1
+ST3
+  rotate: false
+  xy: 806, 678
+  size: 11, 32
+  orig: 11, 32
+  offset: 0, 0
+  index: -1
+Schatten von innen
+  rotate: true
+  xy: 2, 14
+  size: 269, 66
+  orig: 271, 67
+  offset: 1, 1
+  index: -1
+Streichholzsammlung
+  rotate: false
+  xy: 503, 285
+  size: 298, 123
+  orig: 337, 188
+  offset: 39, 1
+  index: -1
+Test karte
+  rotate: false
+  xy: 504, 410
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+innere bode
+  rotate: true
+  xy: 363, 463
+  size: 319, 139
+  orig: 322, 140
+  offset: 3, 0
+  index: -1
+innnere seite
+  rotate: true
+  xy: 362, 329
+  size: 132, 139
+  orig: 133, 140
+  offset: 1, 0
+  index: -1
+zund/Layer 0
+  rotate: true
+  xy: 333, 412
+  size: 61, 27
+  orig: 67, 28
+  offset: 0, 1
+  index: -1
+zund/Layer 2
+  rotate: true
+  xy: 240, 334
+  size: 23, 35
+  orig: 31, 36
+  offset: 7, 0
+  index: -1
+zund/zind/Layer 0
+  rotate: false
+  xy: 70, 155
+  size: 151, 131
+  orig: 151, 133
+  offset: 0, 2
+  index: -1
+zund/zind/Layer 1
+  rotate: true
+  xy: 333, 333
+  size: 77, 26
+  orig: 78, 28
+  offset: 0, 1
+  index: -1
+zund/zind/morf
+  rotate: false
+  xy: 2, 475
+  size: 359, 307
+  orig: 360, 360
+  offset: 1, 7
+  index: -1
+zund/zund/lihght
+  rotate: true
+  xy: 592, 50
+  size: 131, 98
+  orig: 131, 98
+  offset: 0, 0
+  index: -1

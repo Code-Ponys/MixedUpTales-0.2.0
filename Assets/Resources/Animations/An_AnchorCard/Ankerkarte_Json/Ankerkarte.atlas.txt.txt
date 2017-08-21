@@ -1,0 +1,83 @@
+
+Ankerkarte.png
+size: 486,486
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 20
+  rotate: false
+  xy: 383, 379
+  size: 30, 32
+  orig: 30, 34
+  offset: 0, 2
+  index: -1
+Layer 21
+  rotate: false
+  xy: 330, 164
+  size: 27, 34
+  orig: 28, 38
+  offset: 1, 0
+  index: -1
+Layer 26
+  rotate: false
+  xy: 296, 9
+  size: 32, 475
+  orig: 32, 476
+  offset: 0, 0
+  index: -1
+Layer 28
+  rotate: false
+  xy: 383, 413
+  size: 52, 71
+  orig: 52, 71
+  offset: 0, 0
+  index: -1
+Layer 29
+  rotate: false
+  xy: 330, 274
+  size: 47, 80
+  orig: 47, 80
+  offset: 0, 0
+  index: -1
+Layer 30
+  rotate: false
+  xy: 330, 200
+  size: 31, 72
+  orig: 32, 74
+  offset: 1, 1
+  index: -1
+Layer 32
+  rotate: false
+  xy: 2, 192
+  size: 292, 292
+  orig: 292, 292
+  offset: 0, 0
+  index: -1
+Layer 33 copy
+  rotate: false
+  xy: 330, 356
+  size: 51, 128
+  orig: 55, 128
+  offset: 0, 0
+  index: -1
+Layer 34
+  rotate: true
+  xy: 383, 360
+  size: 17, 26
+  orig: 18, 28
+  offset: 1, 1
+  index: -1
+Layer 35
+  rotate: false
+  xy: 437, 453
+  size: 31, 31
+  orig: 33, 32
+  offset: 1, 1
+  index: -1
+Layer 9
+  rotate: true
+  xy: 2, 2
+  size: 188, 274
+  orig: 189, 275
+  offset: 0, 0
+  index: -1

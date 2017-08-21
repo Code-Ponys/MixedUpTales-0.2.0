@@ -1,0 +1,76 @@
+
+Fennstaub.png
+size: 775,775
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 16
+  rotate: false
+  xy: 559, 234
+  size: 179, 179
+  orig: 184, 185
+  offset: 4, 2
+  index: -1
+Layer 18
+  rotate: false
+  xy: 622, 622
+  size: 151, 151
+  orig: 153, 153
+  offset: 1, 1
+  index: -1
+Layer 22
+  rotate: false
+  xy: 2, 9
+  size: 59, 58
+  orig: 61, 60
+  offset: 1, 1
+  index: -1
+Layer 24
+  rotate: true
+  xy: 559, 4
+  size: 112, 113
+  orig: 116, 115
+  offset: 1, 1
+  index: -1
+Layer 25
+  rotate: false
+  xy: 2, 69
+  size: 199, 200
+  orig: 202, 203
+  offset: 1, 1
+  index: -1
+Schatten stern
+  rotate: true
+  xy: 559, 118
+  size: 114, 158
+  orig: 115, 158
+  offset: 1, 0
+  index: -1
+Stab
+  rotate: false
+  xy: 2, 271
+  size: 253, 502
+  orig: 254, 524
+  offset: 1, 1
+  index: -1
+Stern
+  rotate: false
+  xy: 622, 461
+  size: 140, 159
+  orig: 141, 163
+  offset: 1, 3
+  index: -1
+Stern licht
+  rotate: false
+  xy: 257, 415
+  size: 363, 358
+  orig: 365, 364
+  offset: 1, 2
+  index: -1
+Test karte
+  rotate: false
+  xy: 257, 113
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1

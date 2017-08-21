@@ -1,0 +1,41 @@
+
+Fennstaub.png
+size: 506,506
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 14
+  rotate: false
+  xy: 304, 190
+  size: 134, 133
+  orig: 137, 137
+  offset: 1, 2
+  index: -1
+Layer 14 copy
+  rotate: false
+  xy: 203, 55
+  size: 134, 133
+  orig: 137, 136
+  offset: 1, 2
+  index: -1
+Layer 16
+  rotate: false
+  xy: 304, 325
+  size: 179, 179
+  orig: 184, 185
+  offset: 4, 2
+  index: -1
+Layer 25
+  rotate: false
+  xy: 2, 2
+  size: 199, 200
+  orig: 202, 203
+  offset: 1, 1
+  index: -1
+Test karte
+  rotate: false
+  xy: 2, 204
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1

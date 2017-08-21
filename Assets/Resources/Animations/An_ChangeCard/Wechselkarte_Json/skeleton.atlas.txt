@@ -1,0 +1,41 @@
+
+skeleton.png
+size: 523,523
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Rauch 1
+  rotate: false
+  xy: 386, 383
+  size: 62, 138
+  orig: 247, 182
+  offset: 84, 2
+  index: -1
+Rauch 2
+  rotate: false
+  xy: 252, 121
+  size: 30, 98
+  orig: 35, 107
+  offset: 1, 2
+  index: -1
+Test karte
+  rotate: false
+  xy: 2, 221
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+grins
+  rotate: true
+  xy: 304, 286
+  size: 235, 80
+  orig: 256, 247
+  offset: 18, 47
+  index: -1
+grinsen
+  rotate: false
+  xy: 2, 2
+  size: 248, 217
+  orig: 256, 247
+  offset: 5, 5
+  index: -1

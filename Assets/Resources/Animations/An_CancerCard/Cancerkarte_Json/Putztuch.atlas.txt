@@ -1,0 +1,27 @@
+
+Putztuch.png
+size: 625,625
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Gross
+  rotate: false
+  xy: 546, 544
+  size: 77, 79
+  orig: 170, 148
+  offset: 54, 32
+  index: -1
+Layer 5
+  rotate: false
+  xy: 2, 39
+  size: 542, 584
+  orig: 543, 584
+  offset: 0, 0
+  index: -1
+klein
+  rotate: false
+  xy: 546, 496
+  size: 56, 46
+  orig: 170, 148
+  offset: 55, 47
+  index: -1
