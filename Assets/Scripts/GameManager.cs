@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour {
     public GameObject PlayerName;
 
     public GameObject currentChoosedCardGO;
+    GameObject CardPreview;
+    Image CardPreviewImage;
+
     public Image SideBarBlue;
     public Image SideBarRed;
     public Canvas ChangePlayer;
@@ -59,6 +62,7 @@ public class GameManager : MonoBehaviour {
         ChangePlayer.enabled = false;
         WinScreen.enabled = false;
         animationDone = false;
+        CardPreview = GameObject.Find("currentChoosedCard");
     }
 
     // Update is called once per frame
@@ -77,10 +81,8 @@ public class GameManager : MonoBehaviour {
             triggerDelayedNewRound = 0;
             if (lastSetCard == CardID.Deletecard
             || lastSetCard == CardID.Burncard
-            || lastSetCard == CardID.Nukecard
             || lastSetCard == CardID.Cancercard
             || lastSetCard == CardID.Infernocard) {
-
                 RemoveUnconnectedCards();
                 lastSetCard = CardID.none;
             }
@@ -529,6 +531,8 @@ public class GameManager : MonoBehaviour {
             players[1].RefillHand();
             PlayerName.GetComponent<Text>().text = "Player 2";
         }
+        currentChoosedCardGO = null;
+        CardPreview.GetComponent<CardPreview>().cardid = CardID.none;
 
         triggerDelayedNewRound = 1;
 
@@ -542,6 +546,9 @@ public class GameManager : MonoBehaviour {
             currentChoosedCardName = name;
             currentChoosedCardGO = GameObject.Find(name);
             currentChoosedCard = currentChoosedCardGO.GetComponent<Handcards>().cardid;
+            CardPreview.GetComponent<CardPreview>().PointCardCounter = currentChoosedCardGO.GetComponent<Handcards>().PointCardCounter;
+            CardPreview.GetComponent<CardPreview>().team = currentChoosedCardGO.GetComponent<Handcards>().team;
+            CardPreview.GetComponent<CardPreview>().cardid = currentChoosedCardGO.GetComponent<Handcards>().cardid;
         }
     }
 
