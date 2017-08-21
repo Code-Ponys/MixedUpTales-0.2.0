@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class SideBarMove : MonoBehaviour {
 
     public bool panelactive;
+    public Image CardPreview;
+    public Text CardPreviewText;
 
     private void Start() {
         RectTransform rectTransform = GetComponent<RectTransform>();
@@ -21,6 +23,9 @@ public class SideBarMove : MonoBehaviour {
             var.anchoredPosition = goal;
         }
         panelactive = false;
+        CardPreview.enabled = true;
+        CardPreviewText.enabled = true;
+
     }
 
     public void MovePanelIn() {
@@ -32,5 +37,7 @@ public class SideBarMove : MonoBehaviour {
             var.anchoredPosition = goal;
         }
         panelactive = true;
+        CardPreview.enabled = false;
+        CardPreviewText.enabled = false;
     }
 }
