@@ -9,6 +9,7 @@ using System;
 
 public class GameManager : MonoBehaviour {
     public List<Card> CardsAffectedLastRound = new List<Card>();
+    public List<GameObject> CardsToDelete = new List<GameObject>();
     public Field Field;
     public MousePos MP;
     public FieldProperties FP;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour {
     public Image SideBarRed;
     public Canvas ChangePlayer;
     public Canvas WinScreen;
+    public Canvas DrawScreen;
     string currentChoosedCardName;
 
     public Team currentPlayer;
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour {
         SideBarRed.enabled = false;
         ChangePlayer.enabled = false;
         WinScreen.enabled = false;
+        DrawScreen.enabled = false;
         animationDone = false;
         CardPreview = GameObject.Find("currentChoosedCard");
     }
