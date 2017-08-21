@@ -29,6 +29,8 @@ static public class Slave {
 
     static public string GetImagePath(CardID card, Team team) {
         switch (card) {
+            case CardID.none:
+                return "emptycards/transparent";
             case CardID.Blankcard:
                 return "cards/" + team + "/Blankcard";
             case CardID.Pointcard:
@@ -138,6 +140,8 @@ static public class Slave {
         switch (card) {
             default:
                 return "";
+            case CardID.none:
+                return "";
             case CardID.Blankcard:
                 return "Blankcard";
             case CardID.Pointcard:
@@ -172,6 +176,8 @@ static public class Slave {
     public static string GetCardDescription(CardID card) {
         switch (card) {
             default:
+                return "";
+            case CardID.none:
                 return "";
             case CardID.Blankcard:
                 return "Use this card to block your opponents moves.";

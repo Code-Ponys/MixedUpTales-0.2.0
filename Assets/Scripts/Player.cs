@@ -136,73 +136,67 @@ public class Player : MonoBehaviour {
     public void RefillHand() {
         print("RefillHand");
         refillCardsIsDone = false;
+        if (Deck.Count == 0) return;
         while (refillCardsIsDone == false) {
             CardID card = Deck[0];
             if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == CardID.none) {
                 GameObject Handcard = GameObject.Find("HandCard1" + team);
-                Image image = Handcard.GetComponent<Image>();
                 if (card != CardID.Pointcard && card != CardID.Doublecard) {
-                    image.sprite = Resources.Load<Sprite>(Slave.GetImagePath(card, team));
+                    Handcard.GetComponent<Handcards>().cardid = card;
                 } else {
                     int counter = F.GetComponent<GameManager>().GetPointCardNumber(team);
-                    if (card == CardID.Doublecard) {
-                        image.sprite = Resources.Load<Sprite>(Slave.GetImagePath(card, team));
-                    } else {
-                        image.sprite = Resources.Load<Sprite>(Slave.GetImagePath(team, counter));
-                    }
                     if (team == Team.red) {
                         Handcard.GetComponent<Handcards>().PointCardCounter = F.GetComponent<GameManager>().PointCardCounterRed;
                     } else {
                         Handcard.GetComponent<Handcards>().PointCardCounter = F.GetComponent<GameManager>().PointCardCounterBlue;
                     }
+                    if (card == CardID.Doublecard) {
+                        Handcard.GetComponent<Handcards>().cardid = card;
+                    } else {
+                        Handcard.GetComponent<Handcards>().cardid = card;
+                    }
                 }
                 Handcard.GetComponent<Handcards>().cardid = card;
-
-                GetCardTexts(card);
                 Deck.RemoveAt(0);
                 continue;
             } else if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == CardID.none) {
                 GameObject Handcard = GameObject.Find("HandCard2" + team);
-                Image image = Handcard.GetComponent<Image>();
                 if (card != CardID.Pointcard && card != CardID.Doublecard) {
-                    image.sprite = Resources.Load<Sprite>(Slave.GetImagePath(card, team));
+                    Handcard.GetComponent<Handcards>().cardid = card;
                 } else {
                     int counter = F.GetComponent<GameManager>().GetPointCardNumber(team);
-                    if (card == CardID.Doublecard) {
-                        image.sprite = Resources.Load<Sprite>(Slave.GetImagePath(card, team));
-                    } else {
-                        image.sprite = Resources.Load<Sprite>(Slave.GetImagePath(team, counter));
-                    }
                     if (team == Team.red) {
                         Handcard.GetComponent<Handcards>().PointCardCounter = F.GetComponent<GameManager>().PointCardCounterRed;
                     } else {
                         Handcard.GetComponent<Handcards>().PointCardCounter = F.GetComponent<GameManager>().PointCardCounterBlue;
                     }
+                    if (card == CardID.Doublecard) {
+                        Handcard.GetComponent<Handcards>().cardid = card;
+                    } else {
+                        Handcard.GetComponent<Handcards>().cardid = card;
+                    }
                 }
                 Handcard.GetComponent<Handcards>().cardid = card;
-                GetCardTexts(card);
                 Deck.RemoveAt(0);
                 continue;
             } else if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == CardID.none) {
                 GameObject Handcard = GameObject.Find("HandCard3" + team);
-                Image image = Handcard.GetComponent<Image>();
                 if (card != CardID.Pointcard && card != CardID.Doublecard) {
-                    image.sprite = Resources.Load<Sprite>(Slave.GetImagePath(card, team));
+                    Handcard.GetComponent<Handcards>().cardid = card;
                 } else {
                     int counter = F.GetComponent<GameManager>().GetPointCardNumber(team);
-                    if (card == CardID.Doublecard) {
-                        image.sprite = Resources.Load<Sprite>(Slave.GetImagePath(card, team));
-                    } else {
-                        image.sprite = Resources.Load<Sprite>(Slave.GetImagePath(team, counter));
-                    }
                     if (team == Team.red) {
                         Handcard.GetComponent<Handcards>().PointCardCounter = F.GetComponent<GameManager>().PointCardCounterRed;
                     } else {
                         Handcard.GetComponent<Handcards>().PointCardCounter = F.GetComponent<GameManager>().PointCardCounterBlue;
                     }
+                    if (card == CardID.Doublecard) {
+                        Handcard.GetComponent<Handcards>().cardid = card;
+                    } else {
+                        Handcard.GetComponent<Handcards>().cardid = card;
+                    }
                 }
                 Handcard.GetComponent<Handcards>().cardid = card;
-                GetCardTexts(card);
                 Deck.RemoveAt(0);
                 continue;
             }
@@ -210,238 +204,5 @@ public class Player : MonoBehaviour {
             return;
         }
         return;
-    }
-
-    public void GetCardTexts(CardID card) {
-
-        switch (card) {
-            default:
-                return;
-            case CardID.Blankcard:
-                if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-                }
-                return;
-            case CardID.Pointcard:
-                if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-                }
-                return;
-            case CardID.Blockcard:
-                if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-                }
-                return;
-            case CardID.Doublecard:
-                if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-                }
-                return;
-            case CardID.Deletecard:
-                if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-                }
-                return;
-            case CardID.Burncard:
-                if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-                }
-                return;
-            case CardID.Infernocard:
-                if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-                }
-                return;
-            case CardID.Changecard:
-                if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-                }
-                return;
-            case CardID.Cancercard:
-                if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-                }
-                return;
-            case CardID.HotPotatoe:
-                if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-                }
-                return;
-            case CardID.Nukecard:
-                if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-                }
-                return;
-            case CardID.Vortexcard:
-                if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-                }
-                return;
-            case CardID.Anchorcard:
-                if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-                }
-                return;
-            case CardID.Shufflecard:
-                if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-
-                }
-                if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-                    GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-                    GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-                }
-                return;
-        }
-
     }
 }

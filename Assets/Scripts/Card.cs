@@ -10,4 +10,6 @@ public class Card : MonoBehaviour {
     public int x;
     public int y;
     public bool visited;
+    public int PointCardCounter;
+    public LastEvent lastevent;
 }

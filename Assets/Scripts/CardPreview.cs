@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Handcards : MonoBehaviour {
+public class CardPreview : MonoBehaviour {
 
     CardID currentcardid = CardID.none;
     public CardID cardid = CardID.none;
     public int PointCardCounter;
+    int Pointcardcounterold;
     public GameObject Handcard;
     public Team team;
     Image image;
@@ -18,8 +19,9 @@ public class Handcards : MonoBehaviour {
 
 
     private void Update() {
-        if (cardid != currentcardid) {
+        if (cardid != currentcardid || PointCardCounter != Pointcardcounterold) {
             currentcardid = cardid;
+            Pointcardcounterold = PointCardCounter;
 
             if (cardid != CardID.Pointcard && cardid != CardID.Doublecard) {
                 image.sprite = Resources.Load<Sprite>(Slave.GetImagePath(cardid, team));
@@ -35,17 +37,7 @@ public class Handcards : MonoBehaviour {
     }
 
     public void GetCardTexts(CardID card) {
-        if (GameObject.Find("HandCard1" + team).GetComponent<Handcards>().cardid == card) {
-            GameObject.Find("Kartenname1" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-            GameObject.Find("Kartentext1" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-        }
-        if (GameObject.Find("HandCard2" + team).GetComponent<Handcards>().cardid == card) {
-            GameObject.Find("Kartenname2" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-            GameObject.Find("Kartentext2" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-        }
-        if (GameObject.Find("HandCard3" + team).GetComponent<Handcards>().cardid == card) {
-            GameObject.Find("Kartenname3" + team).GetComponent<Text>().text = Slave.GetCardName(card);
-            GameObject.Find("Kartentext3" + team).GetComponent<Text>().text = Slave.GetCardDescription(card);
-        }
+        GameObject.Find("currentChoosedCardName").GetComponent<Text>().text = Slave.GetCardName(card);
     }
+
 }

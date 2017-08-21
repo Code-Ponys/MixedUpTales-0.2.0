@@ -8,10 +8,11 @@ using UnityEngine.EventSystems;
 using System;
 
 public class GameManager : MonoBehaviour {
-    public List<Card> Cards = new List<Card>();
+    public List<Card> CardsAffectedLastRound = new List<Card>();
     public Field Field;
     public MousePos MP;
     public FieldProperties FP;
+
 
     public Player[] players;
     public Player PlayerBlue { get { return players[0]; } }
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour {
     public GameObject PlayerName;
 
     public GameObject currentChoosedCardGO;
+    GameObject CardPreview;
+    Image CardPreviewImage;
+
     public Image SideBarBlue;
     public Image SideBarRed;
     public Canvas ChangePlayer;
@@ -59,31 +63,15 @@ public class GameManager : MonoBehaviour {
         ChangePlayer.enabled = false;
         WinScreen.enabled = false;
         animationDone = false;
+        CardPreview = GameObject.Find("currentChoosedCard");
     }
 
     // Update is called once per frame
     void Update() {
         ToggleDeleteCardFieldVisibility();
-
         if (animationDone == true) {
             RemovePlacedCardFromHand();
-            TogglePlayerScreen();
             animationDone = false;
-        }
-        if (triggerDelayedNewRound != 0) {
-            triggerDelayedNewRound = -Time.deltaTime;
-        }
-        if (triggerDelayedNewRound != 0 && triggerDelayedNewRound < 0.5f) {
-            triggerDelayedNewRound = 0;
-            if (lastSetCard == CardID.Deletecard
-            || lastSetCard == CardID.Burncard
-            || lastSetCard == CardID.Nukecard
-            || lastSetCard == CardID.Cancercard
-            || lastSetCard == CardID.Infernocard) {
-
-                RemoveUnconnectedCards();
-                lastSetCard = CardID.none;
-            }
             cardlocked = false;
             TogglePlayerScreen();
         }
@@ -322,7 +310,6 @@ public class GameManager : MonoBehaviour {
             || cardid == CardID.Blankcard) {
 
             SetFieldIndicator(x, y);
-            //Card.AddComponent<Card>();
 
             Camera.main.GetComponent<CameraManager>().CenterCamera(x, y);
         }
@@ -455,7 +442,7 @@ public class GameManager : MonoBehaviour {
                 break;
         }
 
-        if (cardid == CardID.Startpoint || cardid == CardID.Anchorcard
+        if (cardid == CardID.Anchorcard
             || cardid == CardID.Pointcard || cardid == CardID.Blockcard
             || cardid == CardID.Blankcard) {
             GameObject.Find("Field").GetComponent<Field>().cardsOnField.Add(Card);
@@ -477,12 +464,12 @@ public class GameManager : MonoBehaviour {
             return true;
         }
         if (currentChoosedCard == CardID.Changecard
-            & GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y)).GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
+            && GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y)).GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
             return true;
         }
         if (GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y)).GetComponent<Indicator>().indicatorColor == IndicatorColor.yellowcovered
             && currentChoosedCard == CardID.Changecard || currentChoosedCard == CardID.Deletecard
-            || currentChoosedCard == CardID.Changecard || currentChoosedCard == CardID.Shufflecard) {
+            || currentChoosedCard == CardID.Shufflecard) {
             return false;
         }
         if (GameObject.Find(Slave.GetCardName(CardID.Card, x, y)) != null) {
@@ -503,7 +490,10 @@ public class GameManager : MonoBehaviour {
             && GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y)).GetComponent<Indicator>().currentcolor == IndicatorColor.red) {
             return true;
         }
-        return false;
+        if (currentChoosedCard == CardID.Deletecard && GameObject.Find(Slave.GetCardName(CardID.CardIndicator,x, y)).GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
+            return true;
+        }
+            return false;
     }
 
     public void NewRound() {
@@ -529,10 +519,21 @@ public class GameManager : MonoBehaviour {
             players[1].RefillHand();
             PlayerName.GetComponent<Text>().text = "Player 2";
         }
+        currentChoosedCardGO = null;
 
+        if (lastSetCard == CardID.Deletecard
+            || lastSetCard == CardID.Burncard
+            || lastSetCard == CardID.Cancercard
+            || lastSetCard == CardID.Infernocard
+            || lastSetCard == CardID.Nukecard) {
+            RemoveUnconnectedCards();
+
+        }
+
+        CardPreview.GetComponent<CardPreview>().cardid = CardID.none;
+
+        TogglePlayerScreen();
         triggerDelayedNewRound = 1;
-
-
 
     }
 
@@ -542,6 +543,9 @@ public class GameManager : MonoBehaviour {
             currentChoosedCardName = name;
             currentChoosedCardGO = GameObject.Find(name);
             currentChoosedCard = currentChoosedCardGO.GetComponent<Handcards>().cardid;
+            CardPreview.GetComponent<CardPreview>().PointCardCounter = currentChoosedCardGO.GetComponent<Handcards>().PointCardCounter;
+            CardPreview.GetComponent<CardPreview>().team = currentChoosedCardGO.GetComponent<Handcards>().team;
+            CardPreview.GetComponent<CardPreview>().cardid = currentChoosedCardGO.GetComponent<Handcards>().cardid;
         }
     }
 
@@ -553,41 +557,6 @@ public class GameManager : MonoBehaviour {
 
         GameObject.Find(currentChoosedCardName).GetComponent<Handcards>().cardid = CardID.none;
     }
-
-    //void ToggleAnchorFieldVisibility() {
-    //    if (currentChoosedCard == CardID.Anchorcard && anchorFieldVisible == false) {
-    //        anchorFieldVisible = true;
-    //        for (int x = Camera.main.GetComponent<CameraManager>().min_x - 2; x <= Camera.main.GetComponent<CameraManager>().max_x + 2; x++) {
-    //            for (int y = Camera.main.GetComponent<CameraManager>().min_y - 2; y <= Camera.main.GetComponent<CameraManager>().max_y + 2; y++) {
-    //                if (GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y)) != null) {
-    //                    GameObject Indicator = GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y));
-    //                    if (Indicator.GetComponent<Indicator>().indicatorState == IndicatorState.anchorfield) {
-    //                        SpriteRenderer rend = Indicator.GetComponent<SpriteRenderer>();
-    //                        rend.sprite = Resources.Load<Sprite>(Slave.GetImagePath(CardID.FieldIndicatorYellow, Team.system));
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-
-    //    if (currentChoosedCard != CardID.Anchorcard && anchorFieldVisible == true) {
-    //        anchorFieldVisible = false;
-    //        print("Deactivate Anchorcards");
-    //        for (int x = Camera.main.GetComponent<CameraManager>().min_x - 2; x <= Camera.main.GetComponent<CameraManager>().max_x + 2; x++) {
-    //            for (int y = Camera.main.GetComponent<CameraManager>().min_y - 2; y <= Camera.main.GetComponent<CameraManager>().max_y + 2; y++) {
-    //                if (GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y)) != null) {
-    //                    GameObject Indicator = GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y));
-    //                    if (Indicator.GetComponent<Indicator>().indicatorState == IndicatorState.anchorfield) {
-    //                        SpriteRenderer rend = Indicator.GetComponent<SpriteRenderer>();
-    //                        rend.sprite = Resources.Load<Sprite>(Slave.GetImagePath(CardID.FieldIndicatorBlack, Team.system));
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-    //}
-
-
 
     public void RenewIndicators() {
         for (int x = Camera.main.GetComponent<CameraManager>().min_x - 3; x <= Camera.main.GetComponent<CameraManager>().max_x + 3; x++) {
@@ -605,6 +574,14 @@ public class GameManager : MonoBehaviour {
             for (int y = Camera.main.GetComponent<CameraManager>().min_y; y <= Camera.main.GetComponent<CameraManager>().max_y; y++) {
                 if (GameObject.Find(Slave.GetCardName(CardID.Card, x, y)) != null) {
                     SetFieldIndicator(x, y);
+                }
+            }
+        }
+        for (int x = Camera.main.GetComponent<CameraManager>().min_x - 3; x <= Camera.main.GetComponent<CameraManager>().max_x + 3; x++) {
+            for (int y = Camera.main.GetComponent<CameraManager>().min_y - 3; y <= Camera.main.GetComponent<CameraManager>().max_y + 3; y++) {
+                if (GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y)) != null) {
+                    GameObject Indicator = GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y));
+                    Indicator.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
                 }
             }
         }
@@ -751,7 +728,10 @@ public class GameManager : MonoBehaviour {
         MarkUnconnectedCards();
         DeleteUnconnectedCards();
         RenewIndicators();
+        Camera.main.GetComponent<CameraManager>().RenewCameraPosition();
     }
+
+
 
     void DeleteUnconnectedCards() {
         GameObject F = GameObject.Find("Field");
@@ -774,8 +754,8 @@ public class GameManager : MonoBehaviour {
     void MarkUnconnectedCards() {
         List<GameObject> anchor = new List<GameObject>();
         for (int i = 0; i < Field.cardsOnField.Count; i++) {
-            if (Field.cardsOnField[i].GetComponent<Card>().cardid == CardID.Anchorcard
-                || Field.cardsOnField[i].GetComponent<Card>().cardid == CardID.Startpoint) {
+            anchor.Add(GameObject.Find(Slave.GetCardName(CardID.Startpoint, 0, 0)));
+            if (Field.cardsOnField[i].GetComponent<Card>().cardid == CardID.Anchorcard) {
                 anchor.Add(Field.cardsOnField[i]);
             }
         }
@@ -872,6 +852,15 @@ public class GameManager : MonoBehaviour {
             }
         }
         print("RemovedCard " + DeletedCard.GetComponent<Card>().cardid + " at " + DeletedCard.GetComponent<Card>().x + "," + DeletedCard.GetComponent<Card>().y + "!");
+        Card MyCard = new Card();
+        MyCard.lastevent = LastEvent.destroyed;
+        MyCard.cardid = DeletedCard.GetComponent<Card>().cardid;
+        MyCard.PointCardCounter = DeletedCard.GetComponent<Card>().PointCardCounter;
+        MyCard.team = DeletedCard.GetComponent<Card>().team;
+        MyCard.x = DeletedCard.GetComponent<Card>().x;
+        MyCard.y = DeletedCard.GetComponent<Card>().y;
+        MyCard.lastevent = LastEvent.destroyed;
+        CardsAffectedLastRound.Add(MyCard);
         DestroyImmediate(DeletedCard);
     }
 }

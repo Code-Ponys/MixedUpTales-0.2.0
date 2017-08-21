@@ -40,9 +40,14 @@ namespace Cards {
                 GameObject RemoveCard = F.GetComponent<Field>().cardsOnField[0];
                 F.GetComponent<GameManager>().RemoveCard(RemoveCard);
             }
+<<<<<<< HEAD
             F.GetComponent<GameManager>().GenerateFieldCard(CardID.Startpoint, 0, 0);
             F.GetComponent<GameManager>().RenewIndicators();
 
+=======
+            F.GetComponent<GameManager>().animationDone = true;
+            F.GetComponent<GameManager>().RemoveCard(OwnGO);
+>>>>>>> 6e587489c1408db539ef8e6280b83f25347bb9f7
         }
 
 
