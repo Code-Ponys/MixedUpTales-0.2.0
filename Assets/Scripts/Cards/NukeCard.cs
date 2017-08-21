@@ -44,10 +44,6 @@ namespace Cards {
             F.GetComponent<GameManager>().GenerateFieldCard(CardID.Startpoint, 0, 0);
             F.GetComponent<GameManager>().RenewIndicators();
 
-
-            F.GetComponent<GameManager>().animationDone = true;
-            F.GetComponent<GameManager>().RemoveCard(OwnGO);
-
         }
 
 
