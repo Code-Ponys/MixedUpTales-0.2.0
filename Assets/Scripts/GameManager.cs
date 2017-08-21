@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
     public Field Field;
     public MousePos MP;
     public FieldProperties FP;
-    
+
 
     public Player[] players;
     public Player PlayerBlue { get { return players[0]; } }
@@ -69,24 +69,9 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         ToggleDeleteCardFieldVisibility();
-
         if (animationDone == true) {
             RemovePlacedCardFromHand();
-            TogglePlayerScreen();
             animationDone = false;
-        }
-        if (triggerDelayedNewRound != 0) {
-            triggerDelayedNewRound = -Time.deltaTime;
-        }
-        if (triggerDelayedNewRound != 0 && triggerDelayedNewRound < 0.5f) {
-            triggerDelayedNewRound = 0;
-            if (lastSetCard == CardID.Deletecard
-            || lastSetCard == CardID.Burncard
-            || lastSetCard == CardID.Cancercard
-            || lastSetCard == CardID.Infernocard) {
-                RemoveUnconnectedCards();
-                lastSetCard = CardID.none;
-            }
             cardlocked = false;
             TogglePlayerScreen();
         }
@@ -560,41 +545,6 @@ public class GameManager : MonoBehaviour {
 
         GameObject.Find(currentChoosedCardName).GetComponent<Handcards>().cardid = CardID.none;
     }
-
-    //void ToggleAnchorFieldVisibility() {
-    //    if (currentChoosedCard == CardID.Anchorcard && anchorFieldVisible == false) {
-    //        anchorFieldVisible = true;
-    //        for (int x = Camera.main.GetComponent<CameraManager>().min_x - 2; x <= Camera.main.GetComponent<CameraManager>().max_x + 2; x++) {
-    //            for (int y = Camera.main.GetComponent<CameraManager>().min_y - 2; y <= Camera.main.GetComponent<CameraManager>().max_y + 2; y++) {
-    //                if (GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y)) != null) {
-    //                    GameObject Indicator = GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y));
-    //                    if (Indicator.GetComponent<Indicator>().indicatorState == IndicatorState.anchorfield) {
-    //                        SpriteRenderer rend = Indicator.GetComponent<SpriteRenderer>();
-    //                        rend.sprite = Resources.Load<Sprite>(Slave.GetImagePath(CardID.FieldIndicatorYellow, Team.system));
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-
-    //    if (currentChoosedCard != CardID.Anchorcard && anchorFieldVisible == true) {
-    //        anchorFieldVisible = false;
-    //        print("Deactivate Anchorcards");
-    //        for (int x = Camera.main.GetComponent<CameraManager>().min_x - 2; x <= Camera.main.GetComponent<CameraManager>().max_x + 2; x++) {
-    //            for (int y = Camera.main.GetComponent<CameraManager>().min_y - 2; y <= Camera.main.GetComponent<CameraManager>().max_y + 2; y++) {
-    //                if (GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y)) != null) {
-    //                    GameObject Indicator = GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y));
-    //                    if (Indicator.GetComponent<Indicator>().indicatorState == IndicatorState.anchorfield) {
-    //                        SpriteRenderer rend = Indicator.GetComponent<SpriteRenderer>();
-    //                        rend.sprite = Resources.Load<Sprite>(Slave.GetImagePath(CardID.FieldIndicatorBlack, Team.system));
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-    //}
-
-
 
     public void RenewIndicators() {
         for (int x = Camera.main.GetComponent<CameraManager>().min_x - 3; x <= Camera.main.GetComponent<CameraManager>().max_x + 3; x++) {
