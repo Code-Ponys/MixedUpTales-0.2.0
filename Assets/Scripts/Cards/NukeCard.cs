@@ -14,6 +14,7 @@ namespace Cards {
         AudioSource Sound;
         SkeletonAnimation skeletonAnimation;
         MeshRenderer MR;
+        Spine.AnimationState AS;
 
         // Use this for initialization
         void Start() {
@@ -27,15 +28,13 @@ namespace Cards {
             Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
             skeletonAnimation = An_Nuke.GetComponent<SkeletonAnimation>();
             MR = skeletonAnimation.GetComponent<MeshRenderer>();
+            AS = skeletonAnimation.state;
 
+            An_Nuke.transform.position = new Vector3(0, 0, -3);
             MR.enabled = true;
-            print("Animation sichtbar");
             skeletonAnimation.AnimationState.SetAnimation(0, "neuer versuch", false);
-            print("animation set");
             Sound.Play();
-            print("sound");
-
-
+          
             while (F.GetComponent<Field>().cardsOnField.Count != 0) {
                 GameObject RemoveCard = F.GetComponent<Field>().cardsOnField[0];
                 F.GetComponent<GameManager>().RemoveCard(RemoveCard);
@@ -43,16 +42,7 @@ namespace Cards {
 
             F.GetComponent<GameManager>().GenerateFieldCard(CardID.Startpoint, 0, 0);
             F.GetComponent<GameManager>().RenewIndicators();
-
-        }
-
-
-        // Update is called once per frame
-        void Update() {
-
-            Spine.AnimationState AS = skeletonAnimation.state;
-
-
+            
             AS.Complete += delegate {
                 print("animation end");
                 MR.enabled = false;
@@ -60,6 +50,12 @@ namespace Cards {
                 DestroyImmediate(An_Nuke);
                 F.GetComponent<GameManager>().RemoveCard(OwnGO);
             };
+        }
+
+        
+        // Update is called once per frame
+        void Update() {
+
         }
 
 
