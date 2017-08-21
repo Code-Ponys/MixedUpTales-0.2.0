@@ -55,7 +55,7 @@ namespace Cards {
             if (cardcounter == 3) {
                 if (CardLeft != null) {
 
-                    F.GetComponent<GameManager>().RemoveCard(CardLeft);
+                    F.GetComponent<GameManager>().CollectRemoveCard(CardLeft);
                 }
                 if (CardRight != null) {
                     for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
@@ -65,7 +65,7 @@ namespace Cards {
                             break;
                         }
                     }
-                    F.GetComponent<GameManager>().RemoveCard(CardRight);
+                    F.GetComponent<GameManager>().CollectRemoveCard(CardRight);
                 }
                 if (CardDown != null) {
                     for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
@@ -75,7 +75,7 @@ namespace Cards {
                             break;
                         }
                     }
-                    F.GetComponent<GameManager>().RemoveCard(CardDown);
+                    F.GetComponent<GameManager>().CollectRemoveCard(CardDown);
                 }
                 if (CardUp != null) {
                     for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
@@ -85,9 +85,9 @@ namespace Cards {
                             break;
                         }
                     }
-                    F.GetComponent<GameManager>().RemoveCard(CardUp);
+                    F.GetComponent<GameManager>().CollectRemoveCard(CardUp);
                 }
-                F.GetComponent<GameManager>().RemoveCard(GameObject.Find(Slave.GetCardName(CardID.Burncard, x, y)));
+                F.GetComponent<GameManager>().CollectRemoveCard(GameObject.Find(Slave.GetCardName(CardID.Burncard, x, y)));
 
                 F.GetComponent<GameManager>().animationDone = true;
                 return;
@@ -131,8 +131,8 @@ namespace Cards {
                         CardIndicatorUp.GetComponent<Indicator>().setColor(IndicatorColor.transparent);
                         CardIndicatorDown.GetComponent<Indicator>().setColor(IndicatorColor.transparent);
 
-                        F.GetComponent<GameManager>().RemoveCard(Card);
-                        F.GetComponent<GameManager>().RemoveCard(OwnGO);
+                        F.GetComponent<GameManager>().CollectRemoveCard(Card);
+                        F.GetComponent<GameManager>().CollectRemoveCard(OwnGO);
                     }
                 }
             }

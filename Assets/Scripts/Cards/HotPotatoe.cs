@@ -45,7 +45,7 @@ namespace Cards {
             }
 
             F.GetComponent<GameManager>().animationDone = true;
-            F.GetComponent<GameManager>().RemoveCard(OwnGO);
+            F.GetComponent<GameManager>().CollectRemoveCard(OwnGO);
         }
 
         // Update is called once per frame

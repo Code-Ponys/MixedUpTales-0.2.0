@@ -81,7 +81,7 @@ namespace Cards {
 
             GameObject.Find("Field").GetComponent<GameManager>().animationDone = true;
 
-            F.GetComponent<GameManager>().RemoveCard(OwnGO);
+            F.GetComponent<GameManager>().CollectRemoveCard(OwnGO);
         }
 
 

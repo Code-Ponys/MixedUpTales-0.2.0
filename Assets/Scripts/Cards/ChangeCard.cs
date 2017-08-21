@@ -18,17 +18,17 @@ namespace Cards {
             F = GameObject.Find("Field");
             Cardbelow = GameObject.Find(Slave.GetCardName(CardID.Card, x, y));
             int ycord = Cardbelow.GetComponent<Card>().y;
-            Team cardteam = Cardbelow.GetComponent<Card>().team;
             int xcord = Cardbelow.GetComponent<Card>().x;
+            Team cardteam = Cardbelow.GetComponent<Card>().team;
             switch (Cardbelow.GetComponent<Card>().cardid) {
                 case CardID.Blockcard:
-                    Destroy(Cardbelow.GetComponent<BlockCard>());
+                    DestroyImmediate(Cardbelow.GetComponent<BlockCard>());
                     break;
                 case CardID.Anchorcard:
-                    Destroy(Cardbelow.GetComponent<AnchorCard>());
+                    DestroyImmediate(Cardbelow.GetComponent<AnchorCard>());
                     break;
                 case CardID.Pointcard:
-                    Destroy(Cardbelow.GetComponent<PointCard>());
+                    DestroyImmediate(Cardbelow.GetComponent<PointCard>());
                     break;
             }
             Cardbelow.AddComponent<BlankCard>();
@@ -40,7 +40,7 @@ namespace Cards {
             SpriteRenderer.sprite = Resources.Load<Sprite>(Slave.GetImagePath(CardID.Blankcard, cardteam));
             F.GetComponent<GameManager>().animationDone = true;
 
-            F.GetComponent<GameManager>().RemoveCard(OwnGO);
+            DestroyImmediate(OwnGO);
         }
 
         // Update is called once per frame
