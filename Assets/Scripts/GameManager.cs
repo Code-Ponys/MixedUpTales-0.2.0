@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour {
             RemovePlacedCardFromHand();
             animationDone = false;
             cardlocked = false;
+            RemoveCards();
             if (lastSetCard == CardID.Deletecard
             || lastSetCard == CardID.Burncard
             || lastSetCard == CardID.Cancercard
@@ -89,7 +90,6 @@ public class GameManager : MonoBehaviour {
             || lastSetCard == CardID.Nukecard) {
                 RemoveUnconnectedCards();
             }
-            RemoveCards();
             TogglePlayerScreen();
         }
     }
@@ -551,15 +551,6 @@ public class GameManager : MonoBehaviour {
         }
         currentChoosedCardGO = null;
 
-        if (lastSetCard == CardID.Deletecard
-            || lastSetCard == CardID.Burncard
-            || lastSetCard == CardID.Cancercard
-            || lastSetCard == CardID.Infernocard
-            || lastSetCard == CardID.Nukecard) {
-            RemoveUnconnectedCards();
-
-        }
-
         CardPreview.GetComponent<CardPreview>().cardid = CardID.none;
 
         TogglePlayerScreen();
@@ -609,7 +600,7 @@ public class GameManager : MonoBehaviour {
         }
         for (int x = Camera.main.GetComponent<CameraManager>().min_x - 3; x <= Camera.main.GetComponent<CameraManager>().max_x + 3; x++) {
             for (int y = Camera.main.GetComponent<CameraManager>().min_y - 3; y <= Camera.main.GetComponent<CameraManager>().max_y + 3; y++) {
-                if (GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y)) != null) {
+                if (GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y)) != null) {
                     GameObject Indicator = GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y));
                     Indicator.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
                 }
@@ -760,6 +751,7 @@ public class GameManager : MonoBehaviour {
         print("Removing unconnected Cards");
         MarkUnconnectedCards();
         DeleteUnconnectedCards();
+        RemoveCards();
         RenewIndicators();
         Camera.main.GetComponent<CameraManager>().RenewCameraPosition();
     }
@@ -899,7 +891,8 @@ public class GameManager : MonoBehaviour {
     }
 
     void RemoveCards() {
-        for(int i = 0; CardsToDelete.Count <i; i++) {
+        print("removed Cards");
+        for(int i = 0; i < CardsToDelete.Count; i++) {
             GameObject Card = CardsToDelete[0];
             CardsToDelete.RemoveAt(0);
             DestroyImmediate(Card);
