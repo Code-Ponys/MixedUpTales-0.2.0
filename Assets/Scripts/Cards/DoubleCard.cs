@@ -1,18 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 namespace Cards {
     public class DoubleCard : Card {
         GameObject OwnGO;
+        GameObject An_Double;
+
+
+        AudioSource Sound;
+        SkeletonAnimation skeletonAnimation;
+        MeshRenderer MR;
+        Spine.AnimationState AS;
+
         private bool cardprocessdone;
         GameObject F;
         // Use this for initialization
         void Start() {
+
+            An_Double = (GameObject)Instantiate(Resources.Load("Animations/AN_Double"));
+
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
+
+            Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
+            skeletonAnimation = An_Double.GetComponent<SkeletonAnimation>();
+            MR = skeletonAnimation.GetComponent<MeshRenderer>();
+            AS = skeletonAnimation.state;
+
+
             F.GetComponent<GameManager>().cardlocked = true;
+
+            An_Double.transform.position = new Vector3(x, y, -3);
+            MR.enabled = true;
+            skeletonAnimation.AnimationState.SetAnimation(0, "animation", false);
+            Sound.Play();
+
             F.GetComponent<GameManager>().GenerateFieldCard(CardID.Blankcard, x, y);
+
+            AS.Complete += delegate {
+                MR.enabled = false;
+            };
 
         }
 
@@ -32,10 +61,25 @@ namespace Cards {
 
                     if (FieldIndicator.GetComponent<Indicator>().currentcolor == IndicatorColor.green) {
                         print("Pointcard created");
+
+                        An_Double.transform.position = new Vector3(indexX, indexY, -3);
+                        MR.enabled = true;
+                        skeletonAnimation.AnimationState.SetAnimation(0, "animation", false);
+                        Sound.Play();
+
                         F.GetComponent<GameManager>().GetPointCardNumber(team);
                         F.GetComponent<GameManager>().GenerateFieldCard(CardID.Pointcard, indexX, indexY);
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().CollectRemoveCard(OwnGO);
+
+                        AS.Complete += delegate {
+                            MR.enabled = false;
+                            F.GetComponent<GameManager>().animationDone = true;
+                            DestroyImmediate(An_Double);
+                            cardprocessdone = true;
+                            DestroyImmediate(OwnGO);
+                        };
+
                     }
                 }
             }

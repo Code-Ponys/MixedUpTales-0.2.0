@@ -20,14 +20,16 @@ namespace Cards {
             if (WinCondition() == true) {
                 F.GetComponent<GameManager>().WinScreen.enabled = true;
                 string playerName;
-                if(team == Team.blue) {
+                if (team == Team.blue) {
                     playerName = "Player 1" + "!";
-                }else {
+                } else {
                     playerName = "Player 2" + "!";
                 }
                 GameObject.Find("PlayerNameWin").GetComponent<Text>().text = playerName;
             } else {
-            F.GetComponent<GameManager>().animationDone = true;
+                if (F.GetComponent<GameManager>().currentChoosedCard != CardID.Doublecard) {
+                    F.GetComponent<GameManager>().animationDone = true;
+                }
             }
 
         }
@@ -38,7 +40,7 @@ namespace Cards {
                 && GameObject.Find("Card " + (x - 1) + "," + y).GetComponent<Card>().cardid == CardID.Pointcard) {
                 if (GameObject.Find("Card " + (x - 2) + "," + y) != null
                     && GameObject.Find("Card " + (x - 2) + "," + y).GetComponent<Card>().team == team
-                    && GameObject.Find("Card " + (x-2) + "," + y).GetComponent<Card>().cardid == CardID.Pointcard) {
+                    && GameObject.Find("Card " + (x - 2) + "," + y).GetComponent<Card>().cardid == CardID.Pointcard) {
                     print("WIN °_°");
                     return true;
                 } else {
