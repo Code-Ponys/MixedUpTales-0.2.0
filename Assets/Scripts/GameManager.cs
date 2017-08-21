@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public Field Field;
     public MousePos MP;
     public FieldProperties FP;
+    
 
     public Player[] players;
     public Player PlayerBlue { get { return players[0]; } }
@@ -324,7 +325,6 @@ public class GameManager : MonoBehaviour {
             || cardid == CardID.Blankcard) {
 
             SetFieldIndicator(x, y);
-            //Card.AddComponent<Card>();
 
             Camera.main.GetComponent<CameraManager>().CenterCamera(x, y);
         }
@@ -879,6 +879,15 @@ public class GameManager : MonoBehaviour {
             }
         }
         print("RemovedCard " + DeletedCard.GetComponent<Card>().cardid + " at " + DeletedCard.GetComponent<Card>().x + "," + DeletedCard.GetComponent<Card>().y + "!");
+        Card MyCard = new Card();
+        MyCard.lastevent = LastEvent.destroyed;
+        MyCard.cardid = DeletedCard.GetComponent<Card>().cardid;
+        MyCard.PointCardCounter = DeletedCard.GetComponent<Card>().PointCardCounter;
+        MyCard.team = DeletedCard.GetComponent<Card>().team;
+        MyCard.x = DeletedCard.GetComponent<Card>().x;
+        MyCard.y = DeletedCard.GetComponent<Card>().y;
+        MyCard.lastevent = LastEvent.destroyed;
+        CardsAffectedLastRound.Add(MyCard);
         DestroyImmediate(DeletedCard);
     }
 }
