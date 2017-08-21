@@ -42,3 +42,7 @@ public class Materials {
 public enum IndicatorState {
     blocked, reachable, unreachable, anchorfield
 }
+
+public enum LastEvent {
+    placed, destroyed,changed
+}
