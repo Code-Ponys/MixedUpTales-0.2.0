@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using System;
 
 public class GameManager : MonoBehaviour {
-    public List<Card> Cards = new List<Card>();
+    public List<Card> CardsAffectedLastRound = new List<Card>();
     public Field Field;
     public MousePos MP;
     public FieldProperties FP;
