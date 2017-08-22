@@ -1,20 +1,49 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 namespace Cards {
     public class DeleteCard : Card {
         GameObject OwnGO;
 
 
+        GameObject An_Delete;
+
+
+        AudioSource Sound;
+        SkeletonAnimation skeletonAnimation;
+        Spine.AnimationState AS;
+
         // Use this for initialization
         void Start() {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             GameObject F = GameObject.Find("Field");
+
             GameObject Card = GameObject.Find(Slave.GetCardName(CardID.Card, x, y));
-            F.GetComponent<GameManager>().CollectRemoveCard(Card);
-            F.GetComponent<GameManager>().animationDone = true;
-            DestroyImmediate(OwnGO);
+
+            An_Delete = (GameObject)Instantiate(Resources.Load("Animations/AN_Delete"));
+
+            Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
+            skeletonAnimation = An_Delete.GetComponent<SkeletonAnimation>();
+
+            AS = skeletonAnimation.state;
+
+
+            An_Delete.transform.position = new Vector3(x, (y - 1.5f), -3);
+
+            skeletonAnimation.AnimationState.SetAnimation(0, "animation", false);
+            Sound.Play();
+
+            AS.Complete += delegate {
+                print("animation end");
+
+                F.GetComponent<GameManager>().CollectRemoveCard(Card);
+                F.GetComponent<GameManager>().animationDone = true;
+                Destroy(An_Delete);
+                DestroyImmediate(OwnGO);
+            };
+
         }
 
 
