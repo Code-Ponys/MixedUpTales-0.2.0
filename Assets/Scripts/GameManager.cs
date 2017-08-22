@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour {
             && GameObject.Find("HandCard3blue").GetComponent<Handcards>().cardid == CardID.none) {
 
         }
-        if (animationDone == true) {
+        if (animationDone == true && !WinScreen.enabled) {
             RemovePlacedCardFromHand();
             animationDone = false;
             cardlocked = false;
