@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: b2ff434dd6594c94d9db10b1ef878178
-timeCreated: 1503392210
+guid: f60831793bed1a149921580d7e4561d6
+timeCreated: 1503392546
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -58,27 +58,11 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Standalone
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: Android
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
   spritePackingTag: 
   userData: 
-  assetBundleName: shine
+  assetBundleName: 
   assetBundleVariant: 
