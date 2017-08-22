@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "J5+eWyU+x57muWwSkpdo0J+q2gQ", "spine": "3.6.37", "width": 6154.31, "height": 2289.27, "images": "" },
+"skeleton": { "hash": "paOBl7LpIIdP0KwdhLEy746wSkw", "spine": "3.6.37", "width": 6154.31, "height": 2289.27, "images": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "bone", "parent": "root", "length": 1716.88, "rotation": 109.91, "x": 5598.55, "y": 1681.84 }
@@ -124,43 +124,43 @@
 		"slots": {
 			"Layer 1": {
 				"color": [
-					{ "time": 2.0667, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "fffffffe" },
 					{ "time": 2.3333, "color": "ffffff00" }
 				]
 			},
 			"Layer 2": {
 				"color": [
-					{ "time": 2.0667, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "fffffffe" },
 					{ "time": 2.3333, "color": "ffffff00" }
 				]
 			},
 			"Layer 3": {
 				"color": [
-					{ "time": 2.0667, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "fffffffe" },
 					{ "time": 2.3333, "color": "ffffff00" }
 				]
 			},
 			"Layer 5": {
 				"color": [
-					{ "time": 2.0667, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "fffffffe" },
 					{ "time": 2.3333, "color": "ffffff00" }
 				]
 			},
 			"Layer 6": {
 				"color": [
-					{ "time": 2.0667, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "fffffffe" },
 					{ "time": 2.3333, "color": "ffffff00" }
 				]
 			},
 			"Layer 7": {
 				"color": [
-					{ "time": 2.0667, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "fffffffe" },
 					{ "time": 2.3333, "color": "ffffff00" }
 				]
 			},
 			"Riss2": {
 				"color": [
-					{ "time": 2.0667, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "fffffffe" },
 					{ "time": 2.3333, "color": "ffffff00" }
 				],
 				"attachment": [
@@ -171,13 +171,13 @@
 			},
 			"ober": {
 				"color": [
-					{ "time": 2.0667, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "fffffffe" },
 					{ "time": 2.3333, "color": "ffffff00" }
 				]
 			},
 			"ober2": {
 				"color": [
-					{ "time": 2.0667, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "fffffffe" },
 					{ "time": 2.3333, "color": "ffffff00" }
 				]
 			}
