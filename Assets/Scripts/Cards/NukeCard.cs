@@ -13,7 +13,7 @@ namespace Cards {
 
         AudioSource Sound;
         SkeletonAnimation skeletonAnimation;
-        MeshRenderer MR;
+        
         Spine.AnimationState AS;
 
         // Use this for initialization
@@ -27,11 +27,11 @@ namespace Cards {
 
             Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
             skeletonAnimation = An_Nuke.GetComponent<SkeletonAnimation>();
-            MR = skeletonAnimation.GetComponent<MeshRenderer>();
+            
             AS = skeletonAnimation.state;
 
             An_Nuke.transform.position = new Vector3(0, 0, -3);
-            MR.enabled = true;
+            
             skeletonAnimation.AnimationState.SetAnimation(0, "neuer versuch", false);
             Sound.Play();
           
@@ -45,7 +45,7 @@ namespace Cards {
             
             AS.Complete += delegate {
                 print("animation end");
-                MR.enabled = false;
+               
                 F.GetComponent<GameManager>().animationDone = true;
                 Destroy(An_Nuke);
                 F.GetComponent<GameManager>().CollectRemoveCard(OwnGO);
