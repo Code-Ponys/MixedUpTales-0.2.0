@@ -27,9 +27,7 @@ namespace Cards {
             An = Shine.GetComponent<Animator>();
 
             Shine.transform.position = new Vector3(x, y, -3);
-            Shine.GetComponent<SpriteRenderer>().enabled = true;
-
-
+            
 
 
             if (WinCondition() == true) {
@@ -167,8 +165,7 @@ namespace Cards {
             if (F.GetComponent<GameManager>().currentChoosedCard != CardID.Doublecard) {
 
                 if (An.GetCurrentAnimatorStateInfo(0).IsName("end")) {
-                    Shine.GetComponent<SpriteRenderer>().enabled = false;
-
+                   
                     F.GetComponent<GameManager>().animationDone = true;
                     cardprocessdone = true;
                     Destroy(Shine);
