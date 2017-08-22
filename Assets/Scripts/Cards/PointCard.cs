@@ -11,39 +11,23 @@ namespace Cards {
         GameObject OwnGO;
         GameObject Card;
         SpriteRenderer SpriteRenderer;
-        GameObject Shine;
-        Animator An;
+
         bool cardprocessdone;
 
 
         private void Start() {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
-            GameObject F = GameObject.Find("Field");
+            F = GameObject.Find("Field");
             Card = GameObject.Find(Slave.GetCardName(CardID.Card, x, y));
             SpriteRenderer = Card.GetComponent<SpriteRenderer>();
             SpriteRenderer.sprite = Resources.Load<Sprite>(Slave.GetImagePath(team, F.GetComponent<GameManager>().currentChoosedCardGO.GetComponent<Handcards>().PointCardCounter));
 
-            Shine = (GameObject)Instantiate(Resources.Load("Animations/AN_Shine"));
-            An = Shine.GetComponent<Animator>();
-
-            Shine.transform.position = new Vector3(x, y, -3);
-            Shine.GetComponent<SpriteRenderer>().enabled = true;
+            SetAnimationStart();
 
 
 
 
-            if (WinCondition() == true) {
-                F.GetComponent<GameManager>().WinScreen.enabled = true;
-                string playerName;
-                if (team == Team.blue) {
-                    playerName = "Player 1" + "!";
-                } else {
-                    playerName = "Player 2" + "!";
-                }
-                GameObject.Find("PlayerNameWin").GetComponent<Text>().text = playerName;
-               
 
-            }
         }
         protected bool WinCondition() {
             //horizontal
@@ -163,20 +147,31 @@ namespace Cards {
         void Update() {
             if (cardprocessdone) return;
 
-            GameObject F = GameObject.Find("Field");
-            if (F.GetComponent<GameManager>().currentChoosedCard != CardID.Doublecard) {
+            if (IsSetAnimationEnd()) {
+                if (WinCondition() == true) {
+                    F.GetComponent<GameManager>().WinScreen.enabled = true;
+                    string playerName;
+                    if (team == Team.blue) {
+                        playerName = "Player 1" + "!";
+                    } else {
+                        playerName = "Player 2" + "!";
+                    }
+                    GameObject.Find("PlayerNameWin").GetComponent<Text>().text = playerName;
 
-                if (An.GetCurrentAnimatorStateInfo(0).IsName("end")) {
-                    Shine.GetComponent<SpriteRenderer>().enabled = false;
 
-                    F.GetComponent<GameManager>().animationDone = true;
-                    cardprocessdone = true;
-                    Destroy(Shine);
                 }
+                cardprocessdone = true;
+                if (F.GetComponent<GameManager>().currentChoosedCard != CardID.Doublecard) {
+                    AnimationDone();
+                }
+
+                //Shine.GetComponent<SpriteRenderer>().enabled = false;
+
             }
         }
     }
 }
+
 
 
 
