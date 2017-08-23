@@ -80,13 +80,6 @@ namespace Cards {
                     F.GetComponent<GameManager>().CollectRemoveCard(CardLeft, CardAction.CardDeleted);
                 }
                 if (CardRight != null) {
-                    for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
-                        if (F.GetComponent<Field>().cardsOnField[i].GetComponent<Card>().x == CardRight.GetComponent<Card>().x
-                            && F.GetComponent<Field>().cardsOnField[i].GetComponent<Card>().y == CardRight.GetComponent<Card>().y) {
-                            F.GetComponent<Field>().cardsOnField.RemoveAt(i);
-                            break;
-                        }
-                    }
                     An_Burn.transform.position = new Vector3((x + 1.6f), (y - 2.3f), -3);
 
                     skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
@@ -94,13 +87,6 @@ namespace Cards {
                     F.GetComponent<GameManager>().CollectRemoveCard(CardRight, CardAction.CardDeleted);
                 }
                 if (CardDown != null) {
-                    for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
-                        if (F.GetComponent<Field>().cardsOnField[i].GetComponent<Card>().x == CardDown.GetComponent<Card>().x
-                            && F.GetComponent<Field>().cardsOnField[i].GetComponent<Card>().y == CardDown.GetComponent<Card>().y) {
-                            F.GetComponent<Field>().cardsOnField.RemoveAt(i);
-                            break;
-                        }
-                    }
                     An_Burn.transform.position = new Vector3((x + 0.6f), (y - 3.3f), -3);
 
                     skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
@@ -108,13 +94,6 @@ namespace Cards {
                     F.GetComponent<GameManager>().CollectRemoveCard(CardDown, CardAction.CardDeleted);
                 }
                 if (CardUp != null) {
-                    for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
-                        if (F.GetComponent<Field>().cardsOnField[i].GetComponent<Card>().x == CardUp.GetComponent<Card>().x
-                            && F.GetComponent<Field>().cardsOnField[i].GetComponent<Card>().y == CardUp.GetComponent<Card>().y) {
-                            F.GetComponent<Field>().cardsOnField.RemoveAt(i);
-                            break;
-                        }
-                    }
                     An_Burn.transform.position = new Vector3((x + 0.6f), (y - 1.3f), -3);
 
                     skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
