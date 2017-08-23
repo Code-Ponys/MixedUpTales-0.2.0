@@ -49,5 +49,5 @@ public enum CardAction {
 }
 
 public enum RecontrustState {
-    setDeletedCards, cardsSet, changeCards, shuffledCards, deleteCards, deleteDependentCards, stanby, done, wait
+    setDeletedCards, cardsSet, changeCards, shuffledCards, deleteCards, deleteDependentCards, standby, done, wait
 }
