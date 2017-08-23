@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour {
             SetFieldIndicator(x, y);
             //Card.AddComponent<Card>();
 
-            Camera.main.GetComponent<CameraManager>().CenterCamera(x, y);
+            Camera.main.GetComponent<CameraManager>().CalculateSize(x,y);
         }
 
         switch (cardid) {
@@ -328,7 +328,7 @@ public class GameManager : MonoBehaviour {
 
             SetFieldIndicator(x, y);
 
-            Camera.main.GetComponent<CameraManager>().CenterCamera(x, y);
+            Camera.main.GetComponent<CameraManager>().CalculateSize(x, y);
         }
 
         switch (cardid) {
