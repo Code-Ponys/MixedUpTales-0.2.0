@@ -912,6 +912,10 @@ public class GameManager : MonoBehaviour {
     }
 
     void RecontructLastRound() {
+        //Initialize if
+        if (reconstructState == RecontrustState.wait) {
+            reconstructState = RecontrustState.setDeletedCards;
+        }
         //Restore Deleted Cards
         if (reconstructState == RecontrustState.setDeletedCards) {
             foreach (Card Card in CardsAffectedLastRound) {
@@ -932,7 +936,7 @@ public class GameManager : MonoBehaviour {
                 }
                 if (Card.cardAction == CardAction.HandcardSet) {
                     GameObject SetCard = GameObject.Find(Slave.GetCardName(CardID.Card, Card.x, Card.y));
-                    SetCard.GetComponent<Card>().SetAnimationStart();
+                    SetCard.GetComponent<Card>().HighlightAnimationStart();
                     Reconstruct_SetCards.Add(SetCard);
                 }
             }
@@ -954,7 +958,7 @@ public class GameManager : MonoBehaviour {
                 }
                 if (Card.cardAction == CardAction.CardShuffled) {
                     GameObject SetCard = GameObject.Find(Slave.GetCardName(CardID.Card, Card.x, Card.y));
-                    SetCard.GetComponent<Card>().SetAnimationStart();
+                    SetCard.GetComponent<Card>().HighlightAnimationStart();
                     Reconstruct_ShuffledCards.Add(SetCard);
                 }
             }
@@ -975,7 +979,7 @@ public class GameManager : MonoBehaviour {
                     break;
                 }
                 if (Card.GetComponent<Card>().cardAction == CardAction.CardDeleted) {
-                    Card.GetComponent<Card>().SetAnimationStart();
+                    Card.GetComponent<Card>().HighlightAnimationStart();
                 }
             }
 
@@ -1000,7 +1004,7 @@ public class GameManager : MonoBehaviour {
                     break;
                 }
                 if (Card.GetComponent<Card>().cardAction == CardAction.CardDeleted) {
-                    Card.GetComponent<Card>().SetAnimationStart();
+                    Card.GetComponent<Card>().HighlightAnimationStart();
                 }
             }
 
@@ -1024,6 +1028,10 @@ public class GameManager : MonoBehaviour {
             Reconstruct_DeletedCards.RemoveRange(0, Reconstruct_DeletedCards.Count);
             Reconstruct_SetCards.RemoveRange(0, Reconstruct_SetCards.Count);
             Reconstruct_ShuffledCards.RemoveRange(0, Reconstruct_ShuffledCards.Count);
+            CardsAffectedLastRound.RemoveRange(0, CardsAffectedLastRound.Count);
+            while (GameObject.Find("AN_Shine(Clone)") != null){
+                DestroyImmediate(GameObject.Find("AN_Shine(Clone)"));
+            }
             reconstructState = RecontrustState.stanby;
         }
     }
