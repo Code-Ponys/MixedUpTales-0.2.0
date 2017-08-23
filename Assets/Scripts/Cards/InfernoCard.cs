@@ -94,7 +94,7 @@ namespace Cards {
                     GameObject CardIndicator = GameObject.Find(Slave.GetCardName(CardID.CardIndicator, indexX, indexY));
                     GameObject Card = GameObject.Find(Slave.GetCardName(CardID.Card, indexX, indexY));
 
-
+                    if (CardIndicator.GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) return;
                     if (CardIndicator.name == CardIndicatorLeft1.name
                         || CardIndicator.name == CardIndicatorLeft2.name
                         || CardIndicator.name == CardIndicatorLeft3.name) {
