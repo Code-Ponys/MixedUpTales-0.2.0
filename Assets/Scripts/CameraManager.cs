@@ -43,8 +43,7 @@ public class CameraManager : MonoBehaviour {
         return Math.Max(4, size / 2);
     }
 
-    public void CenterCamera(int x, int y) {
-        CalculateSize(x, y);
+    public void CenterCamera() {
         MainCam.transform.position = GetCenter();
         MainCam.orthographicSize = GetCameraSize();
     }
