@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 namespace Cards {
 
@@ -22,6 +23,12 @@ namespace Cards {
         GameObject FieldIndicatorUp;
         GameObject FieldIndicatorDown;
 
+        GameObject An_Block;
+
+        AudioSource Sound;
+        SkeletonAnimation skeletonAnimation;
+
+        Spine.AnimationState AS;
 
         public Block blockDirection;
         private bool cardprocessdone;
@@ -74,7 +81,7 @@ namespace Cards {
                 Shine.GetComponent<SpriteRenderer>().enabled = false;
             }
 
-                if (Input.GetKeyDown(KeyCode.Mouse0)) {
+            if (Input.GetKeyDown(KeyCode.Mouse0)) {
                 if (F.GetComponent<GameManager>().cardlocked == true) {
 
                     Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -84,7 +91,19 @@ namespace Cards {
                     GameObject FieldIndicator = GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, indexX, indexY));
                     GameObject Card = GameObject.Find(Slave.GetCardName(CardID.Card, indexX, indexY));
 
+                    An_Block = (GameObject)Instantiate(Resources.Load("Animations/AN_Block"));
+
+                    Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
+                    skeletonAnimation = An_Block.GetComponent<SkeletonAnimation>();
+                    AS = skeletonAnimation.state;
+
                     if (CardIndicator.GetComponent<Indicator>().indicatorColor == IndicatorColor.yellowcovered && Card == null) {
+
+                        An_Block.transform.position = new Vector3((indexX), (indexY), -3);
+
+                        skeletonAnimation.AnimationState.SetAnimation(0, "From Up Falling", false);
+                        Sound.Play();
+
                         cardprocessdone = true;
                         CardIndicatorLeft.GetComponent<Indicator>().setColor(IndicatorColor.transparent);
                         CardIndicatorRight.GetComponent<Indicator>().setColor(IndicatorColor.transparent);
@@ -108,10 +127,17 @@ namespace Cards {
                         FieldIndicator.GetComponent<Indicator>().team = F.GetComponent<GameManager>().currentPlayer;
 
                         Destroy(Shine);
-                        AnimationDone();
+
+                        AS.Complete += delegate {
+                            print("animation end");
+
+                            F.GetComponent<GameManager>().animationDone = true;
+                            Destroy(An_Block);
+                            AnimationDone();
+
+                        };
+
                         F.GetComponent<GameManager>().cardlocked = false;
-
-
                     }
 
                 }
