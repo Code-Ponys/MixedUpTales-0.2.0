@@ -125,11 +125,11 @@ namespace Cards {
                         FieldIndicator.GetComponent<Indicator>().indicatorState = IndicatorState.blocked;
                         FieldIndicator.GetComponent<Indicator>().team = F.GetComponent<GameManager>().currentPlayer;
 
-                        Destroy(Shine);
 
                         AS.Complete += delegate {
                             print("animation end");
 
+                            Destroy(Shine);
                             F.GetComponent<GameManager>().animationDone = true;
                             Destroy(An_Block);
                             AnimationDone();

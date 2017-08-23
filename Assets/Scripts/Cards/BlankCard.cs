@@ -23,7 +23,7 @@ namespace Cards {
                 cardprocessdone = true;
                 if (F.GetComponent<GameManager>().lastSetCard != CardID.Changecard
                     && F.GetComponent<GameManager>().lastSetCard != CardID.Cancercard
-                    && F.GetComponent<GameManager>().lastSetCard != CardID.Doublecard) {
+                    && F.GetComponent<GameManager>().currentChoosedCard != CardID.Doublecard) {
                     AnimationDone();
                 }
 
