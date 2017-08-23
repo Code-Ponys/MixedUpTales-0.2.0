@@ -37,7 +37,7 @@ namespace Cards {
           
             while (F.GetComponent<Field>().cardsOnField.Count != 0) {
                 GameObject RemoveCard = F.GetComponent<Field>().cardsOnField[0];
-                F.GetComponent<GameManager>().CollectRemoveCard(RemoveCard);
+                F.GetComponent<GameManager>().CollectRemoveCard(RemoveCard, CardAction.CardDeleted);
             }
 
             F.GetComponent<GameManager>().GenerateFieldCard(CardID.Startpoint, 0, 0);
@@ -48,7 +48,7 @@ namespace Cards {
                
                 F.GetComponent<GameManager>().animationDone = true;
                 Destroy(An_Nuke);
-                F.GetComponent<GameManager>().CollectRemoveCard(OwnGO);
+                DestroyImmediate(OwnGO);
             };
         }
 

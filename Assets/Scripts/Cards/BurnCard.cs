@@ -73,11 +73,15 @@ namespace Cards {
                 AS = skeletonAnimation.state;
                 if (CardLeft != null) {
 
+<<<<<<< HEAD
                     F.GetComponent<GameManager>().CollectRemoveCard(CardLeft);
                     An_Burn.transform.position = new Vector3((x - 0.4f), (y - 2.3f), -3);
 
                     skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
                     Sound.Play();
+=======
+                    F.GetComponent<GameManager>().CollectRemoveCard(CardLeft, CardAction.CardDeleted);
+>>>>>>> acd0caefe99ce47724fd19c49bf1606812523386
                 }
                 if (CardRight != null) {
                     for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
@@ -87,11 +91,15 @@ namespace Cards {
                             break;
                         }
                     }
+<<<<<<< HEAD
                     F.GetComponent<GameManager>().CollectRemoveCard(CardRight);
                     An_Burn.transform.position = new Vector3((x - 0.6f), (y - 2.3f), -3);
 
                     skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
                     Sound.Play();
+=======
+                    F.GetComponent<GameManager>().CollectRemoveCard(CardRight, CardAction.CardDeleted);
+>>>>>>> acd0caefe99ce47724fd19c49bf1606812523386
                 }
                 if (CardDown != null) {
                     for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
@@ -101,11 +109,15 @@ namespace Cards {
                             break;
                         }
                     }
+<<<<<<< HEAD
                     F.GetComponent<GameManager>().CollectRemoveCard(CardDown);
                     An_Burn.transform.position = new Vector3((x - 0.6f), (y - 2.3f), -3);
 
                     skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
                     Sound.Play();
+=======
+                    F.GetComponent<GameManager>().CollectRemoveCard(CardDown, CardAction.CardDeleted);
+>>>>>>> acd0caefe99ce47724fd19c49bf1606812523386
                 }
                 if (CardUp != null) {
                     for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
@@ -115,14 +127,18 @@ namespace Cards {
                             break;
                         }
                     }
+<<<<<<< HEAD
                     F.GetComponent<GameManager>().CollectRemoveCard(CardUp);
                     An_Burn.transform.position = new Vector3((x - 0.6f), (y - 2.3f), -3);
 
                     skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
                     Sound.Play();
+=======
+                    F.GetComponent<GameManager>().CollectRemoveCard(CardUp, CardAction.CardDeleted);
+>>>>>>> acd0caefe99ce47724fd19c49bf1606812523386
                 }
-                F.GetComponent<GameManager>().CollectRemoveCard(GameObject.Find(Slave.GetCardName(CardID.Burncard, x, y)));
 
+<<<<<<< HEAD
                 AS.Complete += delegate {
                     print("animation end");
                     
@@ -132,6 +148,10 @@ namespace Cards {
                 };
 
 
+=======
+                F.GetComponent<GameManager>().animationDone = true;
+                DestroyImmediate(OwnGO);
+>>>>>>> acd0caefe99ce47724fd19c49bf1606812523386
                 return;
             } else {
                 if (CardLeft != null) {
@@ -173,7 +193,7 @@ namespace Cards {
                         CardIndicatorUp.GetComponent<Indicator>().setColor(IndicatorColor.transparent);
                         CardIndicatorDown.GetComponent<Indicator>().setColor(IndicatorColor.transparent);
 
-                        F.GetComponent<GameManager>().CollectRemoveCard(Card);
+                        F.GetComponent<GameManager>().CollectRemoveCard(Card, CardAction.CardDeleted);
                         DestroyImmediate(OwnGO);
                     }
                 }

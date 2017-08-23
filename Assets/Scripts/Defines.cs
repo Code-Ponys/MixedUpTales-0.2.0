@@ -43,6 +43,7 @@ public enum IndicatorState {
     blocked, reachable, unreachable, anchorfield
 }
 
-public enum LastEvent {
-    placed, destroyed,changed
+
+public enum CardAction {
+    HandcardSet, CardChanged, CardShuffled, CardDeleted, dependingDeleted, none
 }

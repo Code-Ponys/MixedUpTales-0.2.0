@@ -70,7 +70,7 @@ namespace Cards {
                         F.GetComponent<GameManager>().GetPointCardNumber(team);
                         F.GetComponent<GameManager>().GenerateFieldCard(CardID.Pointcard, indexX, indexY);
                         cardprocessdone = true;
-                        F.GetComponent<GameManager>().CollectRemoveCard(OwnGO);
+                        F.GetComponent<GameManager>().CollectRemoveCard(OwnGO, CardAction.CardDeleted);
 
                         AS.Complete += delegate {
                             MR.enabled = false;
