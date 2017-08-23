@@ -17,6 +17,11 @@ namespace Cards {
         }
 
         void Update() {
+            if (reconstructed) {
+                if (animationActive)
+                    IsSetAnimationEnd();
+                return;
+            }
             if (cardprocessdone) return;
 
             if (IsSetAnimationEnd()) {

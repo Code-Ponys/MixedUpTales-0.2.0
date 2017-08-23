@@ -33,6 +33,11 @@ namespace Cards {
 
         // Update is called once per frame
         void Update() {
+            if (reconstructed) {
+                if (animationActive)
+                    IsSetAnimationEnd();
+                return;
+            }
 
             if (CardLeft != null && CardIndicatorLeft.GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
                 if (CardLeft.GetComponent<Card>().cardid == CardID.Pointcard || CardLeft.GetComponent<Card>().cardid == CardID.Pointcard

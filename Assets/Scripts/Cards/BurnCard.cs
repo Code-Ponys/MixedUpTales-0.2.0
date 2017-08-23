@@ -127,6 +127,11 @@ namespace Cards {
 
         // Update is called once per frame
         void Update() {
+            if (reconstructed) {
+                if (animationActive)
+                    IsSetAnimationEnd();
+                return;
+            }
             if (cardprocessdone) return;
 
             if (An.GetCurrentAnimatorStateInfo(0).IsName("end")) {
