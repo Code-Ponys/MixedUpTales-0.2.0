@@ -8,7 +8,7 @@ namespace Cards {
     public class BlockCard : Card {
 
         GameObject OwnGO;
-        GameObject F;
+
         GameObject CardIndicatorLeft;
         GameObject CardIndicatorRight;
         GameObject CardIndicatorUp;
@@ -29,6 +29,9 @@ namespace Cards {
         private void Start() {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
+
+            SetAnimationStart();
+
             F.GetComponent<GameManager>().cardlocked = true;
             CardIndicatorLeft = GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x - 1, y));
             CardIndicatorRight = GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x + 1, y));
@@ -66,8 +69,14 @@ namespace Cards {
 
         void Update() {
             if (cardprocessdone) return;
-            if (Input.GetKeyDown(KeyCode.Mouse0)) {
+
+            if (An.GetCurrentAnimatorStateInfo(0).IsName("end")) {
+                Shine.GetComponent<SpriteRenderer>().enabled = false;
+            }
+
+                if (Input.GetKeyDown(KeyCode.Mouse0)) {
                 if (F.GetComponent<GameManager>().cardlocked == true) {
+
                     Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     int indexX = F.GetComponent<Field>().RoundIt(mouseWorldPos.x);
                     int indexY = F.GetComponent<Field>().RoundIt(mouseWorldPos.y);
@@ -98,15 +107,17 @@ namespace Cards {
                         FieldIndicator.GetComponent<Indicator>().indicatorState = IndicatorState.blocked;
                         FieldIndicator.GetComponent<Indicator>().team = F.GetComponent<GameManager>().currentPlayer;
 
-                        F.GetComponent<GameManager>().animationDone = true;
+                        Destroy(Shine);
+                        AnimationDone();
                         F.GetComponent<GameManager>().cardlocked = false;
 
 
-
                     }
+
                 }
             }
         }
     }
 }
+
 
