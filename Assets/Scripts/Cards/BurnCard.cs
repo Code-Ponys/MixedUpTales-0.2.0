@@ -147,7 +147,7 @@ namespace Cards {
                         skeletonAnimation = An_Burn.GetComponent<SkeletonAnimation>();
                         AS = skeletonAnimation.state;
 
-                        An_Burn.transform.position = new Vector3((indexX - 0.6f), (indexY - 2.3f), -3);
+                        An_Burn.transform.position = new Vector3((indexX + 0.6f), (indexY - 2.3f), -3);
 
                         skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
                         Sound.Play();
