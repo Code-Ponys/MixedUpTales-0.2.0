@@ -910,4 +910,124 @@ public class GameManager : MonoBehaviour {
         MyCard.y = Card.GetComponent<Card>().y;
         CardsAffectedLastRound.Add(MyCard);
     }
+
+    void RecontructLastRound() {
+        //Restore Deleted Cards
+        if (reconstructState == RecontrustState.setDeletedCards) {
+            foreach (Card Card in CardsAffectedLastRound) {
+                if (Card.cardAction == CardAction.CardDeleted || Card.cardAction == CardAction.dependingDeleted
+                    && Card.cardid == CardID.Anchorcard || Card.cardid == CardID.Pointcard
+                    || Card.cardid == CardID.Blankcard || Card.cardid == CardID.Blockcard) {
+                    GameObject GeneratedCard = GenerateFieldCard(Card.cardid, Card.PointCardCounter, Card.x, Card.y, Card.team, false, Card.cardAction, true);
+                    Reconstruct_DeletedCards.Add(GeneratedCard);
+                }
+            }
+            reconstructState = RecontrustState.cardsSet;
+        }
+        //Cardsset
+        if (reconstructState == RecontrustState.cardsSet) {
+            foreach (Card Card in CardsAffectedLastRound) {
+                if (Reconstruct_SetCards.Count != 0) {
+                    break;
+                }
+                if (Card.cardAction == CardAction.HandcardSet) {
+                    GameObject SetCard = GameObject.Find(Slave.GetCardName(CardID.Card, Card.x, Card.y));
+                    SetCard.GetComponent<Card>().SetAnimationStart();
+                    Reconstruct_SetCards.Add(SetCard);
+                }
+            }
+            if (Reconstruct_SetCards.Count == 0) {
+                reconstructState = RecontrustState.changeCards;
+                return;
+            }
+            foreach (GameObject Card in Reconstruct_SetCards) {
+                if (Card.GetComponent<Card>().IsSetAnimationEnd()) {
+                    reconstructState = RecontrustState.changeCards;
+                }
+            }
+        }
+        //ShuffledCards
+        if (reconstructState == RecontrustState.shuffledCards) {
+            foreach (Card Card in CardsAffectedLastRound) {
+                if (Reconstruct_ShuffledCards.Count != 0) {
+                    break;
+                }
+                if (Card.cardAction == CardAction.CardShuffled) {
+                    GameObject SetCard = GameObject.Find(Slave.GetCardName(CardID.Card, Card.x, Card.y));
+                    SetCard.GetComponent<Card>().SetAnimationStart();
+                    Reconstruct_ShuffledCards.Add(SetCard);
+                }
+            }
+            if (Reconstruct_ShuffledCards.Count == 0) {
+                reconstructState = RecontrustState.deleteCards;
+                return;
+            }
+            foreach (GameObject Card in Reconstruct_ShuffledCards) {
+                if (Card.GetComponent<Card>().IsSetAnimationEnd()) {
+                    reconstructState = RecontrustState.deleteCards;
+                }
+            }
+        }
+        //Deletecards
+        if (reconstructState == RecontrustState.deleteCards) {
+            foreach (GameObject Card in Reconstruct_DeletedCards) {
+                if (Reconstruct_DeletedCards.Count != 0) {
+                    break;
+                }
+                if (Card.GetComponent<Card>().cardAction == CardAction.CardDeleted) {
+                    Card.GetComponent<Card>().SetAnimationStart();
+                }
+            }
+
+            if (Reconstruct_DeletedCards.Count == 0) {
+                reconstructState = RecontrustState.deleteDependentCards;
+                return;
+            }
+            foreach (GameObject Card in Reconstruct_DeletedCards) {
+                if (Card.GetComponent<Card>().cardAction != CardAction.CardDeleted) { continue; }
+                if (Card.GetComponent<Card>().isSetAnimationInDeleteFrame()) {
+                    reconstructState = RecontrustState.deleteDependentCards;
+                    DestroyImmediate(Card);
+                } else {
+                    break;
+                }
+            }
+        }
+        //DependentDeletedCards
+        if (reconstructState == RecontrustState.deleteCards) {
+            foreach (GameObject Card in Reconstruct_DeletedCards) {
+                if (Reconstruct_DeletedCards.Count != 0) {
+                    break;
+                }
+                if (Card.GetComponent<Card>().cardAction == CardAction.CardDeleted) {
+                    Card.GetComponent<Card>().SetAnimationStart();
+                }
+            }
+
+            if (Reconstruct_DeletedCards.Count == 0) {
+                reconstructState = RecontrustState.done;
+                return;
+            }
+            foreach (GameObject Card in Reconstruct_DeletedCards) {
+                if (Card == null) continue;
+                if (Card.GetComponent<Card>().cardAction != CardAction.CardDeleted) { continue; }
+                if (Card.GetComponent<Card>().isSetAnimationInDeleteFrame()) {
+                    reconstructState = RecontrustState.done;
+                    DestroyImmediate(Card);
+                } else {
+                    break;
+                }
+            }
+        }
+
+        if (reconstructState == RecontrustState.done) {
+            Reconstruct_DeletedCards.RemoveRange(0, Reconstruct_DeletedCards.Count);
+            Reconstruct_SetCards.RemoveRange(0, Reconstruct_SetCards.Count);
+            Reconstruct_ShuffledCards.RemoveRange(0, Reconstruct_ShuffledCards.Count);
+            reconstructState = RecontrustState.stanby;
+        }
+    }
 }
+
+
+
