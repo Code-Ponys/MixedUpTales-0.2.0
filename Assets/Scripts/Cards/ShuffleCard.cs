@@ -5,8 +5,6 @@ using UnityEngine;
 namespace Cards {
     public class ShuffleCard : Card {
         GameObject OwnGO;
-        private bool cardprocessdone;
-        GameObject F;
         GameObject CardLeft;
         GameObject CardRight;
         GameObject CardDown;

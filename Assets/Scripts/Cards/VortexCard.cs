@@ -7,7 +7,6 @@ namespace Cards {
     public class VortexCard : Card {
 
         GameObject OwnGO;
-        GameObject F;
         List<CardID> newDeckPlayer1 = new List<CardID>();
         List<CardID> newDeckPlayer2 = new List<CardID>();
 

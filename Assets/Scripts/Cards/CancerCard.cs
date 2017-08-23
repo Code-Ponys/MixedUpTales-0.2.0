@@ -6,7 +6,6 @@ namespace Cards {
     public class CancerCard : Card {
 
         GameObject OwnGO;
-        GameObject F;
         GameObject Card;
         GameObject Cardchange;
         SpriteRenderer SpriteRenderer;

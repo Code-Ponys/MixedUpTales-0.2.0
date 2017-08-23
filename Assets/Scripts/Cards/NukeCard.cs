@@ -8,7 +8,6 @@ namespace Cards {
     public class NukeCard : Card {
 
         GameObject An_Nuke;
-        GameObject F;
         GameObject OwnGO;
 
         AudioSource Sound;

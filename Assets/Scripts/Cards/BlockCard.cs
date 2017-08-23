@@ -24,7 +24,6 @@ namespace Cards {
 
 
         public Block blockDirection;
-        private bool cardprocessdone;
 
         private void Start() {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));

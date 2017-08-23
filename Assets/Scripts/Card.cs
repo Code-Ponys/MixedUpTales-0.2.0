@@ -15,6 +15,7 @@ public class Card : MonoBehaviour {
     public GameObject Shine;
     public Animator An;
     public GameObject F;
+    public bool cardprocessdone;
 
     protected void SetAnimationStart() {
         Shine = (GameObject)Instantiate(Resources.Load("Animations/AN_Shine"));
