@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 namespace Cards {
     public class BurnCard : Card {
 
         GameObject OwnGO;
-        GameObject F;
+
         GameObject CardIndicatorLeft;
         GameObject CardIndicatorRight;
         GameObject CardIndicatorUp;
@@ -21,10 +22,21 @@ namespace Cards {
         GameObject FieldIndicatorDown;
         private bool cardprocessdone = false;
 
+        GameObject An_Burn;
+
+        AudioSource Sound;
+        SkeletonAnimation skeletonAnimation;
+
+        Spine.AnimationState AS;
+
+
         // Use this for initialization
         void Start() {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
+
+
+
             F.GetComponent<GameManager>().cardlocked = true;
             CardIndicatorLeft = GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x - 1, y));
             CardIndicatorRight = GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x + 1, y));
@@ -52,10 +64,20 @@ namespace Cards {
             if (CardUp == null) {
                 cardcounter++;
             }
+
             if (cardcounter == 3) {
+                An_Burn = (GameObject)Instantiate(Resources.Load("Animations/AN_Burn"));
+
+                Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
+                skeletonAnimation = An_Burn.GetComponent<SkeletonAnimation>();
+                AS = skeletonAnimation.state;
                 if (CardLeft != null) {
 
                     F.GetComponent<GameManager>().CollectRemoveCard(CardLeft);
+                    An_Burn.transform.position = new Vector3((x - 0.4f), (y - 2.3f), -3);
+
+                    skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
+                    Sound.Play();
                 }
                 if (CardRight != null) {
                     for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
@@ -66,6 +88,10 @@ namespace Cards {
                         }
                     }
                     F.GetComponent<GameManager>().CollectRemoveCard(CardRight);
+                    An_Burn.transform.position = new Vector3((x - 0.6f), (y - 2.3f), -3);
+
+                    skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
+                    Sound.Play();
                 }
                 if (CardDown != null) {
                     for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
@@ -76,6 +102,10 @@ namespace Cards {
                         }
                     }
                     F.GetComponent<GameManager>().CollectRemoveCard(CardDown);
+                    An_Burn.transform.position = new Vector3((x - 0.6f), (y - 2.3f), -3);
+
+                    skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
+                    Sound.Play();
                 }
                 if (CardUp != null) {
                     for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
@@ -86,10 +116,22 @@ namespace Cards {
                         }
                     }
                     F.GetComponent<GameManager>().CollectRemoveCard(CardUp);
+                    An_Burn.transform.position = new Vector3((x - 0.6f), (y - 2.3f), -3);
+
+                    skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
+                    Sound.Play();
                 }
                 F.GetComponent<GameManager>().CollectRemoveCard(GameObject.Find(Slave.GetCardName(CardID.Burncard, x, y)));
 
-                F.GetComponent<GameManager>().animationDone = true;
+                AS.Complete += delegate {
+                    print("animation end");
+                    
+                    F.GetComponent<GameManager>().animationDone = true;
+                    Destroy(An_Burn);
+                    DestroyImmediate(OwnGO);
+                };
+
+
                 return;
             } else {
                 if (CardLeft != null) {
