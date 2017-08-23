@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         ToggleDeleteCardFieldVisibility();
-        if(players[0].Deck.Count == 0
+        if (players[0].Deck.Count == 0
             && GameObject.Find("HandCard1blue").GetComponent<Handcards>().cardid == CardID.none
             && GameObject.Find("HandCard2blue").GetComponent<Handcards>().cardid == CardID.none
             && GameObject.Find("HandCard3blue").GetComponent<Handcards>().cardid == CardID.none) {
@@ -465,7 +465,8 @@ public class GameManager : MonoBehaviour {
             GameObject.Find("Field").GetComponent<Field>().cardsOnField.Add(Card);
         }
 
-        if (cardid != CardID.Startpoint) {
+        if (cardid != CardID.Startpoint && cardid != CardID.CardIndicator
+            && cardid != CardID.FieldIndicator && cardid != CardID.FieldIndicatorRed) {
             lastSetCard = cardid;
             Card MyCard = new Card();
             MyCard.cardAction = CardAction.HandcardSet;
@@ -474,6 +475,7 @@ public class GameManager : MonoBehaviour {
             MyCard.team = Card.GetComponent<Card>().team;
             MyCard.x = Card.GetComponent<Card>().x;
             MyCard.y = Card.GetComponent<Card>().y;
+
             CardsAffectedLastRound.Add(MyCard);
         }
 
@@ -515,10 +517,10 @@ public class GameManager : MonoBehaviour {
             && GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, x, y)).GetComponent<Indicator>().currentcolor == IndicatorColor.red) {
             return true;
         }
-        if (currentChoosedCard == CardID.Deletecard && GameObject.Find(Slave.GetCardName(CardID.CardIndicator,x, y)).GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
+        if (currentChoosedCard == CardID.Deletecard && GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y)).GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
             return true;
         }
-            return false;
+        return false;
     }
 
     public void NewRound() {
@@ -539,10 +541,10 @@ public class GameManager : MonoBehaviour {
             && GameObject.Find("HandCard3blue").GetComponent<Handcards>().cardid == CardID.none) {
             DrawScreen.enabled = true;
             print("DRAW!");
-        }else if (players[1].Deck.Count == 0
-            && GameObject.Find("HandCard1red").GetComponent<Handcards>().cardid == CardID.none
-            && GameObject.Find("HandCard2red").GetComponent<Handcards>().cardid == CardID.none
-            && GameObject.Find("HandCard3red").GetComponent<Handcards>().cardid == CardID.none) {
+        } else if (players[1].Deck.Count == 0
+             && GameObject.Find("HandCard1red").GetComponent<Handcards>().cardid == CardID.none
+             && GameObject.Find("HandCard2red").GetComponent<Handcards>().cardid == CardID.none
+             && GameObject.Find("HandCard3red").GetComponent<Handcards>().cardid == CardID.none) {
             DrawScreen.enabled = true;
             print("DRAW!");
         }
@@ -899,7 +901,7 @@ public class GameManager : MonoBehaviour {
 
     void RemoveCards() {
         print("removed Cards");
-        for(int i = 0; i < CardsToDelete.Count; i++) {
+        for (int i = 0; i < CardsToDelete.Count; i++) {
             GameObject Card = CardsToDelete[0];
             CardsToDelete.RemoveAt(0);
             DestroyImmediate(Card);
