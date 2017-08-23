@@ -5,13 +5,15 @@ using UnityEngine;
 namespace Cards {
     public class BlankCard : Card {
         GameObject OwnGO;
-        bool cardprocessdone;
 
         private void Start() {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
 
-            SetAnimationStart();
+            if (F.GetComponent<GameManager>().lastSetCard != CardID.Changecard
+                && F.GetComponent<GameManager>().lastSetCard != CardID.Cancercard) {
+                SetAnimationStart();
+            }
         }
 
         void Update() {
@@ -19,7 +21,9 @@ namespace Cards {
 
             if (IsSetAnimationEnd()) {
                 cardprocessdone = true;
-                if (F.GetComponent<GameManager>().currentChoosedCard != CardID.Doublecard) {
+                if (F.GetComponent<GameManager>().lastSetCard != CardID.Changecard
+                    && F.GetComponent<GameManager>().lastSetCard != CardID.Cancercard
+                    && F.GetComponent<GameManager>().lastSetCard != CardID.Doublecard) {
                     AnimationDone();
                 }
 
