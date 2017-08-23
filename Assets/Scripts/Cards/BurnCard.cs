@@ -103,7 +103,7 @@ namespace Cards {
                 AS.Complete += delegate {
                     print("animation end");
 
-                    F.GetComponent<GameManager>().animationDone = true;
+                    AnimationDone();
                     Destroy(An_Burn);
                     DestroyImmediate(OwnGO);
                 };
