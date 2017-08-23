@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 namespace Cards {
     public class CancerCard : Card {
@@ -10,12 +11,25 @@ namespace Cards {
         GameObject Cardchange;
         SpriteRenderer SpriteRenderer;
 
+        GameObject An_Cancer;
+
+        AudioSource Sound;
+        SkeletonAnimation skeletonAnimation;
+
+        Spine.AnimationState AS;
+
 
         // Use this for initialization
         void Start() {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
             Card = GameObject.Find(Slave.GetCardName(CardID.Changecard, x, y));
+            
+            An_Cancer = (GameObject)Instantiate(Resources.Load("Animations/AN_Cancer"));
+
+            Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
+            skeletonAnimation = An_Cancer.GetComponent<SkeletonAnimation>();
+            AS = skeletonAnimation.state;
 
             for (int i = 0; i < F.GetComponent<Field>().cardsOnField.Count; i++) {
                 Cardchange = F.GetComponent<Field>().cardsOnField[i];
@@ -69,8 +83,14 @@ namespace Cards {
                 }
             }
             F.GetComponent<GameManager>().lastSetCard = CardID.Cancercard;
-            F.GetComponent<GameManager>().animationDone = true;
-            DestroyImmediate(OwnGO);
+
+            AS.Complete += delegate {
+                
+                AnimationDone();
+                Destroy(An_Cancer);
+                DestroyImmediate(OwnGO);
+            };
+            
         }
 
         // Update is called once per frame
