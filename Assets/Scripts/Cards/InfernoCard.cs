@@ -6,7 +6,6 @@ namespace Cards {
     public class InfernoCard : Card {
 
         GameObject OwnGO;
-        GameObject F;
         GameObject CardLeft1;
         GameObject CardLeft2;
         GameObject CardLeft3;
@@ -31,7 +30,6 @@ namespace Cards {
         GameObject CardIndicatorUp1;
         GameObject CardIndicatorUp2;
         GameObject CardIndicatorUp3;
-        private bool cardprocessdone;
 
         // Use this for initialization
         void Start() {

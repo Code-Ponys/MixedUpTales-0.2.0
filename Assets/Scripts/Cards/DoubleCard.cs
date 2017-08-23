@@ -14,8 +14,6 @@ namespace Cards {
         MeshRenderer MR;
         Spine.AnimationState AS;
 
-        private bool cardprocessdone;
-        GameObject F;
         // Use this for initialization
         void Start() {
 

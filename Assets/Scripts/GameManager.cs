@@ -887,14 +887,8 @@ public class GameManager : MonoBehaviour {
             }
         }
         print("RemovedCard " + DeletedCard.GetComponent<Card>().cardid + " at " + DeletedCard.GetComponent<Card>().x + "," + DeletedCard.GetComponent<Card>().y + "!");
-        Card MyCard = new Card();
-        MyCard.cardAction = cardAction;
-        MyCard.cardid = DeletedCard.GetComponent<Card>().cardid;
-        MyCard.PointCardCounter = DeletedCard.GetComponent<Card>().PointCardCounter;
-        MyCard.team = DeletedCard.GetComponent<Card>().team;
-        MyCard.x = DeletedCard.GetComponent<Card>().x;
-        MyCard.y = DeletedCard.GetComponent<Card>().y;
-        CardsAffectedLastRound.Add(MyCard);
+
+        AddToCardsAffectedLastRound(DeletedCard, cardAction);
 
         CardsToDelete.Add(DeletedCard);
     }
@@ -906,5 +900,15 @@ public class GameManager : MonoBehaviour {
             CardsToDelete.RemoveAt(0);
             DestroyImmediate(Card);
         }
+    }
+    public void AddToCardsAffectedLastRound(GameObject Card, CardAction cardAction) {
+        Card MyCard = new Card();
+        MyCard.cardAction = cardAction;
+        MyCard.cardid = Card.GetComponent<Card>().cardid;
+        MyCard.PointCardCounter = Card.GetComponent<Card>().PointCardCounter;
+        MyCard.team = Card.GetComponent<Card>().team;
+        MyCard.x = Card.GetComponent<Card>().x;
+        MyCard.y = Card.GetComponent<Card>().y;
+        CardsAffectedLastRound.Add(MyCard);
     }
 }

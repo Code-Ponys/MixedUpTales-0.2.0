@@ -20,7 +20,6 @@ namespace Cards {
         GameObject FieldIndicatorRight;
         GameObject FieldIndicatorUp;
         GameObject FieldIndicatorDown;
-        private bool cardprocessdone = false;
 
         GameObject An_Burn;
 

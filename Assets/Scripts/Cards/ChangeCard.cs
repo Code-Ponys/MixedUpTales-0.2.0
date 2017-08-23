@@ -7,10 +7,8 @@ namespace Cards {
     public class ChangeCard : Card {
 
         GameObject OwnGO;
-        GameObject F;
         GameObject Cardbelow;
         SpriteRenderer SpriteRenderer;
-        private bool cardprocessdone;
 
         // Use this for initialization
         void Start() {
@@ -36,6 +34,7 @@ namespace Cards {
             Cardbelow.GetComponent<Card>().x = xcord;
             Cardbelow.GetComponent<Card>().team = cardteam;
             Cardbelow.GetComponent<Card>().cardid = CardID.Blankcard;
+            Cardbelow.GetComponent<Card>().cardprocessdone = true;
             SpriteRenderer = Cardbelow.GetComponent<SpriteRenderer>();
             SpriteRenderer.sprite = Resources.Load<Sprite>(Slave.GetImagePath(CardID.Blankcard, cardteam));
             F.GetComponent<GameManager>().animationDone = true;

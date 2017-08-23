@@ -12,7 +12,6 @@ namespace Cards {
         GameObject Card;
         SpriteRenderer SpriteRenderer;
 
-        bool cardprocessdone;
 
 
         private void Start() {
