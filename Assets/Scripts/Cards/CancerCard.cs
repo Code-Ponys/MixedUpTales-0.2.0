@@ -62,6 +62,8 @@ namespace Cards {
                     Cardchange.GetComponent<Card>().x = xcord;
                     Cardchange.GetComponent<Card>().team = cardteam;
                     Cardchange.GetComponent<Card>().cardid = CardID.Blankcard;
+                    F.GetComponent<GameManager>().AddToCardsAffectedLastRound(Cardchange, CardAction.CardChanged);
+
                     SpriteRenderer = Cardchange.GetComponent<SpriteRenderer>();
                     SpriteRenderer.sprite = Resources.Load<Sprite>(Slave.GetImagePath(CardID.Blankcard, cardteam));
                 }

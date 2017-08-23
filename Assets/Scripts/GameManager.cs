@@ -776,8 +776,7 @@ public class GameManager : MonoBehaviour {
                 GameObject Card = GameObject.Find(Slave.GetCardName(CardID.Card, x, y));
                 if (Card != null
                     && Card.GetComponent<Card>().visited == false) {
-                    CollectRemoveCard(Card, CardAction.CardDeleted);
-                    DestroyImmediate(Card);
+                    CollectRemoveCard(Card, CardAction.dependingDeleted);
                 } else if (Card != null
                      && Card.GetComponent<Card>().visited == true) {
                     Card.GetComponent<Card>().visited = false;

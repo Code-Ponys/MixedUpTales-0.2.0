@@ -144,7 +144,7 @@ public class Player : MonoBehaviour {
                 if (card != CardID.Pointcard && card != CardID.Doublecard) {
                     Handcard.GetComponent<Handcards>().cardid = card;
                 } else {
-                    int counter = F.GetComponent<GameManager>().GetPointCardNumber(team);
+                    F.GetComponent<GameManager>().GetPointCardNumber(team);
                     if (team == Team.red) {
                         Handcard.GetComponent<Handcards>().PointCardCounter = F.GetComponent<GameManager>().PointCardCounterRed;
                     } else {

@@ -35,6 +35,7 @@ namespace Cards {
             Cardbelow.GetComponent<Card>().team = cardteam;
             Cardbelow.GetComponent<Card>().cardid = CardID.Blankcard;
             Cardbelow.GetComponent<Card>().cardprocessdone = true;
+            F.GetComponent<GameManager>().AddToCardsAffectedLastRound(Cardbelow, CardAction.CardChanged);
             SpriteRenderer = Cardbelow.GetComponent<SpriteRenderer>();
             SpriteRenderer.sprite = Resources.Load<Sprite>(Slave.GetImagePath(CardID.Blankcard, cardteam));
             F.GetComponent<GameManager>().animationDone = true;
