@@ -35,6 +35,7 @@ namespace Cards {
         void Start() {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
+            if (reconstructed) return;
             F.GetComponent<GameManager>().cardlocked = true;
             CardLeft1 = GameObject.Find(Slave.GetCardName(CardID.Card, x - 1, y));
             CardLeft2 = GameObject.Find(Slave.GetCardName(CardID.Card, x - 2, y));

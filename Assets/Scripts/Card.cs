@@ -30,6 +30,7 @@ public class Card : MonoBehaviour {
     protected void AnimationDone() {
         F.GetComponent<GameManager>().animationDone = true;
     }
+
     public bool IsSetAnimationEnd() {
         if (An.GetCurrentAnimatorStateInfo(0).IsName("end")) {
             Destroy(Shine);
@@ -38,13 +39,14 @@ public class Card : MonoBehaviour {
         }
         return false;
     }
+
     public bool isSetAnimationInDeleteFrame() {
         if (An.GetCurrentAnimatorStateInfo(0).IsName("22")) {
-            Destroy(Shine);
             return true;
         }
         return false;
     }
+
     public void HighlightAnimationStart() {
         SetAnimationStart();
         animationActive = true;

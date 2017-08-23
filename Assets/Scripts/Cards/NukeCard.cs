@@ -17,12 +17,12 @@ namespace Cards {
 
         // Use this for initialization
         void Start() {
-            print("start");
+            F = GameObject.Find("Field");
+            OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
+            if (reconstructed) return;
 
             An_Nuke = (GameObject)Instantiate(Resources.Load("Animations/AN_Nuke"));
 
-            F = GameObject.Find("Field");
-            OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
 
             Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
             skeletonAnimation = An_Nuke.GetComponent<SkeletonAnimation>();

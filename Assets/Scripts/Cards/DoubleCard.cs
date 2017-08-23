@@ -16,10 +16,9 @@ namespace Cards {
 
         // Use this for initialization
         void Start() {
-
-
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
+            if (reconstructed) return;
 
             F.GetComponent<GameManager>().cardlocked = true;
             

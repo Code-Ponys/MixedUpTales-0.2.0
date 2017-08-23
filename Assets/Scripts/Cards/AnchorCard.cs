@@ -18,6 +18,7 @@ namespace Cards {
         void Start() {
             GameObject F = GameObject.Find("Field");
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
+            if (reconstructed) return;
 
             An_Anchor = (GameObject)Instantiate(Resources.Load("Animations/AN_Anchor"));
 

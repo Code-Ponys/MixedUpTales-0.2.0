@@ -23,6 +23,7 @@ namespace Cards {
         void Start() {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
+            if (reconstructed) return;
             Card = GameObject.Find(Slave.GetCardName(CardID.Changecard, x, y));
             
             An_Cancer = (GameObject)Instantiate(Resources.Load("Animations/AN_Cancer"));

@@ -33,6 +33,7 @@ namespace Cards {
         void Start() {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
+            if (reconstructed) return;
 
             SetAnimationStart();
 

@@ -19,6 +19,7 @@ namespace Cards {
         void Start() {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             GameObject F = GameObject.Find("Field");
+            if (reconstructed) return;
 
             GameObject Card = GameObject.Find(Slave.GetCardName(CardID.Card, x, y));
 

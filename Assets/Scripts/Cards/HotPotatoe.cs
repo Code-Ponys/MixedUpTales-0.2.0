@@ -14,6 +14,7 @@ namespace Cards {
         void Start() {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             GameObject F = GameObject.Find("Field");
+            if (reconstructed) return;
 
             Team team = F.GetComponent<GameManager>().currentPlayer;
             if (team == Team.blue) {
