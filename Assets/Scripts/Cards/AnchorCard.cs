@@ -33,8 +33,7 @@ namespace Cards {
             Sound.Play();
 
             AS.Complete += delegate {
-                print("animation end");
-              
+                OwnGO.GetComponent<SpriteRenderer>().enabled = true;
                 F.GetComponent<GameManager>().animationDone = true;
                 Destroy(An_Anchor);
             };
