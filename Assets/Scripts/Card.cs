@@ -16,8 +16,9 @@ public class Card : MonoBehaviour {
     public Animator An;
     public GameObject F;
     public bool cardprocessdone;
+    public bool reconstructed;
 
-    protected void SetAnimationStart() {
+    public void SetAnimationStart() {
         Shine = (GameObject)Instantiate(Resources.Load("Animations/AN_Shine"));
         An = Shine.GetComponent<Animator>();
         Shine.transform.position = new Vector3(x, y, -3);
@@ -28,8 +29,15 @@ public class Card : MonoBehaviour {
     protected void AnimationDone() {
         F.GetComponent<GameManager>().animationDone = true;
     }
-    protected bool IsSetAnimationEnd() {
+    public bool IsSetAnimationEnd() {
         if (An.GetCurrentAnimatorStateInfo(0).IsName("end")) {
+            Destroy(Shine);
+            return true;
+        }
+        return false;
+    }
+    public bool isSetAnimationInDeleteFrame() {
+        if (An.GetCurrentAnimatorStateInfo(0).IsName("22")) {
             Destroy(Shine);
             return true;
         }

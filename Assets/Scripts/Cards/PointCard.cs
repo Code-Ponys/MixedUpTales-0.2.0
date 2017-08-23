@@ -157,6 +157,7 @@ namespace Cards {
                     }
                     GameObject.Find("PlayerNameWin").GetComponent<Text>().text = playerName;
                 }
+
                 cardprocessdone = true;
                 if (F.GetComponent<GameManager>().currentChoosedCard != CardID.Doublecard) {
                     AnimationDone();

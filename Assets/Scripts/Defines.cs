@@ -12,7 +12,7 @@ public struct MousePos {
 
 public enum CardID {
     Anchorcard,
-    Blankcard, Blockcard,Burncard,
+    Blankcard, Blockcard, Burncard,
     Cancercard, Changecard, Deletecard,
     Doublecard, HotPotatoe, Infernocard,
     Nukecard, Pointcard, Shufflecard,
@@ -49,5 +49,5 @@ public enum CardAction {
 }
 
 public enum RecontrustState {
-    setDeletedCards, cardsSet, deleteCards, shuffledCards, changeCards, deleteDependentCards
+    setDeletedCards, cardsSet, changeCards, shuffledCards, deleteCards, deleteDependentCards, stanby, done
 }
