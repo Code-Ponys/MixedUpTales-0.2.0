@@ -34,7 +34,7 @@ namespace Cards {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
 
-
+            SetAnimationStart();
 
             F.GetComponent<GameManager>().cardlocked = true;
             CardIndicatorLeft = GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x - 1, y));
@@ -128,6 +128,11 @@ namespace Cards {
         // Update is called once per frame
         void Update() {
             if (cardprocessdone) return;
+
+            if (An.GetCurrentAnimatorStateInfo(0).IsName("end")) {
+                Shine.GetComponent<SpriteRenderer>().enabled = false;
+            }
+
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
                 print("Klick");
                 if (F.GetComponent<GameManager>().cardlocked == true) {
@@ -163,6 +168,7 @@ namespace Cards {
                             print("animation end");
 
                             F.GetComponent<GameManager>().animationDone = true;
+                            Destroy(Shine);
                             Destroy(An_Burn);
                             F.GetComponent<GameManager>().CollectRemoveCard(Card, CardAction.CardDeleted);
                             DestroyImmediate(OwnGO);
