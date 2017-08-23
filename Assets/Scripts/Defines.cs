@@ -47,3 +47,7 @@ public enum IndicatorState {
 public enum CardAction {
     HandcardSet, CardChanged, CardShuffled, CardDeleted, dependingDeleted, none
 }
+
+public enum RecontrustState {
+    setDeletedCards, cardsSet, deleteCards, shuffledCards, changeCards, deleteDependentCards
+}
