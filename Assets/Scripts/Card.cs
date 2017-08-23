@@ -17,6 +17,7 @@ public class Card : MonoBehaviour {
     public GameObject F;
     public bool cardprocessdone;
     public bool reconstructed;
+    public bool animationActive;
 
     public void SetAnimationStart() {
         Shine = (GameObject)Instantiate(Resources.Load("Animations/AN_Shine"));
@@ -32,6 +33,7 @@ public class Card : MonoBehaviour {
     public bool IsSetAnimationEnd() {
         if (An.GetCurrentAnimatorStateInfo(0).IsName("end")) {
             Destroy(Shine);
+            animationActive = false;
             return true;
         }
         return false;
@@ -42,5 +44,9 @@ public class Card : MonoBehaviour {
             return true;
         }
         return false;
+    }
+    public void HighlightAnimationStart() {
+        SetAnimationStart();
+        animationActive = true;
     }
 }

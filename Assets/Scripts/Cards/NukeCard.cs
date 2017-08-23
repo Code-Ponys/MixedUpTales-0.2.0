@@ -54,7 +54,11 @@ namespace Cards {
         
         // Update is called once per frame
         void Update() {
-
+            if (reconstructed) {
+                if (animationActive)
+                    IsSetAnimationEnd();
+                return;
+            }
         }
 
 

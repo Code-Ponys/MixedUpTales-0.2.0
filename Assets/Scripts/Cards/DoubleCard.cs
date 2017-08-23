@@ -42,6 +42,11 @@ namespace Cards {
 
         // Update is called once per frame
         void Update() {
+            if (reconstructed) {
+                if (animationActive)
+                    IsSetAnimationEnd();
+                return;
+            }
             if (cardprocessdone) return;
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
                 if (F.GetComponent<GameManager>().cardlocked == true) {
