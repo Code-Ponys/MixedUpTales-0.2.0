@@ -94,8 +94,6 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-
-
     public void ChangeToScene(string SceneToChangeTo) {
         SceneManager.LoadScene(SceneToChangeTo);
     }
@@ -142,7 +140,6 @@ public class GameManager : MonoBehaviour {
             || cardid == CardID.Blankcard) {
 
             SetFieldIndicator(x, y);
-            //Card.AddComponent<Card>();
 
             Camera.main.GetComponent<CameraManager>().CalculateSize(x,y);
         }
