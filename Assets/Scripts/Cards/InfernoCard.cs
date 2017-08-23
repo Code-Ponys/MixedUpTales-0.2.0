@@ -100,43 +100,43 @@ namespace Cards {
                     if (CardIndicator.name == CardIndicatorLeft1.name
                         || CardIndicator.name == CardIndicatorLeft2.name
                         || CardIndicator.name == CardIndicatorLeft3.name) {
-                        F.GetComponent<GameManager>().CollectRemoveCard(CardLeft1);
-                        F.GetComponent<GameManager>().CollectRemoveCard(CardLeft2);
-                        F.GetComponent<GameManager>().CollectRemoveCard(CardLeft3);
+                        F.GetComponent<GameManager>().CollectRemoveCard(CardLeft1, CardAction.CardDeleted);
+                        F.GetComponent<GameManager>().CollectRemoveCard(CardLeft2, CardAction.CardDeleted);
+                        F.GetComponent<GameManager>().CollectRemoveCard(CardLeft3, CardAction.CardDeleted);
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().animationDone = true;
                         HideCardIndicator();
-                        F.GetComponent<GameManager>().CollectRemoveCard(OwnGO);
+                        DestroyImmediate(OwnGO);
                     } else if (CardIndicator.name == CardIndicatorRight1.name
                           || CardIndicator.name == CardIndicatorRight2.name
                           || CardIndicator.name == CardIndicatorRight3.name) {
-                        F.GetComponent<GameManager>().CollectRemoveCard(CardRight1);
-                        F.GetComponent<GameManager>().CollectRemoveCard(CardRight2);
-                        F.GetComponent<GameManager>().CollectRemoveCard(CardRight2);
+                        F.GetComponent<GameManager>().CollectRemoveCard(CardRight1, CardAction.CardDeleted);
+                        F.GetComponent<GameManager>().CollectRemoveCard(CardRight2, CardAction.CardDeleted);
+                        F.GetComponent<GameManager>().CollectRemoveCard(CardRight2, CardAction.CardDeleted);
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().animationDone = true;
                         HideCardIndicator();
-                        F.GetComponent<GameManager>().CollectRemoveCard(OwnGO);
+                        DestroyImmediate(OwnGO);
                     } else if (CardIndicator.name == CardIndicatorUp1.name
                           || CardIndicator.name == CardIndicatorUp2.name
                           || CardIndicator.name == CardIndicatorUp3.name) {
-                        F.GetComponent<GameManager>().CollectRemoveCard(CardUp1);
-                        F.GetComponent<GameManager>().CollectRemoveCard(CardUp2);
-                        F.GetComponent<GameManager>().CollectRemoveCard(CardUp3);
+                        F.GetComponent<GameManager>().CollectRemoveCard(CardUp1, CardAction.CardDeleted);
+                        F.GetComponent<GameManager>().CollectRemoveCard(CardUp2, CardAction.CardDeleted);
+                        F.GetComponent<GameManager>().CollectRemoveCard(CardUp3, CardAction.CardDeleted);
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().animationDone = true;
                         HideCardIndicator();
-                        F.GetComponent<GameManager>().CollectRemoveCard(OwnGO);
+                        DestroyImmediate(OwnGO);
                     } else if (CardIndicator.name == CardIndicatorDown1.name
                           || CardIndicator.name == CardIndicatorDown2.name
                           || CardIndicator.name == CardIndicatorDown3.name) {
-                        F.GetComponent<GameManager>().CollectRemoveCard(CardDown1);
-                        F.GetComponent<GameManager>().CollectRemoveCard(CardDown2);
-                        F.GetComponent<GameManager>().CollectRemoveCard(CardDown3);
+                        F.GetComponent<GameManager>().CollectRemoveCard(CardDown1, CardAction.CardDeleted);
+                        F.GetComponent<GameManager>().CollectRemoveCard(CardDown2, CardAction.CardDeleted);
+                        F.GetComponent<GameManager>().CollectRemoveCard(CardDown3, CardAction.CardDeleted);
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().animationDone = true;
                         HideCardIndicator();
-                        F.GetComponent<GameManager>().CollectRemoveCard(OwnGO);
+                        DestroyImmediate(OwnGO);
                     }
                 }
             }

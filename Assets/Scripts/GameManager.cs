@@ -467,6 +467,14 @@ public class GameManager : MonoBehaviour {
 
         if (cardid != CardID.Startpoint) {
             lastSetCard = cardid;
+            Card MyCard = new Card();
+            MyCard.cardAction = CardAction.HandcardSet;
+            MyCard.cardid = Card.GetComponent<Card>().cardid;
+            MyCard.PointCardCounter = Card.GetComponent<Card>().PointCardCounter;
+            MyCard.team = Card.GetComponent<Card>().team;
+            MyCard.x = Card.GetComponent<Card>().x;
+            MyCard.y = Card.GetComponent<Card>().y;
+            CardsAffectedLastRound.Add(MyCard);
         }
 
         return Card;
@@ -766,7 +774,7 @@ public class GameManager : MonoBehaviour {
                 GameObject Card = GameObject.Find(Slave.GetCardName(CardID.Card, x, y));
                 if (Card != null
                     && Card.GetComponent<Card>().visited == false) {
-                    CollectRemoveCard(Card);
+                    CollectRemoveCard(Card, CardAction.CardDeleted);
                     DestroyImmediate(Card);
                 } else if (Card != null
                      && Card.GetComponent<Card>().visited == true) {
@@ -845,7 +853,7 @@ public class GameManager : MonoBehaviour {
             return PointCardCounterBlue % 15;
         }
     }
-    public void CollectRemoveCard(GameObject DeletedCard) {
+    public void CollectRemoveCard(GameObject DeletedCard, CardAction cardAction) {
         if (DeletedCard == null || DeletedCard.GetComponent<Card>().cardid == CardID.Startpoint) return;
         for (int i = 0; i < Field.GetComponent<Field>().cardsOnField.Count; i++) {
             if (Field.GetComponent<Field>().cardsOnField[i].GetComponent<Card>().cardid == DeletedCard.GetComponent<Card>().cardid
@@ -878,13 +886,12 @@ public class GameManager : MonoBehaviour {
         }
         print("RemovedCard " + DeletedCard.GetComponent<Card>().cardid + " at " + DeletedCard.GetComponent<Card>().x + "," + DeletedCard.GetComponent<Card>().y + "!");
         Card MyCard = new Card();
-        MyCard.lastevent = LastEvent.destroyed;
+        MyCard.cardAction = cardAction;
         MyCard.cardid = DeletedCard.GetComponent<Card>().cardid;
         MyCard.PointCardCounter = DeletedCard.GetComponent<Card>().PointCardCounter;
         MyCard.team = DeletedCard.GetComponent<Card>().team;
         MyCard.x = DeletedCard.GetComponent<Card>().x;
         MyCard.y = DeletedCard.GetComponent<Card>().y;
-        MyCard.lastevent = LastEvent.destroyed;
         CardsAffectedLastRound.Add(MyCard);
 
         CardsToDelete.Add(DeletedCard);

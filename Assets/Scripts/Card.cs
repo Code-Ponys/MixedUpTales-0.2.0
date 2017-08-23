@@ -11,7 +11,7 @@ public class Card : MonoBehaviour {
     public int y;
     public bool visited;
     public int PointCardCounter;
-    public LastEvent lastevent;
+    public CardAction cardAction;
     public GameObject Shine;
     public Animator An;
     public GameObject F;

@@ -38,7 +38,7 @@ namespace Cards {
             AS.Complete += delegate {
                 print("animation end");
 
-                F.GetComponent<GameManager>().CollectRemoveCard(Card);
+                F.GetComponent<GameManager>().CollectRemoveCard(Card, CardAction.CardDeleted);
                 F.GetComponent<GameManager>().animationDone = true;
                 Destroy(An_Delete);
                 DestroyImmediate(OwnGO);
