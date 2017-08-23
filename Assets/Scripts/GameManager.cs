@@ -562,7 +562,7 @@ public class GameManager : MonoBehaviour {
         currentChoosedCardGO = null;
 
         CardPreview.GetComponent<CardPreview>().cardid = CardID.none;
-
+        Camera.main.GetComponent<CameraManager>().CenterCamera();
         TogglePlayerScreen();
         triggerDelayedNewRound = 1;
 
