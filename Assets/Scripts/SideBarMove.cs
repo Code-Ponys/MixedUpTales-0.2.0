@@ -59,11 +59,10 @@ public class SideBarMove : MonoBehaviour {
             AS = skeletonAnimation.state;
 
             AS.Complete += delegate {
-                
-                GameObject.Find("Field").GetComponent<GameManager>().animationDone = true;
+                                
                 Destroy(An_Hot);
                 AnimationPlayed = true;
-                
+                                
             };
 
 
