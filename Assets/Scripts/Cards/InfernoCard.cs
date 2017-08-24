@@ -148,7 +148,7 @@ namespace Cards {
 
                         F.GetComponent<GameManager>().CollectRemoveCard(CardRight1, CardAction.CardDeleted);
                         F.GetComponent<GameManager>().CollectRemoveCard(CardRight2, CardAction.CardDeleted);
-                        F.GetComponent<GameManager>().CollectRemoveCard(CardRight2, CardAction.CardDeleted);
+                        F.GetComponent<GameManager>().CollectRemoveCard(CardRight3, CardAction.CardDeleted);
                         cardprocessdone = true;
                         //F.GetComponent<GameManager>().animationDone = true;
                         //HideCardIndicator();
@@ -186,7 +186,7 @@ namespace Cards {
 
                     AS.Complete += delegate {
 
-                        GameObject.Find("Field").GetComponent<GameManager>().animationDone = true;
+                        AnimationDone();
                         Destroy(An_Inferno);
                         HideCardIndicator();
                         DestroyImmediate(OwnGO);
