@@ -17,10 +17,17 @@ namespace Cards {
         private void Start() {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
-            if (reconstructed) return;
+            if (reconstructed) {
+                PointCardCounter = F.GetComponent<GameManager>().PointCardCounterCurrent;
+                Card = GameObject.Find(Slave.GetCardName(CardID.Reconstruct, x, y));
+                SpriteRenderer = Card.GetComponent<SpriteRenderer>();
+                SpriteRenderer.sprite = Resources.Load<Sprite>(Slave.GetImagePath(team, PointCardCounter));
+                return;
+            }
+            PointCardCounter = F.GetComponent<GameManager>().currentChoosedCardGO.GetComponent<Handcards>().PointCardCounter;
             Card = GameObject.Find(Slave.GetCardName(CardID.Card, x, y));
             SpriteRenderer = Card.GetComponent<SpriteRenderer>();
-            SpriteRenderer.sprite = Resources.Load<Sprite>(Slave.GetImagePath(team, F.GetComponent<GameManager>().currentChoosedCardGO.GetComponent<Handcards>().PointCardCounter));
+            SpriteRenderer.sprite = Resources.Load<Sprite>(Slave.GetImagePath(team, PointCardCounter));
 
             SetAnimationStart();
 
