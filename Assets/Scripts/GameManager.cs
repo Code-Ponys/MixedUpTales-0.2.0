@@ -96,17 +96,7 @@ public class GameManager : MonoBehaviour {
 
         }
         if (animationDone == true && !WinScreen.enabled) {
-            RemovePlacedCardFromHand();
             animationDone = false;
-            cardlocked = false;
-            RemoveCards();
-            if (lastSetCard == CardID.Deletecard
-            || lastSetCard == CardID.Burncard
-            || lastSetCard == CardID.Cancercard
-            || lastSetCard == CardID.Infernocard
-            || lastSetCard == CardID.Nukecard) {
-                RemoveUnconnectedCards();
-            }
             TogglePlayerScreen();
         }
         RecontructLastRound();
@@ -121,33 +111,11 @@ public class GameManager : MonoBehaviour {
     }
 
     public virtual GameObject GenerateFieldCard(CardID cardid, int pointCardCounter, int x, int y, Team team, bool addtolist, CardAction cardAction, bool reconstructed) {
-        if (cardid == CardID.ChoosedCard) {
-            cardid = currentChoosedCard;
-        }
-        if (currentChoosedCard == CardID.placed || cardid == CardID.none) {
-            return null;
-        }
+
         string pf_path = Slave.GetImagePathPf(cardid, currentPlayer);
         string cardname = Slave.GetCardName(cardid, x, y);
 
         GameObject Card = (GameObject)Instantiate(Resources.Load(pf_path));
-        if (cardid == CardID.FieldIndicator) {
-            GameObject FieldIndicatorParent = GameObject.Find("FieldIndicator");
-            Card.transform.parent = FieldIndicatorParent.transform;
-            Card.transform.position = new Vector3(x, y, -1);
-        } else if (cardid == CardID.FieldIndicatorRed) {
-            GameObject FieldIndicatorParentRed = GameObject.Find("FieldIndicator");
-            Card.transform.parent = FieldIndicatorParentRed.transform;
-            Card.transform.position = new Vector3(x, y, -1);
-        } else if (cardid == CardID.CardIndicator) {
-            GameObject CardIndicatorParentRed = GameObject.Find("CardIndicator");
-            Card.transform.parent = CardIndicatorParentRed.transform;
-            Card.transform.position = new Vector3(x, y, -3);
-        } else {
-            GameObject FieldParent = GameObject.Find("Field");
-            Card.transform.parent = FieldParent.transform;
-            Card.transform.position = new Vector3(x, y, -2);
-        }
         Card.transform.localScale = new Vector3(0.320f, 0.320f, 0);
         Card.name = cardname + " Reconstruct";
 
@@ -483,16 +451,6 @@ public class GameManager : MonoBehaviour {
             || cardid == CardID.Blankcard
             || cardid == CardID.Blockcard
             || cardid == CardID.Anchorcard) {
-            lastSetCard = cardid;
-            Card MyCard = new Card();
-            MyCard.cardAction = CardAction.HandcardSet;
-            MyCard.cardid = Card.GetComponent<Card>().cardid;
-            MyCard.PointCardCounter = Card.GetComponent<Card>().PointCardCounter;
-            MyCard.team = Card.GetComponent<Card>().team;
-            MyCard.x = Card.GetComponent<Card>().x;
-            MyCard.y = Card.GetComponent<Card>().y;
-
-            CardsAffectedLastRound.Add(MyCard);
         }
 
         return Card;
