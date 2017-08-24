@@ -11,8 +11,8 @@ namespace Cards {
             F = GameObject.Find("Field");
             if (reconstructed) return;
 
-            if (F.GetComponent<GameManager>().lastSetCard != CardID.Changecard
-                && F.GetComponent<GameManager>().lastSetCard != CardID.Cancercard) {
+            if (F.GetComponent<GameManager>().currentChoosedCard != CardID.Changecard
+                && F.GetComponent<GameManager>().currentChoosedCard != CardID.Cancercard) {
                 SetAnimationStart();
             }
         }
@@ -23,7 +23,11 @@ namespace Cards {
                     IsSetAnimationEnd();
                 return;
             }
-            if (cardprocessdone) return;
+            if (cardprocessdone || F.GetComponent<GameManager>().currentChoosedCard == CardID.Changecard
+                || F.GetComponent<GameManager>().currentChoosedCard == CardID.Cancercard) {
+                cardprocessdone = true;
+                return;
+            }
 
             if (IsSetAnimationEnd()) {
                 cardprocessdone = true;
