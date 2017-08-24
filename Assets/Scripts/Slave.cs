@@ -95,6 +95,8 @@ static public class Slave {
         switch (cardid) {
             default:
                 return "Error " + x + "," + y;
+            case CardID.Reconstruct:
+                return "Card " + x + "," + y + " Reconstruct";
             case CardID.Card:
                 return "Card " + x + "," + y;
             case CardID.Blankcard:

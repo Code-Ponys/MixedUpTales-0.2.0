@@ -19,7 +19,8 @@ public enum CardID {
     Startpoint, Vortexcard,
     FieldIndicator, FieldIndicatorRed, FieldIndicatorGreen, FieldIndicatorBlack, FieldIndicatorYellow,
     none, ChoosedCard, placed,
-    CardIndicator, CardIndicatorRed, Card
+    CardIndicator, CardIndicatorRed, Card,
+    Reconstruct
 }
 public enum Team {
     blue = 0, red = 1, system = -1,
