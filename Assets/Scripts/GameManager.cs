@@ -116,6 +116,10 @@ public class GameManager : MonoBehaviour {
         string cardname = Slave.GetCardName(cardid, x, y);
 
         GameObject Card = (GameObject)Instantiate(Resources.Load(pf_path));
+        GameObject FieldParent = GameObject.Find("Field");
+        Card.transform.parent = FieldParent.transform;
+        Card.transform.position = new Vector3(x, y, -2);
+
         Card.transform.localScale = new Vector3(0.320f, 0.320f, 0);
         Card.name = cardname + " Reconstruct";
 
@@ -138,7 +142,6 @@ public class GameManager : MonoBehaviour {
                 Card.GetComponent<Card>().cardid = cardid;
                 Card.GetComponent<Card>().cardAction = cardAction;
                 Card.GetComponent<Card>().reconstructed = reconstructed;
-                print("Card Pointcardcounter: "+ Card.GetComponent<Card>().PointCardCounter);
                 break;
             case CardID.Startpoint:
                 Card.AddComponent<Startpoint>();
@@ -451,7 +454,9 @@ public class GameManager : MonoBehaviour {
             || cardid == CardID.Blankcard
             || cardid == CardID.Blockcard
             || cardid == CardID.Anchorcard) {
+            AddToCardsAffectedLastRound(Card, CardAction.HandcardSet);
         }
+        lastSetCard = cardid;
 
         return Card;
     }
@@ -499,6 +504,17 @@ public class GameManager : MonoBehaviour {
     }
 
     public void NewRound() {
+        RemovePlacedCardFromHand();
+        cardlocked = false;
+        RemoveCards();
+        if (lastSetCard == CardID.Deletecard
+        || lastSetCard == CardID.Burncard
+        || lastSetCard == CardID.Cancercard
+        || lastSetCard == CardID.Infernocard
+        || lastSetCard == CardID.Nukecard) {
+            RemoveUnconnectedCards();
+        }
+
         if (currentPlayer == Team.blue) {
             currentPlayer = Team.red;
         } else {
@@ -537,10 +553,8 @@ public class GameManager : MonoBehaviour {
         currentChoosedCardGO = null;
 
         CardPreview.GetComponent<CardPreview>().cardid = CardID.none;
-        Camera.main.GetComponent<CameraManager>().CenterCamera();
         TogglePlayerScreen();
         reconstructState = RecontrustState.wait;
-        triggerDelayedNewRound = 1;
 
     }
 
@@ -872,12 +886,10 @@ public class GameManager : MonoBehaviour {
     }
 
     void RemoveCards() {
-        print("removed Cards");
-        for (int i = 0; i < CardsToDelete.Count; i++) {
-            GameObject Card = CardsToDelete[0];
-            CardsToDelete.RemoveAt(0);
+        foreach (GameObject Card in CardsToDelete) {
             DestroyImmediate(Card);
         }
+        CardsToDelete.Clear();
     }
     public void AddToCardsAffectedLastRound(GameObject Card, CardAction cardAction) {
         Card MyCard = new Card();
@@ -1005,6 +1017,8 @@ public class GameManager : MonoBehaviour {
             }
             foreach (GameObject Card in Reconstruct_DeletedCards) {
                 if (Card.GetComponent<Card>().isSetAnimationInDeleteFrame()) {
+                    Card.GetComponent<SpriteRenderer>().enabled = false;
+                } else if (Card.GetComponent<Card>().IsSetAnimationEnd()) {
                     reconstructState = RecontrustState.deleteDependentCards;
                     DestroyImmediate(Card);
                 } else {
@@ -1016,7 +1030,7 @@ public class GameManager : MonoBehaviour {
         if (reconstructState == RecontrustState.deleteDependentCards) {
             if (!DependentDeletedCardAnimationStarted) {
                 foreach (GameObject Card in Reconstruct_DependentDeletedCards) {
-                    if (Card.GetComponent<Card>().cardAction == CardAction.CardDeleted) {
+                    if (Card.GetComponent<Card>().cardAction == CardAction.dependingDeleted) {
                         Card.GetComponent<Card>().HighlightAnimationStart();
                     }
                 }
@@ -1029,6 +1043,8 @@ public class GameManager : MonoBehaviour {
             foreach (GameObject Card in Reconstruct_DependentDeletedCards) {
                 if (Card == null) continue;
                 if (Card.GetComponent<Card>().isSetAnimationInDeleteFrame()) {
+                    Card.GetComponent<SpriteRenderer>().enabled = false;
+                } else if (Card.GetComponent<Card>().IsSetAnimationEnd()) {
                     reconstructState = RecontrustState.done;
                     DestroyImmediate(Card);
                 } else {
@@ -1038,6 +1054,7 @@ public class GameManager : MonoBehaviour {
         }
         if (reconstructState == RecontrustState.done) {
             print("Reconstruction done");
+            Reconstruct_DependentDeletedCards.Clear();
             Reconstruct_DeletedCards.Clear();
             Reconstruct_SetCards.Clear();
             Reconstruct_ShuffledCards.Clear();
@@ -1052,6 +1069,7 @@ public class GameManager : MonoBehaviour {
             SetCardsAnimationStarted = false;
             ShuffledCardsAnimationStarted = false;
             reconstructState = RecontrustState.standby;
+            Camera.main.GetComponent<CameraManager>().CenterCamera();
         }
     }
 }
