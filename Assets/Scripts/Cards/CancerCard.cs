@@ -27,6 +27,7 @@ namespace Cards {
             Card = GameObject.Find(Slave.GetCardName(CardID.Changecard, x, y));
             
             An_Cancer = (GameObject)Instantiate(Resources.Load("Animations/AN_Cancer"));
+            An_Cancer.transform.position = (Camera.main.GetComponent<CameraManager>().GetCenter());
 
             Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
             skeletonAnimation = An_Cancer.GetComponent<SkeletonAnimation>();

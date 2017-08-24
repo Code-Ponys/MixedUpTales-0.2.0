@@ -27,9 +27,9 @@ namespace Cards {
             Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
             skeletonAnimation = An_Nuke.GetComponent<SkeletonAnimation>();
             
-            AS = skeletonAnimation.state;
+            AS = skeletonAnimation.state;            
 
-            An_Nuke.transform.position = new Vector3(0, 0, -3);
+            An_Nuke.transform.position = (Camera.main.GetComponent<CameraManager>().GetCenter());
             
             skeletonAnimation.AnimationState.SetAnimation(0, "neuer versuch", false);
             Sound.Play();
