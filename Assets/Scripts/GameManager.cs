@@ -925,10 +925,10 @@ public class GameManager : MonoBehaviour {
         //Restore Deleted Cards
         if (reconstructState == RecontrustState.setDeletedCards) {
             foreach (Card Card in CardsAffectedLastRound) {
-                if (Card.cardAction == CardAction.CardDeleted || Card.cardAction == CardAction.dependingDeleted) {
+                if (Card.cardAction == CardAction.CardDeleted) {
                     if (Card.cardid == CardID.Anchorcard || Card.cardid == CardID.Pointcard
                     || Card.cardid == CardID.Blankcard || Card.cardid == CardID.Blockcard) {
-                        GameObject GeneratedCard = GenerateFieldCard(Card.cardid, Card.PointCardCounter, Card.x, Card.y, Card.team, false, Card.cardAction, false);
+                        GameObject GeneratedCard = GenerateFieldCard(Card.cardid, Card.PointCardCounter, Card.x, Card.y, Card.team, false, Card.cardAction, true);
                         Reconstruct_DeletedCards.Add(GeneratedCard);
                     }
                 }
