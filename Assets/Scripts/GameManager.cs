@@ -914,6 +914,7 @@ public class GameManager : MonoBehaviour {
         //Restore Deleted Cards
         if (reconstructState == RecontrustState.setDeletedCards) {
             foreach (Card Card in CardsAffectedLastRound) {
+                if (Card == null) continue;
                 if (Card.cardAction == CardAction.CardDeleted) {
                     if (Card.cardid == CardID.Anchorcard || Card.cardid == CardID.Pointcard
                     || Card.cardid == CardID.Blankcard || Card.cardid == CardID.Blockcard) {
@@ -940,7 +941,6 @@ public class GameManager : MonoBehaviour {
                             GameObject SetCard = GameObject.Find(Slave.GetCardName(CardID.Card, Card.x, Card.y));
                             SetCard.GetComponent<Card>().HighlightAnimationStart();
                             Reconstruct_SetCards.Add(SetCard);
-                            print("Cardid: " + Card.cardid + "at" + Card.x + "," + Card.y + " of Team: " + Card.team + " Action: " + Card.cardAction);
                             SetCardsAnimationStarted = true;
                         }
                     }
@@ -951,7 +951,6 @@ public class GameManager : MonoBehaviour {
                 return;
             }
             foreach (GameObject Card in Reconstruct_SetCards) {
-                print("Animation Active: " + Card.GetComponent<Card>().animationActive);
                 if (Card.GetComponent<Card>().IsSetAnimationEnd()) {
                     reconstructState = RecontrustState.changeCards;
                 }

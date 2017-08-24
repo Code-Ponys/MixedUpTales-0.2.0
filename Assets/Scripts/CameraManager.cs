@@ -72,7 +72,6 @@ public class CameraManager : MonoBehaviour {
         if (F.GetComponent<Field>().cardsOnField.Count == 0) {
             return;
         }
-
         foreach (GameObject Card in F.GetComponent<Field>().cardsOnField) {
             CalculateSize(Card.GetComponent<Card>().x, Card.GetComponent<Card>().y);
         }

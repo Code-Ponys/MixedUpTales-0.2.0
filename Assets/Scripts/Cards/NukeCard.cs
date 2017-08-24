@@ -39,7 +39,6 @@ namespace Cards {
                 F.GetComponent<GameManager>().CollectRemoveCard(RemoveCard, CardAction.CardDeleted);
             }
 
-            F.GetComponent<GameManager>().GenerateFieldCard(CardID.Startpoint, 0, 0);
             F.GetComponent<GameManager>().RenewIndicators();
             
             AS.Complete += delegate {
