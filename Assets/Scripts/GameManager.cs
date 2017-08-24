@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour {
             Card.transform.position = new Vector3(x, y, -2);
         }
         Card.transform.localScale = new Vector3(0.320f, 0.320f, 0);
-        Card.name = cardname + "Recontruct";
+        Card.name = cardname + " Reconstruct";
 
         switch (cardid) {
             case CardID.Blankcard:
@@ -162,14 +162,15 @@ public class GameManager : MonoBehaviour {
                 Card.GetComponent<Card>().reconstructed = reconstructed;
                 break;
             case CardID.Pointcard:
+                PointCardCounterCurrent = pointCardCounter;
                 Card.AddComponent<PointCard>();
                 Card.GetComponent<Card>().team = team;
                 Card.GetComponent<Card>().x = x;
                 Card.GetComponent<Card>().y = y;
                 Card.GetComponent<Card>().cardid = cardid;
-                Card.GetComponent<Card>().PointCardCounter = pointCardCounter;
                 Card.GetComponent<Card>().cardAction = cardAction;
                 Card.GetComponent<Card>().reconstructed = reconstructed;
+                print("Card Pointcardcounter: "+ Card.GetComponent<Card>().PointCardCounter);
                 break;
             case CardID.Startpoint:
                 Card.AddComponent<Startpoint>();
@@ -478,8 +479,10 @@ public class GameManager : MonoBehaviour {
             GameObject.Find("Field").GetComponent<Field>().cardsOnField.Add(Card);
         }
 
-        if (cardid != CardID.Startpoint && cardid != CardID.CardIndicator
-            && cardid != CardID.FieldIndicator && cardid != CardID.FieldIndicatorRed) {
+        if (cardid == CardID.Pointcard
+            || cardid == CardID.Blankcard
+            || cardid == CardID.Blockcard
+            || cardid == CardID.Anchorcard) {
             lastSetCard = cardid;
             Card MyCard = new Card();
             MyCard.cardAction = CardAction.HandcardSet;
@@ -507,10 +510,11 @@ public class GameManager : MonoBehaviour {
             && GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y)).GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
             return true;
         }
-        if (GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y)).GetComponent<Indicator>().indicatorColor == IndicatorColor.yellowcovered
-            && currentChoosedCard == CardID.Changecard || currentChoosedCard == CardID.Deletecard
+        if (GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y)).GetComponent<Indicator>().indicatorColor == IndicatorColor.yellowcovered) {
+            if (currentChoosedCard == CardID.Changecard || currentChoosedCard == CardID.Deletecard
             || currentChoosedCard == CardID.Shufflecard) {
-            return false;
+                return false;
+            }
         }
         if (GameObject.Find(Slave.GetCardName(CardID.Card, x, y)) != null) {
             return true;
@@ -900,8 +904,11 @@ public class GameManager : MonoBehaviour {
             }
         }
         print("RemovedCard " + DeletedCard.GetComponent<Card>().cardid + " at " + DeletedCard.GetComponent<Card>().x + "," + DeletedCard.GetComponent<Card>().y + "!");
-
-        AddToCardsAffectedLastRound(DeletedCard, cardAction);
+        if (DeletedCard.GetComponent<Card>().cardid == CardID.Pointcard
+            || DeletedCard.GetComponent<Card>().cardid == CardID.Blockcard
+            || DeletedCard.GetComponent<Card>().cardid == CardID.Blankcard
+            || DeletedCard.GetComponent<Card>().cardid == CardID.Anchorcard)
+            AddToCardsAffectedLastRound(DeletedCard, cardAction);
 
         CardsToDelete.Add(DeletedCard);
     }
@@ -925,6 +932,10 @@ public class GameManager : MonoBehaviour {
         CardsAffectedLastRound.Add(MyCard);
     }
 
+
+
+
+
     void RecontructLastRound() {
         //Initialize if
         if (reconstructState == RecontrustState.wait) {
@@ -940,8 +951,15 @@ public class GameManager : MonoBehaviour {
                         Reconstruct_DeletedCards.Add(GeneratedCard);
                     }
                 }
+                if (Card.cardAction == CardAction.dependingDeleted) {
+                    if (Card.cardid == CardID.Anchorcard || Card.cardid == CardID.Pointcard
+                    || Card.cardid == CardID.Blankcard || Card.cardid == CardID.Blockcard) {
+                        GameObject GeneratedCard = GenerateFieldCard(Card.cardid, Card.PointCardCounter, Card.x, Card.y, Card.team, false, Card.cardAction, true);
+                        Reconstruct_DependentDeletedCards.Add(GeneratedCard);
+                    }
+                }
+                reconstructState = RecontrustState.cardsSet;
             }
-            reconstructState = RecontrustState.cardsSet;
         }
         //Cardsset
         if (reconstructState == RecontrustState.cardsSet) {
@@ -963,6 +981,7 @@ public class GameManager : MonoBehaviour {
                 return;
             }
             foreach (GameObject Card in Reconstruct_SetCards) {
+                print("Animation Active: " + Card.GetComponent<Card>().animationActive);
                 if (Card.GetComponent<Card>().IsSetAnimationEnd()) {
                     reconstructState = RecontrustState.changeCards;
                 }
@@ -1077,3 +1096,4 @@ public class GameManager : MonoBehaviour {
             reconstructState = RecontrustState.standby;
         }
     }
+}
