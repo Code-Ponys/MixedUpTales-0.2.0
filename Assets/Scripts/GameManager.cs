@@ -10,10 +10,17 @@ using System;
 public class GameManager : MonoBehaviour {
     public List<Card> CardsAffectedLastRound = new List<Card>();
     public List<GameObject> CardsToDelete = new List<GameObject>();
+
     public List<GameObject> Reconstruct_DeletedCards = new List<GameObject>();
+    public List<GameObject> Reconstruct_DependentDeletedCards = new List<GameObject>();
     public List<GameObject> Reconstruct_SetCards = new List<GameObject>();
     public List<GameObject> Reconstruct_ChangedCards = new List<GameObject>();
     public List<GameObject> Reconstruct_ShuffledCards = new List<GameObject>();
+    public bool DeletedCardsAnimationStarted;
+    public bool SetCardsAnimationStarted;
+    public bool ChangedCardAnimationStarted;
+    public bool ShuffledCardsAnimationStarted;
+    public bool DependentDeletedCardAnimationStarted;
 
     public Field Field;
     public MousePos MP;
@@ -49,6 +56,7 @@ public class GameManager : MonoBehaviour {
     private bool shuffleIndicatorVisible;
     public int PointCardCounterRed;
     public int PointCardCounterBlue;
+    public int PointCardCounterCurrent;
     public RecontrustState reconstructState;
 
 
@@ -80,7 +88,6 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        RecontructLastRound();
         ToggleDeleteCardFieldVisibility();
         if (players[0].Deck.Count == 0
             && GameObject.Find("HandCard1blue").GetComponent<Handcards>().cardid == CardID.none
@@ -102,6 +109,7 @@ public class GameManager : MonoBehaviour {
             }
             TogglePlayerScreen();
         }
+        RecontructLastRound();
     }
 
     public void ChangeToScene(string SceneToChangeTo) {
