@@ -41,31 +41,27 @@ namespace Cards {
             }
 
             if (CardLeft != null && CardIndicatorLeft.GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
-                if (CardLeft.GetComponent<Card>().cardid == CardID.Pointcard || CardLeft.GetComponent<Card>().cardid == CardID.Pointcard
+                if (CardLeft.GetComponent<Card>().cardid == CardID.Pointcard || CardLeft.GetComponent<Card>().cardid == CardID.Blankcard
                     && CardLeft.GetComponent<Card>().team == F.GetComponent<GameManager>().currentPlayer) {
                     CardIndicatorLeft.GetComponent<Indicator>().indicatorColor = IndicatorColor.yellowcovered;
-                    print("CardIndicatorLeft is yellowcovered");
                 }
             }
             if (CardRight != null && CardIndicatorRight.GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
-                if (CardRight.GetComponent<Card>().cardid == CardID.Pointcard || CardRight.GetComponent<Card>().cardid == CardID.Pointcard
+                if (CardRight.GetComponent<Card>().cardid == CardID.Pointcard || CardRight.GetComponent<Card>().cardid == CardID.Blankcard
                     && CardRight.GetComponent<Card>().team == F.GetComponent<GameManager>().currentPlayer) {
                     CardIndicatorRight.GetComponent<Indicator>().indicatorColor = IndicatorColor.yellowcovered;
-                    print("CardIndicatorRight is yellowcovered");
                 }
             }
             if (CardDown != null && CardIndicatorDown.GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
-                if (CardDown.GetComponent<Card>().cardid == CardID.Pointcard || CardDown.GetComponent<Card>().cardid == CardID.Pointcard
+                if (CardDown.GetComponent<Card>().cardid == CardID.Pointcard || CardDown.GetComponent<Card>().cardid == CardID.Blankcard
                     && CardDown.GetComponent<Card>().team == F.GetComponent<GameManager>().currentPlayer) {
                     CardIndicatorDown.GetComponent<Indicator>().indicatorColor = IndicatorColor.yellowcovered;
-                    print("CardIndicatorDown is yellowcovered");
                 }
             }
             if (CardUp != null && CardIndicatorUp.GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
-                if (CardUp.GetComponent<Card>().cardid == CardID.Pointcard || CardUp.GetComponent<Card>().cardid == CardID.Pointcard
+                if (CardUp.GetComponent<Card>().cardid == CardID.Pointcard || CardUp.GetComponent<Card>().cardid == CardID.Blankcard
                     && CardUp.GetComponent<Card>().team == F.GetComponent<GameManager>().currentPlayer) {
                     CardIndicatorUp.GetComponent<Indicator>().indicatorColor = IndicatorColor.yellowcovered;
-                    print("CardIndicatorUp is yellowcovered");
                 }
             }
 
@@ -101,6 +97,8 @@ namespace Cards {
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().currentChoosedCard = CardID.Shufflecard;
                         F.GetComponent<GameManager>().animationDone = true;
+                        F.GetComponent<GameManager>().AddToCardsAffectedLastRound(FirstCard, CardAction.CardShuffled);
+                        F.GetComponent<GameManager>().AddToCardsAffectedLastRound(SecondCard, CardAction.CardShuffled);
                         DestroyImmediate(OwnGO);
                     }
                 }
