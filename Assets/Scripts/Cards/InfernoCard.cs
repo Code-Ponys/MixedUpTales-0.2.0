@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 namespace Cards {
     public class InfernoCard : Card {
@@ -30,6 +31,16 @@ namespace Cards {
         GameObject CardIndicatorUp1;
         GameObject CardIndicatorUp2;
         GameObject CardIndicatorUp3;
+
+        GameObject An_Inferno;
+
+        AudioSource Sound;
+        SkeletonAnimation skeletonAnimation;
+
+        Spine.AnimationState AS;
+
+        int XCord;
+        int YCord;
 
         // Use this for initialization
         void Start() {
@@ -62,6 +73,9 @@ namespace Cards {
             CardIndicatorUp2 = GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y + 2));
             CardIndicatorUp3 = GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y + 3));
 
+            XCord = OwnGO.GetComponent<Card>().x;
+            YCord = OwnGO.GetComponent<Card>().y;
+
             if (CardLeft1 != null || CardLeft2 != null || CardLeft3 != null) {
                 CardIndicatorLeft1.GetComponent<Indicator>().indicatorColor = IndicatorColor.yellowcovered;
                 CardIndicatorLeft2.GetComponent<Indicator>().indicatorColor = IndicatorColor.yellowcovered;
@@ -93,6 +107,16 @@ namespace Cards {
             }
             if (cardprocessdone) return;
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
+
+                An_Inferno = (GameObject)Instantiate(Resources.Load("Animations/AN_Inferno"));
+
+                //Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
+                skeletonAnimation = An_Inferno.GetComponent<SkeletonAnimation>();
+                AS = skeletonAnimation.state;
+
+
+
+
                 if (F.GetComponent<GameManager>().cardlocked == true) {
                     Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     int indexX = F.GetComponent<Field>().RoundIt(mouseWorldPos.x);
@@ -104,62 +128,88 @@ namespace Cards {
                     if (CardIndicator.name == CardIndicatorLeft1.name
                         || CardIndicator.name == CardIndicatorLeft2.name
                         || CardIndicator.name == CardIndicatorLeft3.name) {
+
+                        An_Inferno.transform.Rotate(0, 0, -45);
+                        An_Inferno.transform.position = new Vector3((XCord - 3.5f), (YCord - 0.5f), -3);
+
                         F.GetComponent<GameManager>().CollectRemoveCard(CardLeft1, CardAction.CardDeleted);
                         F.GetComponent<GameManager>().CollectRemoveCard(CardLeft2, CardAction.CardDeleted);
                         F.GetComponent<GameManager>().CollectRemoveCard(CardLeft3, CardAction.CardDeleted);
                         cardprocessdone = true;
-                        F.GetComponent<GameManager>().animationDone = true;
-                        HideCardIndicator();
-                        DestroyImmediate(OwnGO);
+                        //F.GetComponent<GameManager>().animationDone = true;
+                        //HideCardIndicator();
+                        //DestroyImmediate(OwnGO);
                     } else if (CardIndicator.name == CardIndicatorRight1.name
                           || CardIndicator.name == CardIndicatorRight2.name
                           || CardIndicator.name == CardIndicatorRight3.name) {
+
+                        An_Inferno.transform.Rotate(0, 0, 135);
+                        An_Inferno.transform.position = new Vector3((XCord + 3.5f), (YCord + 0.5f), -3);
+
                         F.GetComponent<GameManager>().CollectRemoveCard(CardRight1, CardAction.CardDeleted);
                         F.GetComponent<GameManager>().CollectRemoveCard(CardRight2, CardAction.CardDeleted);
                         F.GetComponent<GameManager>().CollectRemoveCard(CardRight2, CardAction.CardDeleted);
                         cardprocessdone = true;
-                        F.GetComponent<GameManager>().animationDone = true;
-                        HideCardIndicator();
-                        DestroyImmediate(OwnGO);
+                        //F.GetComponent<GameManager>().animationDone = true;
+                        //HideCardIndicator();
+                        //DestroyImmediate(OwnGO);
+
                     } else if (CardIndicator.name == CardIndicatorUp1.name
                           || CardIndicator.name == CardIndicatorUp2.name
                           || CardIndicator.name == CardIndicatorUp3.name) {
+
+                        An_Inferno.transform.Rotate(0, 0, -135);
+                        An_Inferno.transform.position = new Vector3((XCord - 0.5f), (YCord + 3.5f), -3);
+
                         F.GetComponent<GameManager>().CollectRemoveCard(CardUp1, CardAction.CardDeleted);
                         F.GetComponent<GameManager>().CollectRemoveCard(CardUp2, CardAction.CardDeleted);
                         F.GetComponent<GameManager>().CollectRemoveCard(CardUp3, CardAction.CardDeleted);
                         cardprocessdone = true;
-                        F.GetComponent<GameManager>().animationDone = true;
-                        HideCardIndicator();
-                        DestroyImmediate(OwnGO);
+                        //F.GetComponent<GameManager>().animationDone = true;
+                        //HideCardIndicator();
+                        //DestroyImmediate(OwnGO);
                     } else if (CardIndicator.name == CardIndicatorDown1.name
                           || CardIndicator.name == CardIndicatorDown2.name
                           || CardIndicator.name == CardIndicatorDown3.name) {
+
+                        An_Inferno.transform.Rotate(0, 0, 45);
+                        An_Inferno.transform.position = new Vector3((XCord + 0.5f), (YCord - 3.5f), -3);
+
                         F.GetComponent<GameManager>().CollectRemoveCard(CardDown1, CardAction.CardDeleted);
                         F.GetComponent<GameManager>().CollectRemoveCard(CardDown2, CardAction.CardDeleted);
                         F.GetComponent<GameManager>().CollectRemoveCard(CardDown3, CardAction.CardDeleted);
                         cardprocessdone = true;
-                        F.GetComponent<GameManager>().animationDone = true;
+                        //F.GetComponent<GameManager>().animationDone = true;
+                        //HideCardIndicator();
+                        //DestroyImmediate(OwnGO);
+                    }
+
+                    AS.Complete += delegate {
+
+                        GameObject.Find("Field").GetComponent<GameManager>().animationDone = true;
+                        Destroy(An_Inferno);
                         HideCardIndicator();
                         DestroyImmediate(OwnGO);
-                    }
+
+                    };
                 }
             }
         }
 
         void HideCardIndicator() {
-                CardIndicatorLeft1.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
-                CardIndicatorLeft2.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
-                CardIndicatorLeft3.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
-                CardIndicatorRight1.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
-                CardIndicatorRight2.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
-                CardIndicatorRight3.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
-                CardIndicatorUp1.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
-                CardIndicatorUp2.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
-                CardIndicatorUp3.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
-                CardIndicatorDown1.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
-                CardIndicatorDown2.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
-                CardIndicatorDown3.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
-            
+            CardIndicatorLeft1.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
+            CardIndicatorLeft2.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
+            CardIndicatorLeft3.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
+            CardIndicatorRight1.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
+            CardIndicatorRight2.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
+            CardIndicatorRight3.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
+            CardIndicatorUp1.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
+            CardIndicatorUp2.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
+            CardIndicatorUp3.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
+            CardIndicatorDown1.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
+            CardIndicatorDown2.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
+            CardIndicatorDown3.GetComponent<Indicator>().indicatorColor = IndicatorColor.transparent;
+
         }
     }
 }
