@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.Animations;
 
 namespace Cards {
 
@@ -161,14 +160,15 @@ namespace Cards {
 
             if (IsSetAnimationEnd()) {
                 if (WinCondition() == true) {
-                    F.GetComponent<GameManager>().WinScreen.enabled = true;
                     string playerName;
                     if (team == Team.blue) {
                         playerName = "Player 1" + "!";
                     } else {
                         playerName = "Player 2" + "!";
                     }
+                    Debug.Log(playerName);
                     GameObject.Find("PlayerNameWin").GetComponent<Text>().text = playerName;
+                    F.GetComponent<GameManager>().WinScreen.enabled = true;
                 }
 
                 cardprocessdone = true;

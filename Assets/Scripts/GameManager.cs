@@ -910,11 +910,11 @@ public class GameManager : MonoBehaviour {
         //Initialize if
         if (reconstructState == RecontrustState.wait) {
             reconstructState = RecontrustState.setDeletedCards;
+            print("Changed Reconstruct State to: " + reconstructState);
         }
         //Restore Deleted Cards
         if (reconstructState == RecontrustState.setDeletedCards) {
             foreach (Card Card in CardsAffectedLastRound) {
-                if (Card == null) continue;
                 if (Card.cardAction == CardAction.CardDeleted) {
                     if (Card.cardid == CardID.Anchorcard || Card.cardid == CardID.Pointcard
                     || Card.cardid == CardID.Blankcard || Card.cardid == CardID.Blockcard) {
@@ -929,8 +929,9 @@ public class GameManager : MonoBehaviour {
                         Reconstruct_DependentDeletedCards.Add(GeneratedCard);
                     }
                 }
-                reconstructState = RecontrustState.cardsSet;
             }
+            reconstructState = RecontrustState.cardsSet;
+            print("Changed Reconstruct State to: " + reconstructState);
         }
         //Cardsset
         if (reconstructState == RecontrustState.cardsSet) {
@@ -948,11 +949,13 @@ public class GameManager : MonoBehaviour {
             }
             if (Reconstruct_SetCards.Count == 0) {
                 reconstructState = RecontrustState.changeCards;
+                print("Changed Reconstruct State to: " + reconstructState);
                 return;
             }
             foreach (GameObject Card in Reconstruct_SetCards) {
                 if (Card.GetComponent<Card>().IsSetAnimationEnd()) {
                     reconstructState = RecontrustState.changeCards;
+                    print("Changed Reconstruct State to: " + reconstructState);
                 }
             }
         }
@@ -970,11 +973,13 @@ public class GameManager : MonoBehaviour {
             }
             if (Reconstruct_ChangedCards.Count == 0) {
                 reconstructState = RecontrustState.shuffledCards;
+                print("Changed Reconstruct State to: " + reconstructState);
                 return;
             }
             foreach (GameObject Card in Reconstruct_ChangedCards) {
                 if (Card.GetComponent<Card>().IsSetAnimationEnd()) {
                     reconstructState = RecontrustState.shuffledCards;
+                    print("Changed Reconstruct State to: " + reconstructState);
                 }
             }
         }
@@ -992,11 +997,13 @@ public class GameManager : MonoBehaviour {
             }
             if (Reconstruct_ShuffledCards.Count == 0) {
                 reconstructState = RecontrustState.deleteCards;
+                print("Changed Reconstruct State to: " + reconstructState);
                 return;
             }
             foreach (GameObject Card in Reconstruct_ShuffledCards) {
                 if (Card.GetComponent<Card>().IsSetAnimationEnd()) {
                     reconstructState = RecontrustState.deleteCards;
+                    print("Changed Reconstruct State to: " + reconstructState);
                 }
             }
         }
@@ -1012,6 +1019,7 @@ public class GameManager : MonoBehaviour {
             }
             if (Reconstruct_DeletedCards.Count == 0) {
                 reconstructState = RecontrustState.deleteDependentCards;
+                print("Changed Reconstruct State to: " + reconstructState);
                 return;
             }
             foreach (GameObject Card in Reconstruct_DeletedCards) {
@@ -1019,6 +1027,7 @@ public class GameManager : MonoBehaviour {
                     Card.GetComponent<SpriteRenderer>().enabled = false;
                 } else if (Card.GetComponent<Card>().IsSetAnimationEnd()) {
                     reconstructState = RecontrustState.deleteDependentCards;
+                    print("Changed Reconstruct State to: " + reconstructState);
                     DestroyImmediate(Card);
                 } else {
                     break;
@@ -1037,6 +1046,7 @@ public class GameManager : MonoBehaviour {
             }
             if (Reconstruct_DependentDeletedCards.Count == 0) {
                 reconstructState = RecontrustState.done;
+                print("Changed Reconstruct State to: " + reconstructState);
                 return;
             }
             foreach (GameObject Card in Reconstruct_DependentDeletedCards) {
@@ -1045,6 +1055,7 @@ public class GameManager : MonoBehaviour {
                     Card.GetComponent<SpriteRenderer>().enabled = false;
                 } else if (Card.GetComponent<Card>().IsSetAnimationEnd()) {
                     reconstructState = RecontrustState.done;
+                    print("Changed Reconstruct State to: " + reconstructState);
                     DestroyImmediate(Card);
                 } else {
                     break;
