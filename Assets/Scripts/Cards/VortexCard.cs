@@ -36,6 +36,7 @@ namespace Cards {
                 Player2.GetComponent<Player>().Deck.Add(newDeckPlayer2[0]);
                 newDeckPlayer2.RemoveAt(0);
             }
+            GameObject.Find("CardInfoText").GetComponent<Text>().text = "Your cards have been changed.";
 
             CardID cardID1blue = GameObject.Find("HandCard1" + Team.blue).GetComponent<Handcards>().cardid;
             CardID cardID2blue = GameObject.Find("HandCard2" + Team.blue).GetComponent<Handcards>().cardid;

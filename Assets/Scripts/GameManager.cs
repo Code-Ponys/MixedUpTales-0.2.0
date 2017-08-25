@@ -554,6 +554,7 @@ public class GameManager : MonoBehaviour {
 
         CardPreview.GetComponent<CardPreview>().cardid = CardID.none;
         TogglePlayerScreen();
+        GameObject.Find("CardInfoText").GetComponent<Text>().text = "";
         reconstructState = RecontrustState.wait;
 
     }
