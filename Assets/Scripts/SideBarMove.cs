@@ -40,6 +40,7 @@ public class SideBarMove : MonoBehaviour {
     }
 
     public void MovePanelIn() {
+        if (GameObject.Find("Field").GetComponent<GameManager>().reconstructState != RecontrustState.standby) return;
         Vector3 point = new Vector3(240, 0, 0);
         Vector3 goal = new Vector3(-300, 0, 0);
         Physics.queriesHitTriggers = true;
@@ -64,8 +65,6 @@ public class SideBarMove : MonoBehaviour {
                 AnimationPlayed = true;
                                 
             };
-
-
         }
     }
 }
