@@ -130,8 +130,10 @@ namespace Cards {
                         || CardIndicator.name == CardIndicatorLeft2.name
                         || CardIndicator.name == CardIndicatorLeft3.name) {
 
-                        An_Inferno.transform.Rotate(0, 0, -45);
-                        An_Inferno.transform.position = new Vector3((XCord - 3.5f), (YCord - 0.5f), -3);
+                        //An_Inferno.transform.Rotate(0, 0, -45);
+                        //An_Inferno.transform.position = new Vector3((XCord - 3.5f), (YCord - 0.5f), -3);
+                        An_Inferno.transform.Rotate(0, 0, 0);
+                        An_Inferno.transform.position = new Vector3((XCord - 3f), (YCord - 1.8f), -3);
 
                         F.GetComponent<GameManager>().CollectRemoveCard(CardLeft1, CardAction.CardDeleted);
                         F.GetComponent<GameManager>().CollectRemoveCard(CardLeft2, CardAction.CardDeleted);
@@ -144,8 +146,10 @@ namespace Cards {
                           || CardIndicator.name == CardIndicatorRight2.name
                           || CardIndicator.name == CardIndicatorRight3.name) {
 
-                        An_Inferno.transform.Rotate(0, 0, 135);
-                        An_Inferno.transform.position = new Vector3((XCord + 3.5f), (YCord + 0.5f), -3);
+                        //An_Inferno.transform.Rotate(0, 0, 135);
+                        //An_Inferno.transform.position = new Vector3((XCord + 3.5f), (YCord + 0.5f), -3);
+                        An_Inferno.transform.Rotate(0, 0, 180);
+                        An_Inferno.transform.position = new Vector3((XCord + 3), (YCord + 1.8f), -3);
 
                         F.GetComponent<GameManager>().CollectRemoveCard(CardRight1, CardAction.CardDeleted);
                         F.GetComponent<GameManager>().CollectRemoveCard(CardRight2, CardAction.CardDeleted);
@@ -159,8 +163,9 @@ namespace Cards {
                           || CardIndicator.name == CardIndicatorUp2.name
                           || CardIndicator.name == CardIndicatorUp3.name) {
 
-                        An_Inferno.transform.Rotate(0, 0, -135);
-                        An_Inferno.transform.position = new Vector3((XCord - 0.5f), (YCord + 3.5f), -3);
+                        //An_Inferno.transform.Rotate(0, 0, -135);
+                        An_Inferno.transform.Rotate(0, 0, -90);
+                        An_Inferno.transform.position = new Vector3((XCord - 1.8f), (YCord + 3), -3);
 
                         F.GetComponent<GameManager>().CollectRemoveCard(CardUp1, CardAction.CardDeleted);
                         F.GetComponent<GameManager>().CollectRemoveCard(CardUp2, CardAction.CardDeleted);
@@ -173,8 +178,9 @@ namespace Cards {
                           || CardIndicator.name == CardIndicatorDown2.name
                           || CardIndicator.name == CardIndicatorDown3.name) {
 
-                        An_Inferno.transform.Rotate(0, 0, 45);
-                        An_Inferno.transform.position = new Vector3((XCord + 0.5f), (YCord - 3.5f), -3);
+                        //An_Inferno.transform.Rotate(0, 0, 45);
+                        An_Inferno.transform.Rotate(0, 0, 90);
+                        An_Inferno.transform.position = new Vector3((XCord + 01.8f), (YCord - 3f), -3);
 
                         F.GetComponent<GameManager>().CollectRemoveCard(CardDown1, CardAction.CardDeleted);
                         F.GetComponent<GameManager>().CollectRemoveCard(CardDown2, CardAction.CardDeleted);
