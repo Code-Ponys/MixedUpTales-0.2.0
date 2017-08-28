@@ -182,7 +182,7 @@ static public class Slave {
             case CardID.none:
                 return "";
             case CardID.Blankcard:
-                return "Use this card to block your opponents moves.";
+                return "Use this card to block your opponent's moves.";
             case CardID.Pointcard:
                 return "Place 3 of these cards diagonally, horizontally or vertically in a row to win.";
             case CardID.Blockcard:
@@ -196,19 +196,19 @@ static public class Slave {
             case CardID.Infernocard:
                 return "Clears 3 fields in any straight direction, starting from its position.";
             case CardID.Changecard:
-                return "Turns an opponents pointcard into a blankcard.";
+                return "Turns an opponent's pointcard into a blankcard.";
             case CardID.Cancercard:
-                return "Turns all cards in its line and column into blank cards.";
+                return "Turns all cards in its line and column into Blankcards.";
             case CardID.HotPotatoe:
-                return "The opponent must discard all special cards on his hand.";
+                return "The opponent must discard all Specialcards on his hand.";
             case CardID.Nukecard:
                 return "All cards are removed from the playfield.";
             case CardID.Vortexcard:
-                return "Exchange your deck and handcards with your opponents.";
+                return "Exchange your deck and handcards with your opponent.";
             case CardID.Anchorcard:
                 return "Creates a new starting point, max. 2 fields away from other cards.";
             case CardID.Shufflecard:
-                return "Switches places of your card with enemy card, if they’re adjacent.";
+                return "Switches places of your card with an opponents card, if they’re adjacent.";
         }
     }
 }
