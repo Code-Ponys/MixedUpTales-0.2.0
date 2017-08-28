@@ -16,6 +16,10 @@ public class CameraManager : MonoBehaviour {
     public int max_y = 0;
     public int min_y = 0;
 
+    public float center_x;
+    public float center_y;
+
+
     GameObject F;
 
     // Use this for initialization
@@ -29,8 +33,8 @@ public class CameraManager : MonoBehaviour {
     }
     public Vector3 GetCenter() {
 
-        float center_x = (((min_x * -1) + max_x) / 2) + min_x;
-        float center_y = (((min_y * -1) + max_y) / 2) + min_y;
+        center_x = (((min_x * -1) + max_x) / 2) + min_x;
+        center_y = (((min_y * -1) + max_y) / 2) + min_y;
         Vector3 result = new Vector3((float)center_x, (float)center_y, -10);
         return result;
     }
