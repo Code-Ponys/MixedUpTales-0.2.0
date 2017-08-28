@@ -24,7 +24,7 @@ namespace Cards {
             
             F.GetComponent<GameManager>().GenerateFieldCard(CardID.Blankcard, x, y);
             An_Double = (GameObject)Instantiate(Resources.Load("Animations/AN_Double"));
-            Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
+            Sound = GameObject.Find("DoublecardEffect").GetComponent<AudioSource>();
             skeletonAnimation = An_Double.GetComponent<SkeletonAnimation>();
             MR = skeletonAnimation.GetComponent<MeshRenderer>();
             AS = skeletonAnimation.state;
