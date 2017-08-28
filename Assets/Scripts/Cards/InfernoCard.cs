@@ -108,11 +108,6 @@ namespace Cards {
             if (cardprocessdone) return;
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
 
-                An_Inferno = (GameObject)Instantiate(Resources.Load("Animations/AN_Inferno"));
-
-                //Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
-                skeletonAnimation = An_Inferno.GetComponent<SkeletonAnimation>();
-                AS = skeletonAnimation.state;
 
 
 
@@ -125,6 +120,12 @@ namespace Cards {
                     GameObject Card = GameObject.Find(Slave.GetCardName(CardID.Card, indexX, indexY));
 
                     if (CardIndicator.GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) return;
+                    An_Inferno = (GameObject)Instantiate(Resources.Load("Animations/AN_Inferno"));
+
+                    //Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
+                    skeletonAnimation = An_Inferno.GetComponent<SkeletonAnimation>();
+                    AS = skeletonAnimation.state;
+
                     if (CardIndicator.name == CardIndicatorLeft1.name
                         || CardIndicator.name == CardIndicatorLeft2.name
                         || CardIndicator.name == CardIndicatorLeft3.name) {
