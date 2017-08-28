@@ -10,8 +10,7 @@ namespace Cards {
 
         GameObject An_Delete;
 
-
-        AudioSource Sound;
+        //AudioSource Sound;
         SkeletonAnimation skeletonAnimation;
         Spine.AnimationState AS;
 
@@ -25,7 +24,7 @@ namespace Cards {
 
             An_Delete = (GameObject)Instantiate(Resources.Load("Animations/AN_Delete"));
 
-            Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
+            //Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
             skeletonAnimation = An_Delete.GetComponent<SkeletonAnimation>();
 
             AS = skeletonAnimation.state;
@@ -34,7 +33,7 @@ namespace Cards {
             An_Delete.transform.position = new Vector3(x, (y - 1.5f), -3);
 
             skeletonAnimation.AnimationState.SetAnimation(0, "animation", false);
-            Sound.Play();
+            //Sound.Play();
 
             AS.Complete += delegate {
                 print("animation end");

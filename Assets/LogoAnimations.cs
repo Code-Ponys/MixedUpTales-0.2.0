@@ -7,6 +7,7 @@ public class LogoAnimations : MonoBehaviour {
 
     public int AnimCounter;
 
+
     GameObject CodeFoxLogo;
     GameObject LPPLogo;
     GameObject CutePowerLogo;
@@ -29,6 +30,11 @@ public class LogoAnimations : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
+      
+
+
+
         if (An.GetCurrentAnimatorStateInfo(0).IsName("end")) {
 
             //LPP
@@ -44,9 +50,11 @@ public class LogoAnimations : MonoBehaviour {
         }
 
         if (AnimCounter == 2) {
-            
+
             SceneManager.LoadScene("UI_MainMenu");
         }
 
     }
+
+   
 }
