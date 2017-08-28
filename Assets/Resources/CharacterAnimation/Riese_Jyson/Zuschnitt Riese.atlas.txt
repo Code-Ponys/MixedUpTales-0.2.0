@@ -1,0 +1,27 @@
+
+Zuschnitt Riese.png
+size: 3471,1259
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: true
+  xy: 2, 2
+  size: 1255, 2783
+  orig: 1255, 2783
+  offset: 0, 0
+  index: -1
+felsbrocken
+  rotate: true
+  xy: 2787, 428
+  size: 829, 682
+  orig: 829, 682
+  offset: 0, 0
+  index: -1
+hand
+  rotate: true
+  xy: 2787, 141
+  size: 285, 570
+  orig: 285, 570
+  offset: 0, 0
+  index: -1

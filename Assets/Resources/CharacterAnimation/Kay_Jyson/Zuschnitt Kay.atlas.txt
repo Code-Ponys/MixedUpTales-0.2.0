@@ -1,0 +1,48 @@
+
+Zuschnitt Kay.png
+size: 3777,1812
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 2
+  rotate: true
+  xy: 3071, 124
+  size: 239, 270
+  orig: 239, 270
+  offset: 0, 0
+  index: -1
+Splitter am Rucken
+  rotate: false
+  xy: 3071, 682
+  size: 573, 350
+  orig: 573, 350
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 2, 2
+  size: 1808, 1876
+  orig: 1808, 1876
+  offset: 0, 0
+  index: -1
+grabbelarm
+  rotate: false
+  xy: 3071, 1034
+  size: 704, 776
+  orig: 704, 776
+  offset: 0, 0
+  index: -1
+oberkorper
+  rotate: false
+  xy: 1880, 101
+  size: 1189, 1709
+  orig: 1189, 1709
+  offset: 0, 0
+  index: -1
+schal
+  rotate: false
+  xy: 3071, 365
+  size: 489, 315
+  orig: 489, 315
+  offset: 0, 0
+  index: -1

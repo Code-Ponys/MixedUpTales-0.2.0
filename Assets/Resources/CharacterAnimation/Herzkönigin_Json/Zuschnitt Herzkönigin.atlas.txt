@@ -1,0 +1,48 @@
+
+Zuschnitt Herzkönigin.png
+size: 3589,1752
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm vorn
+  rotate: false
+  xy: 2448, 728
+  size: 711, 1022
+  orig: 711, 1022
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 2, 2
+  size: 1748, 2444
+  orig: 1748, 2444
+  offset: 0, 0
+  index: -1
+hand befehlsarm
+  rotate: true
+  xy: 3274, 487
+  size: 377, 278
+  orig: 377, 278
+  offset: 0, 0
+  index: -1
+kopf
+  rotate: false
+  xy: 2448, 27
+  size: 824, 699
+  orig: 824, 699
+  offset: 0, 0
+  index: -1
+oberarm befehlsarm
+  rotate: true
+  xy: 3161, 1314
+  size: 436, 426
+  orig: 436, 426
+  offset: 0, 0
+  index: -1
+unterarm befehlsarm
+  rotate: false
+  xy: 3161, 866
+  size: 241, 446
+  orig: 241, 446
+  offset: 0, 0
+  index: -1

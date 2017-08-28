@@ -1,0 +1,90 @@
+
+Zuschnitt Hässliches Entlein.png
+size: 3902,1833
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 2, 2
+  size: 1829, 2218
+  orig: 1829, 2218
+  offset: 0, 0
+  index: -1
+flugel vorn oberer teil
+  rotate: false
+  xy: 3206, 212
+  size: 305, 691
+  orig: 305, 691
+  offset: 0, 0
+  index: -1
+flugel vorn unterer teil
+  rotate: true
+  xy: 3513, 40
+  size: 430, 300
+  orig: 430, 300
+  offset: 0, 0
+  index: -1
+heulball
+  rotate: false
+  xy: 2222, 43
+  size: 139, 99
+  orig: 139, 99
+  offset: 0, 0
+  index: -1
+kopf
+  rotate: true
+  xy: 3206, 905
+  size: 926, 633
+  orig: 926, 633
+  offset: 0, 0
+  index: -1
+schnabel unten
+  rotate: true
+  xy: 3513, 472
+  size: 431, 374
+  orig: 431, 374
+  offset: 0, 0
+  index: -1
+spiegel flugel mit spiegel
+  rotate: false
+  xy: 2222, 144
+  size: 982, 1687
+  orig: 982, 1687
+  offset: 0, 0
+  index: -1
+trane 1
+  rotate: true
+  xy: 3815, 390
+  size: 80, 65
+  orig: 80, 65
+  offset: 0, 0
+  index: -1
+trane 2
+  rotate: true
+  xy: 3874, 1783
+  size: 48, 26
+  orig: 48, 26
+  offset: 0, 0
+  index: -1
+trane 3
+  rotate: false
+  xy: 3841, 1782
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+trane 4
+  rotate: false
+  xy: 3206, 150
+  size: 97, 60
+  orig: 97, 60
+  offset: 0, 0
+  index: -1
+trane 5
+  rotate: false
+  xy: 2222, 7
+  size: 29, 34
+  orig: 29, 34
+  offset: 0, 0
+  index: -1

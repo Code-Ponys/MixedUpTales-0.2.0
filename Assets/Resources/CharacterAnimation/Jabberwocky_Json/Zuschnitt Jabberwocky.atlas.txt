@@ -1,0 +1,41 @@
+
+Zuschnitt Jabberwocky.png
+size: 4020,3850
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 2, 1714
+  size: 2134, 2749
+  orig: 2134, 2749
+  offset: 0, 0
+  index: -1
+flugel hinten
+  rotate: false
+  xy: 2693, 558
+  size: 927, 943
+  orig: 927, 943
+  offset: 0, 0
+  index: -1
+flugel vorne
+  rotate: false
+  xy: 2753, 1503
+  size: 1265, 2345
+  orig: 1265, 2345
+  offset: 0, 0
+  index: -1
+schwanz
+  rotate: false
+  xy: 2, 2
+  size: 2238, 1710
+  orig: 2238, 1710
+  offset: 0, 0
+  index: -1
+unterkiefer
+  rotate: true
+  xy: 2242, 1218
+  size: 494, 449
+  orig: 494, 449
+  offset: 0, 0
+  index: -1

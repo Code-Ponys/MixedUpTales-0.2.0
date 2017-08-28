@@ -1,0 +1,55 @@
+
+Zuschnitt Tinkerbell.png
+size: 3954,1971
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm hinten
+  rotate: false
+  xy: 3687, 159
+  size: 234, 805
+  orig: 234, 805
+  offset: 0, 0
+  index: -1
+arm vorn
+  rotate: false
+  xy: 1229, 150
+  size: 933, 334
+  orig: 933, 334
+  offset: 0, 0
+  index: -1
+beine
+  rotate: true
+  xy: 2613, 187
+  size: 777, 1072
+  orig: 777, 1072
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 2, 486
+  size: 1483, 2609
+  orig: 1483, 2609
+  offset: 0, 0
+  index: -1
+flugel hinten
+  rotate: true
+  xy: 2, 2
+  size: 482, 1225
+  orig: 482, 1225
+  offset: 0, 0
+  index: -1
+flugel vorn
+  rotate: true
+  xy: 2613, 966
+  size: 1003, 1339
+  orig: 1003, 1339
+  offset: 0, 0
+  index: -1
+haare dutt
+  rotate: false
+  xy: 2164, 113
+  size: 387, 371
+  orig: 387, 371
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,48 @@
+
+Zuschnitt Gute Fee.png
+size: 3800,2118
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm zauberstab
+  rotate: false
+  xy: 1742, 561
+  size: 1030, 1555
+  orig: 1030, 1555
+  offset: 0, 0
+  index: -1
+coloration copy
+  rotate: false
+  xy: 2, 19
+  size: 1738, 2097
+  orig: 1738, 2097
+  offset: 0, 0
+  index: -1
+flugel hinten
+  rotate: true
+  xy: 3347, 600
+  size: 311, 355
+  orig: 311, 355
+  offset: 0, 0
+  index: -1
+flugel vorn
+  rotate: true
+  xy: 2774, 913
+  size: 1203, 1024
+  orig: 1203, 1024
+  offset: 0, 0
+  index: -1
+hand zauberstab
+  rotate: true
+  xy: 1742, 2
+  size: 557, 1371
+  orig: 557, 1371
+  offset: 0, 0
+  index: -1
+zauberstab
+  rotate: true
+  xy: 2774, 594
+  size: 317, 571
+  orig: 317, 571
+  offset: 0, 0
+  index: -1

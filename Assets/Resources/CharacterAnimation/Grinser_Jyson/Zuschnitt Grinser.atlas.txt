@@ -1,0 +1,69 @@
+
+Zuschnitt Grinser.png
+size: 3476,3147
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bein
+  rotate: false
+  xy: 2803, 2
+  size: 671, 1141
+  orig: 671, 1141
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 473
+  size: 1429, 2672
+  orig: 1429, 2672
+  offset: 0, 0
+  index: -1
+grinsen
+  rotate: true
+  xy: 3067, 2662
+  size: 483, 240
+  orig: 483, 240
+  offset: 0, 0
+  index: -1
+hinterer arm oberarm
+  rotate: true
+  xy: 1433, 2172
+  size: 973, 1632
+  orig: 973, 1632
+  offset: 0, 0
+  index: -1
+hinterer arm unterarm
+  rotate: true
+  xy: 2, 101
+  size: 370, 930
+  orig: 370, 930
+  offset: 0, 0
+  index: -1
+ohren
+  rotate: true
+  xy: 1441, 91
+  size: 893, 1360
+  orig: 893, 1360
+  offset: 0, 0
+  index: -1
+schwanz
+  rotate: true
+  xy: 1433, 986
+  size: 1184, 1154
+  orig: 1184, 1154
+  offset: 0, 0
+  index: -1
+vorderer arm oberarm
+  rotate: false
+  xy: 934, 33
+  size: 505, 438
+  orig: 505, 438
+  offset: 0, 0
+  index: -1
+vorderer arm unterarm
+  rotate: true
+  xy: 2589, 1145
+  size: 1025, 802
+  orig: 1025, 802
+  offset: 0, 0
+  index: -1

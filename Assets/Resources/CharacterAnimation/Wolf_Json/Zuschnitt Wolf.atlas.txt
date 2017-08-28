@@ -1,0 +1,55 @@
+
+Zuschnitt Wolf.png
+size: 4111,1859
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 860, 591
+  size: 1266, 2766
+  orig: 1266, 2766
+  offset: 0, 0
+  index: -1
+hande mit brille
+  rotate: true
+  xy: 860, 2
+  size: 587, 2073
+  orig: 587, 2073
+  offset: 0, 0
+  index: -1
+oberarm vorn
+  rotate: false
+  xy: 3628, 1303
+  size: 481, 554
+  orig: 481, 554
+  offset: 0, 0
+  index: -1
+ohren
+  rotate: false
+  xy: 3628, 781
+  size: 400, 520
+  orig: 400, 520
+  offset: 0, 0
+  index: -1
+schwanz
+  rotate: false
+  xy: 2, 316
+  size: 856, 1541
+  orig: 856, 1541
+  offset: 0, 0
+  index: -1
+unterarm hinten
+  rotate: false
+  xy: 3390, 72
+  size: 705, 517
+  orig: 705, 517
+  offset: 0, 0
+  index: -1
+unterarm vorn
+  rotate: false
+  xy: 2935, 11
+  size: 453, 578
+  orig: 453, 578
+  offset: 0, 0
+  index: -1

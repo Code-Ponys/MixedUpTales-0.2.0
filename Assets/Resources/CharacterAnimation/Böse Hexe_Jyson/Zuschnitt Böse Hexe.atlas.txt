@@ -1,0 +1,27 @@
+
+Zuschnitt Böse Hexe.png
+size: 3592,1610
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm
+  rotate: false
+  xy: 3079, 339
+  size: 476, 521
+  orig: 476, 521
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 2, 2
+  size: 1606, 3075
+  orig: 1606, 3075
+  offset: 0, 0
+  index: -1
+hand
+  rotate: false
+  xy: 3079, 862
+  size: 511, 746
+  orig: 511, 746
+  offset: 0, 0
+  index: -1

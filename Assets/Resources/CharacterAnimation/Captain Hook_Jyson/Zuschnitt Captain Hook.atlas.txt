@@ -1,0 +1,48 @@
+
+Zuschnitt Captain Hook.png
+size: 3578,2198
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 2
+  rotate: false
+  xy: 2788, 366
+  size: 239, 270
+  orig: 239, 270
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 2, 742
+  size: 1454, 2740
+  orig: 1454, 2740
+  offset: 0, 0
+  index: -1
+feder
+  rotate: false
+  xy: 2788, 638
+  size: 580, 472
+  orig: 580, 472
+  offset: 0, 0
+  index: -1
+kopf
+  rotate: false
+  xy: 2744, 1112
+  size: 832, 1084
+  orig: 832, 1084
+  offset: 0, 0
+  index: -1
+oberarm
+  rotate: true
+  xy: 2, 2
+  size: 738, 2342
+  orig: 738, 2342
+  offset: 0, 0
+  index: -1
+unterarm
+  rotate: true
+  xy: 2346, 139
+  size: 601, 440
+  orig: 601, 440
+  offset: 0, 0
+  index: -1

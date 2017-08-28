@@ -1,0 +1,69 @@
+
+Zuschnitt Aschenputtel.png
+size: 3501,2847
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Eimer
+  rotate: true
+  xy: 2825, 807
+  size: 733, 674
+  orig: 733, 674
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 2, 2
+  size: 1538, 2821
+  orig: 1538, 2821
+  offset: 0, 0
+  index: -1
+eimer tropfen 1
+  rotate: false
+  xy: 2825, 666
+  size: 73, 139
+  orig: 73, 139
+  offset: 0, 0
+  index: -1
+eimer tropfen 2
+  rotate: false
+  xy: 2886, 558
+  size: 36, 63
+  orig: 36, 63
+  offset: 0, 0
+  index: -1
+eimer tropfen 3
+  rotate: false
+  xy: 2900, 679
+  size: 64, 51
+  orig: 64, 51
+  offset: 0, 0
+  index: -1
+lappen tropfen 1
+  rotate: true
+  xy: 2900, 732
+  size: 73, 98
+  orig: 73, 98
+  offset: 0, 0
+  index: -1
+lappen tropfen 2
+  rotate: true
+  xy: 2825, 623
+  size: 41, 100
+  orig: 41, 100
+  offset: 0, 0
+  index: -1
+lappen tropfen 3
+  rotate: true
+  xy: 2825, 579
+  size: 42, 59
+  orig: 42, 59
+  offset: 0, 0
+  index: -1
+oberkorper
+  rotate: true
+  xy: 2, 1542
+  size: 1303, 2840
+  orig: 1303, 2840
+  offset: 0, 0
+  index: -1
