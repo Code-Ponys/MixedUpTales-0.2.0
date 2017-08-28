@@ -14,6 +14,8 @@ namespace Cards {
         GameObject CardIndicatorDown;
         GameObject CardIndicatorUp;
 
+        GameObject An_Shuffle;
+
         // Use this for initialization
         void Start() {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
@@ -94,10 +96,13 @@ namespace Cards {
                         FirstCard.name = Slave.GetCardName(CardID.Card, x2, y2);
                         SecondCard.name = Slave.GetCardName(CardID.Card, x1, y1);
 
+
                         FirstCard.GetComponent<Card>().x = x2;
                         FirstCard.GetComponent<Card>().y = y2;
                         SecondCard.GetComponent<Card>().x = x1;
                         SecondCard.GetComponent<Card>().y = y1;
+                        //An_Shuffle = (GameObject)Instantiate(Resources.Load("Animations/AN_Shuffle"));
+                        GameObject.Find("CardSwitch").GetComponent<AudioSource>().Play();
 
                         cardprocessdone = true;
                         F.GetComponent<GameManager>().currentChoosedCard = CardID.Shufflecard;
