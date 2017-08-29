@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour {
     public int PointCardCounterBlue;
     public int PointCardCounterCurrent;
     public RecontrustState reconstructState;
-    internal bool deactivateSlider;
+    public bool deactivateSlider;
 
 
     // Use this for initialization
@@ -466,7 +466,7 @@ public class GameManager : MonoBehaviour {
         if (x == 0 && y == 0) {
             return true;
         }
-
+        if (deactivateSlider) return true;
         if (GameObject.Find("SideMenu Blue").GetComponent<SideBarMove>().panelactive || GameObject.Find("SideMenu Red").GetComponent<SideBarMove>().panelactive) {
             return true;
         }

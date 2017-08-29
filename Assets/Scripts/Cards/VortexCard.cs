@@ -79,6 +79,12 @@ namespace Cards {
 
             GameObject.Find("Field").GetComponent<GameManager>().animationDone = true;
 
+            int red = F.GetComponent<GameManager>().PointCardCounterBlue;
+            int blue = F.GetComponent<GameManager>().PointCardCounterRed;
+            F.GetComponent<GameManager>().PointCardCounterRed = red;
+            F.GetComponent<GameManager>().PointCardCounterBlue = blue;
+
+
             DestroyImmediate(OwnGO);
         }
 

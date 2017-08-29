@@ -54,7 +54,7 @@ public class LogoAnimations : MonoBehaviour {
 
         }
 
-        if (An.GetCurrentAnimatorStateInfo(0).IsName("end") && AnimCounter == 2) {
+        if (AnimCounter == 2 && An.GetCurrentAnimatorStateInfo(0).IsName("end")) {
 
             //NWG
             YousseffLogo = (GameObject)Instantiate(Resources.Load("Animations/NoWingGames/NWGAnim"));
@@ -63,7 +63,7 @@ public class LogoAnimations : MonoBehaviour {
 
         }
 
-        if (An.GetCurrentAnimatorStateInfo(0).IsName("end") && AnimCounter == 3) {
+        if (AnimCounter == 3 && An.GetCurrentAnimatorStateInfo(0).IsName("end")) {
 
             //CodeFoxLogo
             CodeFoxLogo = (GameObject)Instantiate(Resources.Load("Animations/CodeFoxLogo/CodeFoxAnim"));
@@ -72,7 +72,7 @@ public class LogoAnimations : MonoBehaviour {
 
         }
 
-        if (An.GetCurrentAnimatorStateInfo(0).IsName("end") && AnimCounter == 4) {
+        if (AnimCounter == 4 && An.GetCurrentAnimatorStateInfo(0).IsName("end")) {
 
             //LPP
             LPPLogo = (GameObject)Instantiate(Resources.Load("Animations/LPPLogo/LPPAnim"));
@@ -81,7 +81,7 @@ public class LogoAnimations : MonoBehaviour {
 
         }
 
-        if (An.GetCurrentAnimatorStateInfo(0).IsName("end") && AnimCounter == 5) {
+        if (AnimCounter == 5 && An.GetCurrentAnimatorStateInfo(0).IsName("end")) {
 
             //CPLogo
             CutePowerLogo = (GameObject)Instantiate(Resources.Load("Animations/CutePowerLogo/CPAnim"));
@@ -90,7 +90,7 @@ public class LogoAnimations : MonoBehaviour {
             
         }
 
-        if (An.GetCurrentAnimatorStateInfo(0).IsName("end") && AnimCounter == 6) {
+        if (AnimCounter == 6 && An.GetCurrentAnimatorStateInfo(0).IsName("end")) {
 
             AnimCounter++;
         }
