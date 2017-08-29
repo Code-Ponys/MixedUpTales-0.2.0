@@ -154,14 +154,14 @@ namespace Cards {
 
                         An_Burn = (GameObject)Instantiate(Resources.Load("Animations/AN_Burn"));
 
-                        Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
+                        //Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
                         skeletonAnimation = An_Burn.GetComponent<SkeletonAnimation>();
                         AS = skeletonAnimation.state;
 
                         An_Burn.transform.position = new Vector3((indexX + 0.6f), (indexY - 2.3f), -3);
 
-                        skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
-                        Sound.Play();
+                        //skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
+                        //Sound.Play();
 
                         F.GetComponent<GameManager>().cardlocked = false;
                         cardprocessdone = true;
@@ -171,8 +171,7 @@ namespace Cards {
                         CardIndicatorDown.GetComponent<Indicator>().setColor(IndicatorColor.transparent);
 
                         AS.Complete += delegate {
-                            print("animation end");
-
+                           
                             F.GetComponent<GameManager>().animationDone = true;
                             Destroy(Shine);
                             Destroy(An_Burn);
