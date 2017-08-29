@@ -36,6 +36,7 @@ namespace Cards {
             if (reconstructed) return;
 
             SetAnimationStart();
+                Sound = GameObject.Find("Streichholz").GetComponent<AudioSource>();
 
             F.GetComponent<GameManager>().cardlocked = true;
             CardIndicatorLeft = GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x - 1, y));
@@ -68,7 +69,6 @@ namespace Cards {
             if (cardcounter == 3) {
                 An_Burn = (GameObject)Instantiate(Resources.Load("Animations/AN_Burn"));
 
-                Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
                 skeletonAnimation = An_Burn.GetComponent<SkeletonAnimation>();
                 AS = skeletonAnimation.state;
                 if (CardLeft != null) {
@@ -76,7 +76,7 @@ namespace Cards {
                     An_Burn.transform.position = new Vector3((x - 0.4f), (y - 2.3f), -3);
 
                     skeletonAnimation.AnimationState.SetAnimation(0, "Sicherung", false);
-                    Sound.Play();
+                   Sound.Play();
                     F.GetComponent<GameManager>().CollectRemoveCard(CardLeft, CardAction.CardDeleted);
                 }
                 if (CardRight != null) {
