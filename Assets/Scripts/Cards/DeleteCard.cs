@@ -31,8 +31,6 @@ namespace Cards {
 
 
             An_Delete.transform.position = new Vector3(x, (y - 1.5f), -3);
-
-            skeletonAnimation.AnimationState.SetAnimation(0, "animation", false);
             //Sound.Play();
 
             AS.Complete += delegate {

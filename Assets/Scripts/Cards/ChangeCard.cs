@@ -12,7 +12,7 @@ namespace Cards {
 
         GameObject An_Change;
 
-        AudioSource Sound;
+        //AudioSource Sound;
         SkeletonAnimation skeletonAnimation;
 
         Spine.AnimationState AS;
@@ -27,15 +27,14 @@ namespace Cards {
 
             An_Change = (GameObject)Instantiate(Resources.Load("Animations/AN_Change"));
 
-            Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
+            //Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
             skeletonAnimation = An_Change.GetComponent<SkeletonAnimation>();
 
             AS = skeletonAnimation.state;
 
             An_Change.transform.position = new Vector3(x, (y - 0.5f), -3);
 
-            skeletonAnimation.AnimationState.SetAnimation(0, "animation", false);
-            Sound.Play();
+            //Sound.Play();
 
             int ycord = Cardbelow.GetComponent<Card>().y;
             int xcord = Cardbelow.GetComponent<Card>().x;

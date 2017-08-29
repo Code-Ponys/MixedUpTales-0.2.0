@@ -11,9 +11,9 @@ public class SideBarMove : MonoBehaviour {
     public Text CardPreviewText;
     bool AnimationPlayed;
 
-    GameObject An_Hot;
+    public AudioSource PanelMoveSound;
 
-    AudioSource Sound;
+    GameObject An_Hot;
     SkeletonAnimation skeletonAnimation;
 
     Spine.AnimationState AS;
@@ -23,6 +23,9 @@ public class SideBarMove : MonoBehaviour {
         AnimationPlayed = false;
         RectTransform rectTransform = GetComponent<RectTransform>();
         rectTransform.anchoredPosition = new Vector3(240, 0, 0);
+
+        PanelMoveSound = GameObject.Find("SidebarPanelSound").GetComponent<AudioSource>();
+        print(PanelMoveSound);
     }
 
     public void MovePanelOut() {
@@ -33,6 +36,7 @@ public class SideBarMove : MonoBehaviour {
             RectTransform var = GetComponent<RectTransform>();
             var.anchoredPosition = goal;
         }
+        PanelMoveSound.Play();
         panelactive = false;
         CardPreview.enabled = true;
         CardPreviewText.enabled = true;
@@ -48,14 +52,15 @@ public class SideBarMove : MonoBehaviour {
             RectTransform var = GetComponent<RectTransform>();
             var.anchoredPosition = goal;
         }
+
+        PanelMoveSound.Play();
         panelactive = true;
         CardPreview.enabled = false;
         CardPreviewText.enabled = false;
 
         if (GameObject.Find("Field").GetComponent<GameManager>().lastSetCard == CardID.HotPotatoe && AnimationPlayed == false) {
             An_Hot = (GameObject)Instantiate(Resources.Load("Animations/AN_Hot"));
-
-            //Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
+            
             skeletonAnimation = An_Hot.GetComponent<SkeletonAnimation>();
             AS = skeletonAnimation.state;
 

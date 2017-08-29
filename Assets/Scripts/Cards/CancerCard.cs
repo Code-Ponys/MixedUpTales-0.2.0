@@ -13,7 +13,7 @@ namespace Cards {
 
         GameObject An_Cancer;
 
-        AudioSource Sound;
+        //AudioSource Sound;
         SkeletonAnimation skeletonAnimation;
 
         Spine.AnimationState AS;
@@ -29,7 +29,7 @@ namespace Cards {
             An_Cancer = (GameObject)Instantiate(Resources.Load("Animations/AN_Cancer"));
             An_Cancer.transform.position = new Vector3 (Camera.main.GetComponent<CameraManager>().center_x, Camera.main.GetComponent<CameraManager>().center_y - 3, -3);
 
-            Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
+            //Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
             skeletonAnimation = An_Cancer.GetComponent<SkeletonAnimation>();
             AS = skeletonAnimation.state;
 

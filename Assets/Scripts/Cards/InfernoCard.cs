@@ -33,8 +33,7 @@ namespace Cards {
         GameObject CardIndicatorUp3;
 
         GameObject An_Inferno;
-
-        AudioSource Sound;
+        
         SkeletonAnimation skeletonAnimation;
 
         Spine.AnimationState AS;
@@ -109,9 +108,6 @@ namespace Cards {
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
 
 
-
-
-
                 if (F.GetComponent<GameManager>().cardlocked == true) {
                     Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     int indexX = F.GetComponent<Field>().RoundIt(mouseWorldPos.x);
@@ -122,7 +118,6 @@ namespace Cards {
                     if (CardIndicator.GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) return;
                     An_Inferno = (GameObject)Instantiate(Resources.Load("Animations/AN_Inferno"));
 
-                    //Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
                     skeletonAnimation = An_Inferno.GetComponent<SkeletonAnimation>();
                     AS = skeletonAnimation.state;
 

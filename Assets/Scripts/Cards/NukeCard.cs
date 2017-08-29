@@ -9,8 +9,7 @@ namespace Cards {
 
         GameObject An_Nuke;
         GameObject OwnGO;
-
-        AudioSource Sound;
+        
         SkeletonAnimation skeletonAnimation;
         
         Spine.AnimationState AS;
@@ -22,17 +21,12 @@ namespace Cards {
             if (reconstructed) return;
 
             An_Nuke = (GameObject)Instantiate(Resources.Load("Animations/AN_Nuke"));
-
-
-            Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
             skeletonAnimation = An_Nuke.GetComponent<SkeletonAnimation>();
             
             AS = skeletonAnimation.state;            
 
             An_Nuke.transform.position = (Camera.main.GetComponent<CameraManager>().GetCenter());
             
-            skeletonAnimation.AnimationState.SetAnimation(0, "neuer versuch", false);
-            Sound.Play();
           
             while (F.GetComponent<Field>().cardsOnField.Count != 0) {
                 GameObject RemoveCard = F.GetComponent<Field>().cardsOnField[0];
