@@ -33,7 +33,7 @@ namespace Cards {
         GameObject CardIndicatorUp3;
 
         GameObject An_Inferno;
-        
+
         SkeletonAnimation skeletonAnimation;
 
         Spine.AnimationState AS;
@@ -46,6 +46,7 @@ namespace Cards {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
             if (reconstructed) return;
+            DeactivateSlider();
             F.GetComponent<GameManager>().cardlocked = true;
             CardLeft1 = GameObject.Find(Slave.GetCardName(CardID.Card, x - 1, y));
             CardLeft2 = GameObject.Find(Slave.GetCardName(CardID.Card, x - 2, y));

@@ -18,8 +18,10 @@ namespace Cards {
         void Start() {
             GameObject F = GameObject.Find("Field");
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
+
             if (reconstructed) return;
 
+            DeactivateSlider();
             An_Anchor = (GameObject)Instantiate(Resources.Load("Animations/AN_Anchor"));
 
             //Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();

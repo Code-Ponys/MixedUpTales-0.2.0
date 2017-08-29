@@ -34,6 +34,7 @@ namespace Cards {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
             if (reconstructed) return;
+            DeactivateSlider();
 
             SetAnimationStart();
                 Sound = GameObject.Find("Streichholz").GetComponent<AudioSource>();

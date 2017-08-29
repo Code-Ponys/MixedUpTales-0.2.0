@@ -51,4 +51,7 @@ public class Card : MonoBehaviour {
         SetAnimationStart();
         animationActive = true;
     }
+    public void DeactivateSlider() {
+        F.GetComponent<GameManager>().deactivateSlider = true;
+    }
 }

@@ -20,6 +20,7 @@ namespace Cards {
             GameObject F = GameObject.Find("Field");
             if (reconstructed) return;
 
+            DeactivateSlider();
             GameObject Card = GameObject.Find(Slave.GetCardName(CardID.Card, x, y));
 
             An_Delete = (GameObject)Instantiate(Resources.Load("Animations/AN_Delete"));

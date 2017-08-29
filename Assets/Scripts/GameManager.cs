@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour {
     public int PointCardCounterBlue;
     public int PointCardCounterCurrent;
     public RecontrustState reconstructState;
+    internal bool deactivateSlider;
 
 
     // Use this for initialization
@@ -555,6 +556,7 @@ public class GameManager : MonoBehaviour {
         CardPreview.GetComponent<CardPreview>().cardid = CardID.none;
         TogglePlayerScreen();
         GameObject.Find("CardInfoText").GetComponent<Text>().text = "";
+        deactivateSlider = false;
         reconstructState = RecontrustState.wait;
 
     }

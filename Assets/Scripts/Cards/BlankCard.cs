@@ -10,6 +10,7 @@ namespace Cards {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
             if (reconstructed) return;
+            DeactivateSlider();
 
             if (F.GetComponent<GameManager>().currentChoosedCard != CardID.Changecard
                 && F.GetComponent<GameManager>().currentChoosedCard != CardID.Cancercard) {

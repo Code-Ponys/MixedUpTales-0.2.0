@@ -24,6 +24,7 @@ namespace Cards {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
             if (reconstructed) return;
+            DeactivateSlider();
             Card = GameObject.Find(Slave.GetCardName(CardID.Changecard, x, y));
             
             An_Cancer = (GameObject)Instantiate(Resources.Load("Animations/AN_Cancer"));

@@ -20,6 +20,7 @@ namespace Cards {
             F = GameObject.Find("Field");
             if (reconstructed) return;
 
+            DeactivateSlider();
             F.GetComponent<GameManager>().cardlocked = true;
             
             F.GetComponent<GameManager>().GenerateFieldCard(CardID.Blankcard, x, y);

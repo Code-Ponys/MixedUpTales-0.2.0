@@ -16,6 +16,7 @@ namespace Cards {
             GameObject F = GameObject.Find("Field");
             if (reconstructed) return;
 
+            DeactivateSlider();
             Team team = F.GetComponent<GameManager>().currentPlayer;
             if (team == Team.blue) {
                 if (GameObject.Find("HandCard1red").GetComponent<Handcards>().cardid != CardID.Pointcard

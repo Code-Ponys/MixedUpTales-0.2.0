@@ -23,6 +23,7 @@ namespace Cards {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
             if (reconstructed) return;
+            DeactivateSlider();
             Cardbelow = GameObject.Find(Slave.GetCardName(CardID.Card, x, y));
 
             An_Change = (GameObject)Instantiate(Resources.Load("Animations/AN_Change"));

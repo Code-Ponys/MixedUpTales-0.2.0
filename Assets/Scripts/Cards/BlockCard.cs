@@ -34,6 +34,7 @@ namespace Cards {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
             if (reconstructed) return;
+            DeactivateSlider();
 
             SetAnimationStart();
 
@@ -94,16 +95,16 @@ namespace Cards {
                     GameObject FieldIndicator = GameObject.Find(Slave.GetCardName(CardID.FieldIndicator, indexX, indexY));
                     GameObject Card = GameObject.Find(Slave.GetCardName(CardID.Card, indexX, indexY));
 
-                    An_Block = (GameObject)Instantiate(Resources.Load("Animations/AN_Block"));
-
-                    skeletonAnimation = An_Block.GetComponent<SkeletonAnimation>();
-                    AS = skeletonAnimation.state;
-
                     if (CardIndicator.GetComponent<Indicator>().indicatorColor == IndicatorColor.yellowcovered && Card == null) {
+                        An_Block = (GameObject)Instantiate(Resources.Load("Animations/AN_Block"));
+
+                        skeletonAnimation = An_Block.GetComponent<SkeletonAnimation>();
+                        AS = skeletonAnimation.state;
+
 
                         An_Block.transform.position = new Vector3((indexX), (indexY), -3);
 
-                    
+
                         cardprocessdone = true;
                         CardIndicatorLeft.GetComponent<Indicator>().setColor(IndicatorColor.transparent);
                         CardIndicatorRight.GetComponent<Indicator>().setColor(IndicatorColor.transparent);

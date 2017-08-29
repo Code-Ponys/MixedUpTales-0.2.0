@@ -20,6 +20,7 @@ namespace Cards {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             if (reconstructed) return;
 
+            DeactivateSlider();
             An_Nuke = (GameObject)Instantiate(Resources.Load("Animations/AN_Nuke"));
             skeletonAnimation = An_Nuke.GetComponent<SkeletonAnimation>();
             

@@ -23,6 +23,7 @@ namespace Cards {
                 SpriteRenderer.sprite = Resources.Load<Sprite>(Slave.GetImagePath(team, PointCardCounter));
                 return;
             }
+            DeactivateSlider();
             PointCardCounter = F.GetComponent<GameManager>().currentChoosedCardGO.GetComponent<Handcards>().PointCardCounter;
             Card = GameObject.Find(Slave.GetCardName(CardID.Card, x, y));
             SpriteRenderer = Card.GetComponent<SpriteRenderer>();

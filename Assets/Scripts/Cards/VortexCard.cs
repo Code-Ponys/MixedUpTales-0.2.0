@@ -16,6 +16,7 @@ namespace Cards {
             OwnGO = GameObject.Find(Slave.GetCardName(cardid, x, y));
             F = GameObject.Find("Field");
             if (reconstructed) return;
+            DeactivateSlider();
             F.GetComponent<GameManager>().currentChoosedCardGO.GetComponent<Handcards>().cardid = CardID.none;
 
             GameObject Player1 = GameObject.Find("PlayerBlue");
