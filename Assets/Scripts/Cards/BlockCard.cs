@@ -24,8 +24,6 @@ namespace Cards {
         GameObject FieldIndicatorDown;
 
         GameObject An_Block;
-
-        AudioSource Sound;
         SkeletonAnimation skeletonAnimation;
 
         Spine.AnimationState AS;
@@ -98,7 +96,6 @@ namespace Cards {
 
                     An_Block = (GameObject)Instantiate(Resources.Load("Animations/AN_Block"));
 
-                    Sound = GameObject.Find("ErrorSound (1)").GetComponent<AudioSource>();
                     skeletonAnimation = An_Block.GetComponent<SkeletonAnimation>();
                     AS = skeletonAnimation.state;
 
@@ -106,9 +103,7 @@ namespace Cards {
 
                         An_Block.transform.position = new Vector3((indexX), (indexY), -3);
 
-                        skeletonAnimation.AnimationState.SetAnimation(0, "From Up Falling", false);
-                        Sound.Play();
-
+                    
                         cardprocessdone = true;
                         CardIndicatorLeft.GetComponent<Indicator>().setColor(IndicatorColor.transparent);
                         CardIndicatorRight.GetComponent<Indicator>().setColor(IndicatorColor.transparent);
