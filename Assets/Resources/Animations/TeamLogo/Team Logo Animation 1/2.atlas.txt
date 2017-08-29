@@ -1,0 +1,55 @@
+
+2.png
+size: 1493,782
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Big
+  rotate: true
+  xy: 2, 153
+  size: 627, 1030
+  orig: 627, 1030
+  offset: 0, 0
+  index: -1
+Layer 7
+  rotate: false
+  xy: 2, 2
+  size: 1165, 17
+  orig: 1165, 17
+  offset: 0, 0
+  index: -1
+Lil Arm
+  rotate: false
+  xy: 1370, 577
+  size: 116, 203
+  orig: 116, 203
+  offset: 0, 0
+  index: -1
+Lil Head
+  rotate: false
+  xy: 1169, 19
+  size: 145, 145
+  orig: 145, 145
+  offset: 0, 0
+  index: -1
+TrustFall Games
+  rotate: false
+  xy: 2, 21
+  size: 1129, 130
+  orig: 1129, 130
+  offset: 0, 0
+  index: -1
+lil Body
+  rotate: false
+  xy: 1034, 166
+  size: 334, 614
+  orig: 334, 614
+  offset: 0, 0
+  index: -1
+lil leg
+  rotate: false
+  xy: 1370, 380
+  size: 121, 195
+  orig: 121, 195
+  offset: 0, 0
+  index: -1
