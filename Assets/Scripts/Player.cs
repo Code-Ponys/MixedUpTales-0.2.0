@@ -31,7 +31,9 @@ public class Player : MonoBehaviour {
     }
 
     private List<CardID> GenerateDeck() {
-        List<CardID> generatedDeck = new List<CardID>();
+        List<CardID> finalDeck = new List<CardID>();
+        List<CardID> pointBlankCards = new List<CardID>();
+        List<CardID> specialCards = new List<CardID>();
         int totalcards = 40;
         int pointcards = 15;
         int blankcards = 15;
@@ -46,91 +48,71 @@ public class Player : MonoBehaviour {
         int nukecard = 1;
         int vortexcard = 2;
         int anchorcard = 1;
+        int shufflecard = 1;
         int specialcards = 10;
         int random = 0;
-        bool lastspecialcard = false;
-        while (totalcards != 0) {
-            random = Random.Range(1, 57);
-            if (random >= 1 && random <= 15 && blankcards != 0) {
-                generatedDeck.Add(CardID.Blankcard);
-                totalcards--;
+
+        while (pointBlankCards.Count != 30) {
+            random = Random.Range(0, 2);
+            if (random == 1 && blankcards != 0) {
                 blankcards--;
-                lastspecialcard = true;
-            } else if (random >= 16 && random <= 30 && pointcards != 0) {
-                generatedDeck.Add(CardID.Pointcard);
-                totalcards--;
+                pointBlankCards.Add(CardID.Blankcard);
+            }
+            if (random == 0 && pointcards != 0) {
+                pointBlankCards.Add(CardID.Pointcard);
                 pointcards--;
-                lastspecialcard = true;
-            } else if (random >= 31 && random <= 33 && specialcards != 0 && doublecard != 0 && lastspecialcard) {
-                generatedDeck.Add(CardID.Doublecard);
-                totalcards--;
-                specialcards--;
-                doublecard--;
-                lastspecialcard = false;
-            } else if (random >= 34 && random <= 36 && specialcards != 0 && blockcard != 0 && lastspecialcard) {
-                generatedDeck.Add(CardID.Blockcard);
-                totalcards--;
-                specialcards--;
-                blockcard--;
-                lastspecialcard = false;
-            } else if (random >= 37 && random <= 39 && specialcards != 0 && deletecard != 0 && lastspecialcard) {
-                generatedDeck.Add(CardID.Deletecard);
-                totalcards--;
-                specialcards--;
-                deletecard--;
-                lastspecialcard = false;
-            } else if (random >= 40 && random <= 42 && specialcards != 0 && burncard != 0 && lastspecialcard) {
-                generatedDeck.Add(CardID.Burncard);
-                totalcards--;
-                specialcards--;
-                burncard--;
-                lastspecialcard = false;
-            } else if (random >= 43 && random <= 44 && specialcards != 0 && infernocard != 0 && lastspecialcard) {
-                generatedDeck.Add(CardID.Infernocard);
-                totalcards--;
-                specialcards--;
-                infernocard--;
-                lastspecialcard = false;
-            } else if (random >= 45 && random <= 47 && specialcards != 0 && changecard != 0 && lastspecialcard) {
-                generatedDeck.Add(CardID.Changecard);
-                totalcards--;
-                specialcards--;
-                changecard--;
-                lastspecialcard = false;
-            } else if (random == 48 && specialcards != 0 && cancercard != 0 && lastspecialcard) {
-                generatedDeck.Add(CardID.Cancercard);
-                totalcards--;
-                specialcards--;
-                cancercard--;
-                lastspecialcard = false;
-            } else if (random >= 49 && random <= 52 && specialcards != 0 && hotpotatoe != 0 && lastspecialcard) {
-                generatedDeck.Add(CardID.HotPotatoe);
-                totalcards--;
-                specialcards--;
-                hotpotatoe--;
-                lastspecialcard = false;
-            } else if (random == 53 && specialcards != 0 && nukecard != 0 && lastspecialcard) {
-                generatedDeck.Add(CardID.Nukecard);
-                totalcards--;
-                specialcards--;
-                nukecard--;
-                lastspecialcard = false;
-            } else if (random >= 54 && random <= 55 && specialcards != 0 && vortexcard != 0 && lastspecialcard) {
-                generatedDeck.Add(CardID.Vortexcard);
-                totalcards--;
-                specialcards--;
-                vortexcard--;
-                lastspecialcard = false;
-            } else if (random == 56 && specialcards != 0 && anchorcard != 0 && lastspecialcard) {
-                generatedDeck.Add(CardID.Anchorcard);
-                totalcards--;
-                specialcards--;
-                anchorcard--;
-                lastspecialcard = false;
             }
         }
+
+        while (specialCards.Count != 10) {
+            random = Random.Range(0, 28);
+            if (random >= 0 && random <= 3 && doublecard != 0) {
+                specialCards.Add(CardID.Doublecard);
+                doublecard--;
+            } else if (random >= 4 && random <= 6 && blockcard != 0) {
+                specialCards.Add(CardID.Blockcard);
+                blockcard--;
+            } else if (random >= 7 && random <= 9 && deletecard != 0) {
+                specialCards.Add(CardID.Deletecard);
+                deletecard--;
+            } else if (random >= 10 && random <= 12 && burncard != 0) {
+                specialCards.Add(CardID.Burncard);
+                burncard--;
+            } else if (random >= 13 && random <= 14 && infernocard != 0) {
+                specialCards.Add(CardID.Infernocard);
+                infernocard--;
+            } else if (random >= 15 && random <= 17 && changecard != 0) {
+                specialCards.Add(CardID.Changecard);
+                changecard--;
+            } else if (random == 18 && cancercard != 0) {
+                specialCards.Add(CardID.Cancercard);
+                cancercard--;
+            } else if (random >= 19 && random <= 22 && hotpotatoe != 0) {
+                specialCards.Add(CardID.HotPotatoe);
+                hotpotatoe--;
+            } else if (random == 23 && specialcards != 0 && nukecard != 0) {
+                specialCards.Add(CardID.Nukecard);
+                nukecard--;
+            } else if (random >= 24 && random <= 25 && vortexcard != 0) {
+                specialCards.Add(CardID.Vortexcard);
+                vortexcard--;
+            } else if (random == 26 && anchorcard != 0) {
+                specialCards.Add(CardID.Anchorcard);
+                anchorcard--;
+            } else if (random == 27 && shufflecard != 0) {
+                specialCards.Add(CardID.Shufflecard);
+                shufflecard--;
+            }
+        }
+
+        foreach (CardID Card in specialCards) {
+            random = Random.Range(0, pointBlankCards.Count);
+            pointBlankCards.Insert(random, Card);
+        }
+
+        
         Debug.Log(team + " GenerateDeck");
-        return generatedDeck;
+        return pointBlankCards;
     }
 
     public void RefillHand() {
