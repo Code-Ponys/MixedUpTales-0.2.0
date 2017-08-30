@@ -10,6 +10,7 @@ namespace Cards {
         GameObject OwnGO;
         GameObject Card;
         SpriteRenderer SpriteRenderer;
+        AudioSource Music;
 
 
 
@@ -170,6 +171,8 @@ namespace Cards {
                     Debug.Log(playerName);
                     GameObject.Find("PlayerNameWin").GetComponent<Text>().text = playerName;
                     F.GetComponent<GameManager>().WinScreen.enabled = true;
+                    Music = GameObject.Find("Sound_Win").GetComponent<AudioSource>();
+                    Music.Play();
                 }
 
                 cardprocessdone = true;
