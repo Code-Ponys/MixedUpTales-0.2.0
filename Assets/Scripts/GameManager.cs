@@ -61,8 +61,6 @@ public class GameManager : MonoBehaviour {
     public RecontrustState reconstructState;
     public bool deactivateSlider;
 
-    AudioSource Music;
-
 
     // Use this for initialization
     void Start() {
@@ -541,16 +539,16 @@ public class GameManager : MonoBehaviour {
             && GameObject.Find("HandCard2blue").GetComponent<Handcards>().cardid == CardID.none
             && GameObject.Find("HandCard3blue").GetComponent<Handcards>().cardid == CardID.none) {
             DrawScreen.enabled = true;
-            Music = GameObject.Find("Sound_Draw").GetComponent<AudioSource>();
-            Music.Play();
+            GameObject.Find("Sound_InGame").GetComponent<AudioSource>().enabled = false;
+            GameObject.Find("Sound_Draw").GetComponent<AudioSource>().Play();
             print("DRAW!");
         } else if (players[1].Deck.Count == 0
              && GameObject.Find("HandCard1red").GetComponent<Handcards>().cardid == CardID.none
              && GameObject.Find("HandCard2red").GetComponent<Handcards>().cardid == CardID.none
              && GameObject.Find("HandCard3red").GetComponent<Handcards>().cardid == CardID.none) {
             DrawScreen.enabled = true;
-            Music = GameObject.Find("Sound_Draw").GetComponent<AudioSource>();
-            Music.Play();
+            GameObject.Find("Sound_InGame").GetComponent<AudioSource>().enabled = false;
+            GameObject.Find("Sound_Draw").GetComponent<AudioSource>().Play();
             print("DRAW!");
         }
         if (currentPlayer == Team.blue) {
