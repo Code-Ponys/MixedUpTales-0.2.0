@@ -29,8 +29,9 @@ public class SideBarMove : MonoBehaviour {
     }
 
     public void MovePanelOut() {
+        if (!panelactive) return;
         Vector3 goal = new Vector3(240, 0, 0);
-        Vector3 point = new Vector3(-300, 0, 0);
+        Vector3 point = new Vector3(-295, 0, 0);
         Physics.queriesHitTriggers = true;
         if (point != goal) {
             RectTransform var = GetComponent<RectTransform>();
@@ -44,9 +45,10 @@ public class SideBarMove : MonoBehaviour {
     }
 
     public void MovePanelIn() {
+        if (panelactive) return;
         if (GameObject.Find("Field").GetComponent<GameManager>().reconstructState != RecontrustState.standby || GameObject.Find("Field").GetComponent<GameManager>().deactivateSlider == true) return;
         Vector3 point = new Vector3(240, 0, 0);
-        Vector3 goal = new Vector3(-300, 0, 0);
+        Vector3 goal = new Vector3(-295, 0, 0);
         Physics.queriesHitTriggers = true;
         if (point != goal) {
             RectTransform var = GetComponent<RectTransform>();

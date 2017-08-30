@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour {
     public Canvas ChangePlayer;
     public Canvas WinScreen;
     public Canvas DrawScreen;
+    public GameObject Pause;
     string currentChoosedCardName;
 
     public Team currentPlayer;
@@ -99,6 +100,11 @@ public class GameManager : MonoBehaviour {
         if (animationDone == true && !WinScreen.enabled) {
             animationDone = false;
             TogglePlayerScreen();
+            if (currentPlayer == Team.blue) {
+                SideBarBlue.enabled = false;
+            } else {
+                SideBarRed.enabled = false;
+            }
         }
         RecontructLastRound();
     }
@@ -466,6 +472,7 @@ public class GameManager : MonoBehaviour {
         if (x == 0 && y == 0) {
             return true;
         }
+        if (Pause.activeInHierarchy) return true;
         if (deactivateSlider) return true;
         if (GameObject.Find("SideMenu Blue").GetComponent<SideBarMove>().panelactive || GameObject.Find("SideMenu Red").GetComponent<SideBarMove>().panelactive) {
             return true;
@@ -542,11 +549,9 @@ public class GameManager : MonoBehaviour {
         }
         if (currentPlayer == Team.blue) {
             SideBarBlue.enabled = true;
-            SideBarRed.enabled = false;
             players[0].RefillHand();
             PlayerName.GetComponent<Text>().text = "Player 1";
         } else {
-            SideBarBlue.enabled = false;
             SideBarRed.enabled = true;
             players[1].RefillHand();
             PlayerName.GetComponent<Text>().text = "Player 2";
@@ -563,6 +568,12 @@ public class GameManager : MonoBehaviour {
 
     public void OnCardClick() {
         if (!cardlocked) {
+            if (SideBarBlue.enabled) {
+                SideBarBlue.GetComponent<SideBarMove>().MovePanelOut();
+            }
+            if (SideBarRed.enabled) {
+                SideBarRed.GetComponent<SideBarMove>().MovePanelOut();
+            }
             string name = EventSystem.current.currentSelectedGameObject.name;
             currentChoosedCardName = name;
             currentChoosedCardGO = GameObject.Find(name);
