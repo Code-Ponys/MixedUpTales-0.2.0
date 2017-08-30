@@ -53,21 +53,21 @@ namespace Cards {
             }
             if (CardRight != null && CardIndicatorRight.GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
                 if (CardRight.GetComponent<Card>().cardid == CardID.Pointcard || CardRight.GetComponent<Card>().cardid == CardID.Blankcard) {
-                    if (CardLeft.GetComponent<Card>().team == F.GetComponent<GameManager>().currentPlayer) {
+                    if (CardRight.GetComponent<Card>().team == F.GetComponent<GameManager>().currentPlayer) {
                         CardIndicatorRight.GetComponent<Indicator>().indicatorColor = IndicatorColor.yellowcovered;
                     }
                 }
             }
             if (CardDown != null && CardIndicatorDown.GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
                 if (CardDown.GetComponent<Card>().cardid == CardID.Pointcard || CardDown.GetComponent<Card>().cardid == CardID.Blankcard) {
-                    if (CardLeft.GetComponent<Card>().team == F.GetComponent<GameManager>().currentPlayer) {
+                    if (CardDown.GetComponent<Card>().team == F.GetComponent<GameManager>().currentPlayer) {
                         CardIndicatorDown.GetComponent<Indicator>().indicatorColor = IndicatorColor.yellowcovered;
                     }
                 }
             }
             if (CardUp != null && CardIndicatorUp.GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
                 if (CardUp.GetComponent<Card>().cardid == CardID.Pointcard || CardUp.GetComponent<Card>().cardid == CardID.Blankcard) {
-                    if (CardLeft.GetComponent<Card>().team == F.GetComponent<GameManager>().currentPlayer) {
+                    if (CardUp.GetComponent<Card>().team == F.GetComponent<GameManager>().currentPlayer) {
                         CardIndicatorUp.GetComponent<Indicator>().indicatorColor = IndicatorColor.yellowcovered;
                     }
                 }
