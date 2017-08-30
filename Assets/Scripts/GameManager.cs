@@ -477,6 +477,10 @@ public class GameManager : MonoBehaviour {
         if (GameObject.Find("SideMenu Blue").GetComponent<SideBarMove>().panelactive || GameObject.Find("SideMenu Red").GetComponent<SideBarMove>().panelactive) {
             return true;
         }
+        if (currentChoosedCard == CardID.Shufflecard
+            && GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y)).GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
+            return true;
+        }
         if (currentChoosedCard == CardID.Changecard
             && GameObject.Find(Slave.GetCardName(CardID.CardIndicator, x, y)).GetComponent<Indicator>().indicatorColor != IndicatorColor.yellowcovered) {
             return true;
