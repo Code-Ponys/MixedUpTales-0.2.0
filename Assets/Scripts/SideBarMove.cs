@@ -19,17 +19,13 @@ public class SideBarMove : MonoBehaviour {
     Spine.AnimationState AS;
 
     private void Start() {
-
         AnimationPlayed = false;
         RectTransform rectTransform = GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = new Vector3(240, 0, 0);
-
-        PanelMoveSound = GameObject.Find("SidebarPanelSound").GetComponent<AudioSource>();
-        print(PanelMoveSound);
     }
 
     public void MovePanelOut() {
         if (!panelactive) return;
+        print("Move Panel Out");
         Vector3 goal = new Vector3(240, 0, 0);
         Vector3 point = new Vector3(-295, 0, 0);
         Physics.queriesHitTriggers = true;
@@ -41,12 +37,12 @@ public class SideBarMove : MonoBehaviour {
         panelactive = false;
         CardPreview.enabled = true;
         CardPreviewText.enabled = true;
-
     }
 
     public void MovePanelIn() {
         if (panelactive) return;
         if (GameObject.Find("Field").GetComponent<GameManager>().reconstructState != RecontrustState.standby || GameObject.Find("Field").GetComponent<GameManager>().deactivateSlider == true) return;
+        print("Move Panel In");
         Vector3 point = new Vector3(240, 0, 0);
         Vector3 goal = new Vector3(-295, 0, 0);
         Physics.queriesHitTriggers = true;

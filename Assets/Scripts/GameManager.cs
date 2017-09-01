@@ -85,7 +85,6 @@ public class GameManager : MonoBehaviour {
         animationDone = false;
         CardPreview = GameObject.Find("currentChoosedCard");
         Camera.main.GetComponent<CameraManager>().CenterCamera();
-
     }
 
     // Update is called once per frame
@@ -571,6 +570,7 @@ public class GameManager : MonoBehaviour {
         GameObject.Find("CardInfoText").GetComponent<Text>().text = "";
         deactivateSlider = false;
         reconstructState = RecontrustState.wait;
+        
 
     }
 
@@ -715,6 +715,7 @@ public class GameManager : MonoBehaviour {
                 int x = Card.GetComponent<Card>().x;
                 int y = Card.GetComponent<Card>().y;
 
+                if (Card.GetComponent<Card>().cardid != CardID.Blankcard && Card.GetComponent<Card>().cardid != CardID.Pointcard) continue;
                 GameObject CardLeft = GameObject.Find(Slave.GetCardName(CardID.Card, x - 1, y));
                 GameObject CardRight = GameObject.Find(Slave.GetCardName(CardID.Card, x + 1, y));
                 GameObject CardUp = GameObject.Find(Slave.GetCardName(CardID.Card, x, y + 1));
@@ -1102,6 +1103,11 @@ public class GameManager : MonoBehaviour {
             ShuffledCardsAnimationStarted = false;
             reconstructState = RecontrustState.standby;
             Camera.main.GetComponent<CameraManager>().CenterCamera();
+            if (currentPlayer == Team.blue) {
+                SideBarBlue.GetComponent<SideBarMove>().MovePanelIn();
+            } else {
+                SideBarRed.GetComponent<SideBarMove>().MovePanelIn();
+            }
         }
     }
 }
